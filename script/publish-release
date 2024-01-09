@@ -3,15 +3,15 @@ set -e
 
 publish_documentation() {
   local version="$1"
-  local doc_dir="site"
+  local doc_dir="gh-pages"
   local doc_branch="gh-pages"
 
   git fetch origin "${doc_branch}:${doc_branch}"
   git worktree add "$doc_dir" "$doc_branch"
-  pushd "$doc_dir"
+  cd "$doc_dir"
 
   git rm hub*.html >/dev/null
-  cp ../share/doc/*/*.html .
+  cp ../share/doc/*.html .
 
   git add hub*.html
   GIT_COMMITTER_NAME='GitHub Actions' GIT_COMMITTER_EMAIL='noreply@github.com' \
@@ -28,7 +28,7 @@ in_default_branch() {
 }
 
 tag_name="${GITHUB_REF#refs/tags/}"
-make man-pages
+make manpages
 script/cross-compile "${tag_name#v}" | \
   PATH="bin:$PATH" script/github-release "$tag_name"
 
