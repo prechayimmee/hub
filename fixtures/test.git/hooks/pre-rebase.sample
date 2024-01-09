@@ -43,7 +43,11 @@ git show-ref -q "$topic" || {
 }
 
 # Is topic fully merged to master?
-not_in_master=`git rev-list --pretty=oneline ^master "$topic"`
+is_fully_merged=$(git merge-base --is-ancestor "$topic" master)
+if [ "$is_fully_merged" = "true" ]; then
+	echo >&2 "$topic is fully merged to master; better remove it."
+	exit 1
+fi
 if test -z "$not_in_master"
 then
 	echo >&2 "$topic is fully merged to master; better remove it."
