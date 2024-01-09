@@ -57,6 +57,7 @@ test:
 	go test ./...
 
 test-all: bin/hub
+	ifdef CI
 ifdef CI
 	script/test --coverage=$(MIN_COVERAGE)
 	script/test --coverage $(MIN_COVERAGE)
