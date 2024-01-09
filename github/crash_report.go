@@ -36,16 +36,16 @@ func CaptureCrash() {
 	}
 }
 
-func reportCrash(err error) {
+func reportCrash(reportedError error) {
 	buf := make([]byte, 10000)
 	runtime.Stack(buf, false)
 	stack := formatStack(buf)
 
-	ui.Errorf("%v\n\n", err)
+	ui.Errorf("%v\n\n", reportedError)
 	ui.Errorln(stack)
 
 	isTerm := ui.IsTerminal(os.Stdin) && ui.IsTerminal(os.Stdout)
-	if !isTerm || reportCrashConfig() == "never" {
+	if !isTerm || reportCrashConfig() == "never" || reportedError == nil{
 		return
 	}
 
