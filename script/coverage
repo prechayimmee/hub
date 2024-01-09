@@ -42,7 +42,7 @@ generate() {
     go tool cover -html="$HUB_COVERAGE"~ -o "${HUB_COVERAGE%.out}.html"
   fi
 
-  awk '/^total:/ { print $(NF) }' "${HUB_COVERAGE%.out}.func"
+  awk '/^total:/ { print substr($2, 1, length($2)-1) }' "${HUB_COVERAGE%.out}.func"
 }
 
 summarize() {
@@ -52,6 +52,8 @@ summarize() {
   echo "Code coverage: $total_coverage"
   local result="$(bc <<<"${total_coverage%\%} < $min_coverage")"
   if [ "$result" -eq 1 ]; then
+    echo "Error: coverage dropped below the minimum threshold of ${min_coverage}%!"
+    printf 'Please run `script/test --coverage` locally and open `%s` to analyze the results.' "$html_result"
     echo "Error: coverage dropped below the minimum threshold of ${min_coverage}%!"
     if [ -n "$CI" ]; then
       html_result="${HUB_COVERAGE%.out}.html"
