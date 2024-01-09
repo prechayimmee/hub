@@ -58,12 +58,13 @@ test:
 
 test-all: bin/cucumber
 ifdef CI
+	script/test --coverage $(MIN_COVERAGE) --coverage
 	script/test --coverage $(MIN_COVERAGE)
 else
 	script/test
 endif
 
-bin/cucumber:
+bin/cucumber: script/coverage:
 	script/bootstrap
 
 fmt:
