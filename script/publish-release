@@ -2,23 +2,29 @@
 set -e
 
 publish_documentation() {
+  log_file="publish_errors.log"
+  error_log() {
+    echo "Error: $1" >> $log_file
+  }
+  set -eE
+  trap 'error_log "$BASH_COMMAND"' ERR
   local version="$1"
   local doc_dir="site"
   local doc_branch="gh-pages"
 
-  git fetch origin "${doc_branch}:${doc_branch}"
-  git worktree add "$doc_dir" "$doc_branch"
-  pushd "$doc_dir"
+  git fetch origin "${doc_branch}:${doc_branch}" || { error_log "Failed to fetch documentation branch"; exit 1; }
+  git worktree add "$doc_dir" "$doc_branch" || { error_log "Failed to add worktree"; exit 1; }
+  pushd "$doc_dir" || { error_log "Failed to push to doc directory"; exit 1; }
 
   git rm hub*.html >/dev/null
   cp ../share/doc/*/*.html .
 
-  git add hub*.html
+  git add hub*.html || { error_log "Failed to add HTML files to git"; exit 1; }
   GIT_COMMITTER_NAME='GitHub Actions' GIT_COMMITTER_EMAIL='noreply@github.com' \
     GIT_AUTHOR_NAME='GitHub Actions' GIT_AUTHOR_EMAIL='noreply@github.com' \
-    git commit -m "Update documentation for $version"
+    git commit -m "Update documentation for $version" || { error_log "Failed to commit documentation changes"; exit 1; }
 
-  git push origin HEAD
+  git push origin HEAD || { error_log "Failed to push documentation changes to origin"; exit 1; }
   popd
 }
 
