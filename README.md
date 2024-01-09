@@ -61,6 +61,30 @@ version` after installing a community package.
 
 #### Standalone
 
+`To generate a Personal Access Token (PAT) with the `repo` scope, follow these steps:
+1. Go to [Personal Access Tokens page](https://github.com/settings/tokens)
+2. Click on 'Generate new token'
+3. Select 'repo' as the scope for the token
+4. Click 'Generate token' to create the token
+5. Keep the token in a safe place as it will only be shown once. You'll need it later for your GitHub Actions workflow.
+
+After generating the token, add it to your GitHub repository as a secret. Follow these steps:
+1. Go to your repository on GitHub
+2. Navigate to the 'Settings' tab
+3. Click on 'Secrets' in the left sidebar
+4. Click on 'New repository secret'
+5. Keep the token in a safe place as it will only be shown once. You'll need it later for your GitHub Actions workflow.
+
+After generating the token, add it to your GitHub repository as a secret. Follow these steps:
+1. Go to your repository on GitHub
+2. Navigate to the 'Settings' tab
+3. Click on 'Secrets' in the left sidebar
+4. Click on 'New repository secret'
+5. Add the token with the name 'GITHUB_TOKEN'
+6. You can now use the token in your GitHub Actions workflow as shown in the workflow file.
+
+Once added as a secret you can reference it in your GitHub Actions workflow file by using `${{ secrets.GITHUB_TOKEN }}`
+
 `hub` can be easily installed as an executable. Download the [latest
 binary][latest] for your system and put it anywhere in your executable path.
 
