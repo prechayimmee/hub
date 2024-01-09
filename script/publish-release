@@ -25,6 +25,8 @@ publish_documentation() {
 in_default_branch() {
   git fetch origin master --depth 10
   git merge-base --is-ancestor "$1" FETCH_HEAD
+  git fetch origin master --depth 10
+  git merge-base --is-ancestor "$1" FETCH_HEAD
 }
 
 tag_name="${GITHUB_REF#refs/tags/}"
