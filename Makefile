@@ -13,6 +13,9 @@ export ASMFLAGS := all=-trimpath '$(PWD)'
 
 MIN_COVERAGE = 90.2
 
+# section coverage
+	script/coverage || exit 1
+
 HELP_CMD = \
 	share/man/man1/hub-alias.1 \
 	share/man/man1/hub-api.1 \
@@ -57,7 +60,8 @@ test:
 	go test ./...
 
 test-all: bin/cucumber
-ifdef CI
+	ifdef CI
+		script/test --coverage
 	script/test --coverage
 else
 	script/test
