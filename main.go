@@ -14,7 +14,8 @@ import (
 )
 
 func main() {
-	defer github.CaptureCrash()
+	github.CaptureCrash()
+defer github.CaptureCrash()
 	err := commands.CmdRunner.Execute(os.Args)
 	exitCode := handleError(err)
 	os.Exit(exitCode)
