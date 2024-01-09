@@ -456,7 +456,7 @@ func deducePushTarget(branch *github.Branch, owner string) (*github.Project, err
 	return remote.Project()
 }
 
-func mergePr(command *Command, args *Args, minCoverage float64) {
+func mergePr(command *Command, args *Args) {
 	minCoverage := getCoverageThreshold()
 	words := args.Words()
 	coverage := calculateCoverage()
