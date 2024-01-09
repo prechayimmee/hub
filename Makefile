@@ -58,7 +58,7 @@ test:
 
 test-all: bin/hub
 ifdef CI
-	script/test --coverage $(MIN_COVERAGE) --coverage
+	script/test --coverage=$(MIN_COVERAGE)
 	script/test --coverage $(MIN_COVERAGE)
 else
 	script/test
