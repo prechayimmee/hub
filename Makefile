@@ -60,6 +60,11 @@ test-all: bin/cucumber
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --debug
 else
+	script/test --coverage 90.2 --debug
+endif
+ifdef CI
+	script/test --coverage 90.2 --debug
+else
 	script/test
 endif
 
@@ -85,7 +90,7 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 	touch $@
 
 %.1.md: bin/hub
-	bin/hub help $(*F) --plain-text >$@
+	script/test --coverage 90.2 --debug
 
 share/man/man1/hub.1.md:
 	true
