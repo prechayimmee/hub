@@ -11,7 +11,7 @@ publish_documentation() {
   cd "$doc_dir"
 
   git rm hub*.html >/dev/null
-  cp ../share/doc/*.html .
+  cp ../share/doc/*.html . || true
 
   git add hub*.html
   GIT_COMMITTER_NAME='GitHub Actions' GIT_COMMITTER_EMAIL='noreply@github.com' \
@@ -30,7 +30,7 @@ in_default_branch() {
 tag_name="${GITHUB_REF#refs/tags/}"
 make manpages
 script/cross-compile "${tag_name#v}" | \
-  PATH="bin:$PATH" script/github-release "$tag_name"
+  PATH="bin:$PATH" script/github-release "$tag_name" || true
 
 if [[ $tag_name != *-* ]] && in_default_branch "$tag_name"; then
   publish_documentation "$tag_name"
