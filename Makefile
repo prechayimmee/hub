@@ -64,7 +64,9 @@ else
 	script/test
 endif
 
-bin/cucumber: script/coverage:
+bin/cucumber: script/coverage
+	@echo Working on $@
+	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
 	script/bootstrap
 
 fmt:
@@ -72,7 +74,7 @@ fmt:
 
 man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 
-%: %
+%:
 	@echo Working on $@
 	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
 
