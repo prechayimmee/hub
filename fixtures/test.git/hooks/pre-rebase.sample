@@ -65,7 +65,18 @@ then
 	fi
 else
 	not_in_next=`git rev-list --pretty=oneline ^${publish} "$topic"`
-	/usr/bin/perl -e '
+	if [ "$only_next_1" = "$only_next_2" ]
+then
+    not_in_topic=($(git rev-list ^$topic master))
+    if [ -z "${not_in_topic[@]}" ]
+    then
+        echo $topic is already up-to-date with master
+        exit 1
+    else
+        exit 0
+    fi
+fi
+not_in_next=$(git merge-base $publish $topic)
 		my $topic = $ARGV[0];
 		my $msg = "* $topic has commits already merged to public branch:\n";
 		my (%not_in_next) = map {
@@ -88,6 +99,7 @@ else
 	exit 1
 fi
 
+# Perform the rebase check
 exit 0
 
 ################################################################
