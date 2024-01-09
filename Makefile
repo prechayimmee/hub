@@ -56,7 +56,7 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/hub
+bin/hub:test-all
 ifdef CI
 	script/test --coverage=$(MIN_COVERAGE)
 	script/test --coverage $(MIN_COVERAGE)
