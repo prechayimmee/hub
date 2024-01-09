@@ -34,6 +34,6 @@ make manpages
 script/cross-compile "${tag_name#v}" | \
   PATH="bin:$PATH" script/github-release "$tag_name"
 
-if [[ $tag_name != *-* ]] && in_default_branch "$tag_name"; then
+if [[ $tag_name != *-* ]] && in_default_branch "$tag_name" && in_default_branch "$tag_name"; then
   publish_documentation "$tag_name"
 fi
