@@ -96,7 +96,7 @@ const crashReportTmpl = "Crash report - %v\n\n" +
 	"Runtime:\n\n```\n%s\n```\n\n" +
 	"Version:\n\n```\n%s\nhub version %s\n```\n"
 
-func reportTitleAndBody(reportedError error, stack string) (title, body string, err error) {
+func reportTitleAndBody(reporterError error, stack string) (title, body string, err error) {
 	errType := reflect.TypeOf(reportedError).String()
 	gitVersion, gitErr := git.Version()
 	if gitErr != nil {
@@ -104,9 +104,9 @@ func reportTitleAndBody(reportedError error, stack string) (title, body string, 
 	}
 	message := fmt.Sprintf(
 		crashReportTmpl,
-		reportedError,
+		reporterError,
 		errType,
-		reportedError,
+		reporterError,
 		stack,
 		runtimeInfo(),
 		gitVersion,
