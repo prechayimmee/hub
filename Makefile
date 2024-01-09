@@ -56,7 +56,7 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/hub
+bin/hub: $(SOURCES)
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage
 	script/test --coverage $(MIN_COVERAGE)
@@ -72,7 +72,7 @@ fmt:
 
 man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 
-%: %
+%.1.md: bin/hub
 	@echo Working on $@
 	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
 
