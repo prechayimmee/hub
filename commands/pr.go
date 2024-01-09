@@ -47,7 +47,22 @@ pr merge [-d] [--squash | --rebase] <PR-NUMBER> [-m <MESSAGE> | -F <FILE>] [--he
 ## Options:
 
 	-s, --state <STATE>
-		Filter pull requests by <STATE>. Supported values are: "open" (default),
+		Filter pull requests by <STATE>. Supported values are: "open" (default	// Define the missing functions getCoverageThreshold, calculateCoverage, and failWorkflow.
+
+	func getCoverageThreshold() float64 {
+		// Add implementation here
+		return 0.0
+	}
+
+	func calculateCoverage() float64 {
+		// Add implementation here
+		return 0.0
+	}
+
+	func failWorkflow() {
+		// Add implementation here
+		panic("Workflow failed")
+	},
 		"closed", "merged", or "all".
 
 	-h, --head <BRANCH>
