@@ -456,7 +456,10 @@ func deducePushTarget(branch *github.Branch, owner string) (*github.Project, err
 	return remote.Project()
 }
 
-func mergePr(command *Command, args *Args) {
+func mergePr(command *Command, args *Args, minCoverage float64) {
+	minCoverage := getCoverageThreshold()
+	words := args.Words()
+	coverage := calculateCoverage()
 	words := args.Words()
 	if len(words) == 0 {
 		utils.Check(fmt.Errorf("Error: No pull request number given"))
@@ -465,7 +468,12 @@ func mergePr(command *Command, args *Args) {
 	prNumber, err := strconv.Atoi(words[0])
 	utils.Check(err)
 
-	params := map[string]interface{}{
+	coverage := calculateCoverage()
+	if coverage < minCoverage {
+		failWorkflow()
+	}
+
+params := map[string]interface{}{
 		"merge_method": "merge",
 	}
 	if args.Flag.Bool("--squash") {
