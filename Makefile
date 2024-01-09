@@ -64,7 +64,7 @@ else
 	script/test
 endif
 
-bin/cucumber: script/coverage:
+bin/%: script/coverage:
 	script/bootstrap
 
 fmt:
