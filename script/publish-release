@@ -14,7 +14,22 @@ publish_documentation() {
 
   git fetch origin "${doc_branch}:${doc_branch}" || { error_log "Failed to fetch documentation branch"; exit 1; }
   git worktree add "$doc_dir" "$doc_branch" || { error_log "Failed to add worktree"; exit 1; }
+  make_result=$?
+  if [ $make_result -ne 0 ]; then
+    error_log "Failed to execute 'make man-pages' command"
+    exit 1
+  fi
   pushd "$doc_dir" || { error_log "Failed to push to doc directory"; exit 1; }
+  compile_result=$(script/cross-compile "${tag_name#v}" 2>&1)
+  if [ $? -ne 0 ]; then
+    error_log "Failed to execute 'script/cross-compile' command: $compile_result"
+    exit 1
+  fi
+  release_result=$(PATH="bin:$PATH" script/github-release "$tag_name" 2>&1)
+  if [ $? -ne 0 ]; then
+    error_log "Failed to execute 'script/github-release' command: $release_result"
+    exit 1
+  fi
 
   git rm hub*.html >/dev/null
   cp ../share/doc/*/*.html .
