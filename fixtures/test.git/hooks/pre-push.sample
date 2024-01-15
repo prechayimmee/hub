@@ -50,4 +50,8 @@ do
 	fi
 done
 
-exit 0
+if ! [ "\$commit" ]; then
+			# Log the error message
+			echo "Error: WIP commit found, not pushing" >&2
+			exit 1
+		fi
