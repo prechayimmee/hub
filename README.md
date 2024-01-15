@@ -59,7 +59,7 @@ Packages other than Homebrew are community-maintained (thank you!) and they
 are not guaranteed to match the [latest hub release][latest]. Check `hub
 version` after installing a community package.
 
-#### Standalone
+#### GitHub Actions
 
 `hub` can be easily installed as an executable. Download the [latest
 binary][latest] for your system and put it anywhere in your executable path.
@@ -67,14 +67,19 @@ binary][latest] for your system and put it anywhere in your executable path.
 #### GitHub Actions
 
 hub is ready to be used in your [GitHub Actions][] workflows:
+
+### Reporting Issues with GitHub Actions
+
+If you encounter issues while running GitHub Actions, please provide detailed error logs and specific descriptions of the problem to help us troubleshoot and resolve the issue effectively.
+
+To report issues, include the relevant error logs in the GitHub Actions run and provide a specific description of the problem.
 ```yaml
 steps:
 - uses: actions/checkout@v2
 
 - name: List open pull requests
   run: hub pr list
-  env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
 ```
 
 Note that the default `secrets.GITHUB_TOKEN` will only work for API operations
@@ -138,7 +143,7 @@ A simple way to do this is to run the following from the PowerShell prompt:
 Add-Content $PROFILE "`nSet-Alias git hub"
 ```
 
-Note: You'll need to restart your PowerShell console in order for the changes to be picked up.
+
 
 If your PowerShell profile doesn't exist, you can create it by running the following:
 
@@ -153,6 +158,10 @@ These scripts complement existing completion scripts that ship with git.
 
 Meta
 ----
+
+### Reporting Issues with GitHub Actions
+
+If you encounter any issues with the hub in GitHub Actions, please report them on the [GitHub repository issues page](https://github.com/github/hub/issues). Providing detailed error logs and specific descriptions of the problem will help us troubleshoot and resolve the issue more effectively.
 
 * Bugs: <https://github.com/github/hub/issues>
 * Authors: <https://github.com/github/hub/contributors>
