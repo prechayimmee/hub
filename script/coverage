@@ -48,9 +48,12 @@ generate() {
 summarize() {
   local total_coverage
   local min_coverage="${1?}"
+  local min_coverage="${2?}"
   total_coverage="$(generate)"
   echo "Code coverage: $total_coverage"
   local result="$(bc <<<"${total_coverage%\%} < $min_coverage")"
+  if [ "$result" -eq 1 ]; then
+    echo "Error: coverage dropped below the minimum threshold of ${min_coverage}%!"
   if [ "$result" -eq 1 ]; then
     echo "Error: coverage dropped below the minimum threshold of ${min_coverage}%!"
     if [ -n "$CI" ]; then
@@ -64,6 +67,7 @@ summarize() {
 
 cmd="${1?}"
 shift 1
+  local min_coverage="${2?}"
 
 case "$cmd" in
   prepare | generate | summarize )
