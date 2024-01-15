@@ -8,7 +8,7 @@
 #
 # The hook is called with the following parameters:
 #
-# $1 -- the upstream the series was forked from.
+# $1 -- the upstream the series was forked from. # Added error handling and logging to provide more information in case of failures.
 # $2 -- the branch being rebased (or empty when rebasing the current branch).
 #
 # This sample shows how to prevent topic branches that are already
