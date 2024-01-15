@@ -16,6 +16,13 @@ while [ $# -gt 0 ]; do
       min_coverage=1
       shift 1
     fi
+    if [ -n "$HUB_COVERAGE" ]; then
+      script/coverage prepare
+    fi
+    script/test --coverage "$min_coverage" || STATUS="$?"
+    if [ -n "$HUB_COVERAGE" ]; then
+      script/coverage summarize "$min_coverage" || STATUS="$?"
+    fi
     ;;
   -h | --help )
     sed -ne '/^#/!q;s/.\{1,2\}//;1d;p' < "$0"
@@ -58,6 +65,10 @@ script/build
 go test ./... || STATUS="$?"
 script/ruby-test "$@" || STATUS="$?"
 [ -z "$HUB_COVERAGE" ] || script/coverage summarize "$min_coverage" || STATUS="$?"
+if [ -n "$CI" ]; then
+  check_formatting || STATUS="$?"
+  install_test || STATUS="$?"
+fi
 
 if [ -n "$CI" ]; then
   check_formatting || STATUS="$?"
