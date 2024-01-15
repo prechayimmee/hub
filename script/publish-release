@@ -28,7 +28,12 @@ in_default_branch() {
 }
 
 tag_name="${GITHUB_REF#refs/tags/}"
+# Add error handling
 make man-pages
+if [ $? -ne 0 ]; then
+  echo "Error: Failed to create man pages"
+ exit 1
+fi
 script/cross-compile "${tag_name#v}" | \
   PATH="bin:$PATH" script/github-release "$tag_name"
 
