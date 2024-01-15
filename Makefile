@@ -58,7 +58,8 @@ test:
 
 test-all: bin/cucumber
 ifdef CI
-	script/test --coverage $(MIN_COVERAGE)
+ifdef CI
+	script/test --coverage --coverage $(MIN_COVERAGE)
 else
 	script/test
 endif

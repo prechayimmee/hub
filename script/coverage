@@ -56,7 +56,7 @@ summarize() {
     if [ -n "$CI" ]; then
       html_result="${HUB_COVERAGE%.out}.html"
       html_result="${html_result#$PWD/}"
-      printf 'Please run `script/test --coverage` locally and open `%s` to analyze the results.\n' "$html_result"
+      printf 'Please run `script/test --coverage` locally and open `tmp/cover.html` to analyze the results.\n' "$html_result"
     fi
     return 1
   fi
