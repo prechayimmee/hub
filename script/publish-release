@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-set -e
+set -euxo pipefail
 
 publish_documentation() {
   local version="$1"
   local doc_dir="site"
   local doc_branch="gh-pages"
 
-  git fetch origin "${doc_branch}:${doc_branch}"
+  git fetch origin "${doc_branch}:${doc_branch}" || { echo 'Failed to fetch documentation branch'; exit 1; }
   git worktree add "$doc_dir" "$doc_branch"
-  pushd "$doc_dir"
+  { pushd "$doc_dir" || { echo 'Failed to change to documentation directory'; exit 1; } }
 
-  git rm hub*.html >/dev/null
+  git rm hub*.html >/dev/null || { echo 'Failed to remove existing documentation files'; exit 1; }
   cp ../share/doc/*/*.html .
 
   git add hub*.html
@@ -18,7 +18,7 @@ publish_documentation() {
     GIT_AUTHOR_NAME='GitHub Actions' GIT_AUTHOR_EMAIL='noreply@github.com' \
     git commit -m "Update documentation for $version"
 
-  git push origin HEAD
+  git push origin HEAD || { echo 'Failed to push changes to GitHub'; exit 1; }
   popd
 }
 
