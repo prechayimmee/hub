@@ -7,6 +7,8 @@ HUB_VERSION = $(shell bin/hub version | tail -1)
 export GO111MODULE=on
 unexport GOPATH
 
+MIN_COVERAGE = 90.2
+
 export LDFLAGS := -extldflags '$(LDFLAGS)'
 export GCFLAGS := all=-trimpath '$(PWD)'
 export ASMFLAGS := all=-trimpath '$(PWD)'
