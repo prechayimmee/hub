@@ -33,7 +33,7 @@ trap "exit 1" INT
 
 check_formatting() {
   make fmt >/dev/null
-  if ! git diff -U1 --exit-code; then
+  if ! git diff -U1 --exit-code >/dev/null; then
     echo
     echo "Some go code was not formatted properly." >&2
     echo "Run \`make fmt' locally to fix these errors." >&2
