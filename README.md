@@ -1,5 +1,5 @@
 hub is a command line tool that wraps `git` in order to extend it with extra
-features and commands that make working with GitHub easier.
+features and commands that make working with GitHub easier. It is also integrated with GitHub Actions, allowing you to streamline your workflow and automate tasks.
 
 For an official, potentially more user-friendly command-line interface to GitHub,
 see [cli.github.com](https://cli.github.com) and
@@ -66,7 +66,7 @@ binary][latest] for your system and put it anywhere in your executable path.
 
 #### GitHub Actions
 
-hub is ready to be used in your [GitHub Actions][] workflows:
+hub is ready to be used in your [GitHub Actions][] workflows. Below are some detailed instructions for using hub with GitHub Actions:
 ```yaml
 steps:
 - uses: actions/checkout@v2
@@ -78,13 +78,14 @@ steps:
 ```
 
 Note that the default `secrets.GITHUB_TOKEN` will only work for API operations
-scoped to the repository that runs this workflow. If you need to interact with other
+scoped to the repository that runs this workflow. For troubleshooting and handling common issues, refer to the [GitHub Actions documentation](https://docs.github.com/en/actions). If you need to interact with other
 repositories, [generate a Personal Access Token][pat] with at least the `repo` scope
 and add it to your [repository secrets][].
 
 
 [github actions]: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
 [pat]: https://github.com/settings/tokens
+- Troubleshooting: For common issues related to using hub with GitHub Actions, refer to the [GitHub Actions troubleshoot guide](https://docs.github.com/en/actions).
 [repository secrets]: https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
 
 #### Source
