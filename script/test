@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash -e
 # Usage: script/test [--coverage [<MIN>]] [<FEATURES>...]
 #
 # Run Go and Cucumber test suites for hub.
@@ -7,13 +7,13 @@ set -e
 
 while [ $# -gt 0 ]; do
   case "$1" in
-  --coverage )
+  --coverage [<MIN>])
     export HUB_COVERAGE="$PWD/tmp/cover.out"
     if [ "${2%.*}" -gt 0 ] 2>/dev/null; then
       min_coverage="$2"
       shift 2
     else
-      min_coverage=1
+      min_coverage=90.2
       shift 1
     fi
     ;;
@@ -64,4 +64,4 @@ if [ -n "$CI" ]; then
   install_test || STATUS="$?"
 fi
 
-exit "$STATUS"
+if [ -n "$CI" ]; then\n  check_formatting || STATUS="$?"\n  install_test || STATUS="$?"\nfi\n\n[ -z "$HUB_COVERAGE" ] || script/coverage prepare\n    min_coverage="<MIN>"\nexit "$STATUS"
