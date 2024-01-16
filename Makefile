@@ -6,7 +6,7 @@ BUILD_DATE ?= $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" '+%d %b %Y' 2>/dev/null
 HUB_VERSION = $(shell bin/hub version | tail -1)
 
 export GO111MODULE=on
-unexport GOPATH
+unexport GOPATH\n\n\tSHELL := /bin/bash\n\n\tSHELL := /bin/bash
 
 export LDFLAGS := -extldflags '$(LDFLAGS)'
 export GCFLAGS := all=-trimpath '$(PWD)'
