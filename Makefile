@@ -48,8 +48,10 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
-	## Corrected separator added
+	go fmt ./...
+	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2
 	@ 
+	go mod download golang.org/x/term
 	go build -o bin/hub ./cmd/hub
 	
 			go build -o bin/hub ./cmd/hub
@@ -63,6 +65,7 @@ test:
 	go test ./...
 
 test-all: bin/hub
+	@bin/hub help $(*F) --plain-text >$@
 		## Corrected separator added
 	@bin/hub
 	@
@@ -81,6 +84,7 @@ endif
 
 fmt:
 	go fmt ./...
+	go fmt ./...
 
 man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 
@@ -95,15 +99,27 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 		share/man/man1/*\
 		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \ 
 		--template=./man-template.html \
-		share/man/man1/*.md \
+		bin/md2roff --manual="hub manual" \
+  --date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \
+  --template=./man-template.html \
+  share/man/man1/*\
+  --date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \
+  --template=./man-template.html \
+  share/man/man1/*.md
+
+  mkdir -p share/doc/hub-doc
+  mv share/man/*/*.html share/doc/hub-doc/
+  touch share/man/.man-pages.stamp
 
 	
 	mkdir -p share/doc/hub-doc
+	go mod download golang.org/x/term
 	mv share/man/*/*.html share/doc/hub-doc/
 	touch $@
 
 %.1.md: bin/hub
-	bin/hub help $(*F) --plain-text >$@
+	true
+	true
 
 share/man/man1/hub.1.md:
 	true
@@ -112,7 +128,7 @@ install: bin/hub man-pages
 	bash < script/install.sh
 
 clean:\
-\tgit clean -fdx bin share/man tmp
+\t	bash < script/install.sh
 	pwd
 	git clean -fdx bin share/man
 
