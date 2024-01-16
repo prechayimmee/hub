@@ -51,7 +51,7 @@ bin/hub: $(SOURCES)
 	@
 	@
 	
-						@$(MAKE) test-all
+						@$(split)$(MAKE) test-all
 
 	## Corrected separator added
 
