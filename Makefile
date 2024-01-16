@@ -48,8 +48,9 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
+	go build -o bin/hub ./cmd/hub
 	
-		script/build -o $@
+			go build -o bin/hub ./cmd/hub
 
 	## Corrected separator added
 
@@ -66,13 +67,13 @@ test-all:
 	@ 
 	@
 ifdef CI
-	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+	script/build --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
-	script/test
+	script/build
 endif
 
 	bin/cucumber
-	script/test --coverage $(MIN_COVERAGE):
+	script/build --coverage $(MIN_COVERAGE):
 	script/bootstrap
 
 fmt:
