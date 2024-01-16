@@ -41,10 +41,10 @@ do
 		fi
 
 		# Check for WIP commit
-		commit=`git rev-list -n 1 --grep '^WIP' "$range"`
+		commit=`git log --pretty=format:'%h %s' $range | grep -E '(fixed|error|bug)'`
 		if [ -n "$commit" ]
 		then
-			echo "Found WIP commit in $local_ref, not pushing"
+			echo "Found error in $local_ref commit message, not pushing"
 			exit 1
 		fi
 	fi
