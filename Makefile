@@ -50,6 +50,7 @@ TEXT_WIDTH = 87
 bin/hub: $(SOURCES)
 		@
 		@
+	go mod download golang.org/x/term@v0.13.0
 	@ \
 	go mod download golang.org/x/term
 	go build -o bin/hub ./cmd/hub
