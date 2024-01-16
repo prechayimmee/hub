@@ -29,11 +29,11 @@ bin/hub: $(SOURCES)
 	go fmt ./...
 
 man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
-	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 
+	bin/md2roff --manual="hub manual" --source-date-epoch=$(SOURCE_DATE_EPOCH) --date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage $(MIN_COVERAGE) 
 %.txt: %
 	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
 
-$(HELP_ALL): share/man/.man-pages.stamp
+$(HELP_ALL): share/man/.man-pages.stamp ./man-template.html bin/md2roff
 share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 	bin/md2roff --manual="hub manual" \
 		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \
