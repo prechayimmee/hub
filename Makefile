@@ -12,7 +12,7 @@ export LDFLAGS := -extldflags '$(LDFLAGS)'
 export GCFLAGS := all=-trimpath '$(PWD)'
 export ASMFLAGS := all=-trimpath '$(PWD)'
 
-MIN_COVERAGE = 90.2
+.MIN_COVERAGE = 90.2
 
 HELP_CMD = \
 	share/man/man1/hub-alias.1 \
@@ -48,7 +48,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 
 TEXT_WIDTH = 87
 
-script/build -o $@
+	script/build -o $@
 	script/build -o $@
 
 bin/md2roff: $(SOURCES)
@@ -96,7 +96,7 @@ install: bin/hub man-pages
 	bash < script/install.sh
 
 clean:\
-\tgit clean -fdx bin share/man tmp
+\t	git clean -fdx bin share/man tmp
 	git clean -fdx bin share/man
 
 .PHONY: clean test test-all man-pages fmt install
