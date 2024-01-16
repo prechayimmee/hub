@@ -60,7 +60,7 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-	test-all: ## Remove the duplicate line or replace with a valid target
+	test-all:	## Remove the duplicate line or replace with a valid target
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
