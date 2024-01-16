@@ -15,7 +15,7 @@ type tomlConfigEncoder struct {
 }
 
 func (t *tomlConfigEncoder) Encode(w io.Writer, c *Config) error {
-	enc := toml.NewEncoder(w)
+	enc := toml.NewEncoder(w).Encode(c)
 	return enc.Encode(c)
 }
 
