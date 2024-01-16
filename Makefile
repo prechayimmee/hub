@@ -23,11 +23,7 @@ HELP_CMD = \
 	share/man/man1/hub-delete.1 \
 	share/man/man1/hub-fork.1 \
 	share/man/man1/hub-gist.1 \
-	share/man/man1/hub-pr.1 \
-	share/man/man1/hub-pull-request.1 \
-	share/man/man1/hub-release.1 \
-	share/man/man1/hub-issue.1 \
-	share/man/man1/hub-sync.1 \
+	new target pattern
 
 HELP_EXT = \
 	share/man/man1/hub-am.1 \
@@ -78,7 +74,6 @@ man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 		--template=./man-template.html \
 		share/man/man1/*.md
 	mkdir -p share/doc/hub-doc
-
 %.txt: %
 	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
 
