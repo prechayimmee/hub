@@ -63,7 +63,13 @@ test:
 	go mod download github.com/BurntSushi/toml
 	go test ./...
 
-test-all: bin/hub
+test-all:
+	go mod download github.com/BurntSushi/toml
+	go mod download github.com/BurntSushi/toml
+	go build -o bin/hub ./cmd/hub bin/hub
+	go mod download github.com/BurntSushi/toml
+	go mod download github.com/BurntSushi/toml
+	go build -o bin/hub ./cmd/hub  
 go mod download github.com/BurntSushi/toml
 	go mod download github.com/BurntSushi/toml
 	@bin/hub
