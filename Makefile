@@ -48,7 +48,10 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
-	go mod download golang.org/x/term@v0.13.0\ngo mod download github.com/BurntSushi/toml
+			go mod download golang.org/x/term@v0.13.0
+
+go mod download github.com/BurntSushi/toml
+
 go mod download golang.org/x/term@v0.13.0
 go mod download golang.org/x/term@v0.13.0
 go mod download golang.org/x/term@v0.13.0\ngo build -o bin/hub github.com/github/hub/v2/cmd/hub
@@ -64,8 +67,8 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/hub
-	@bin/hub
+test-all: bin/hub\n\t@ 
+@ bin/hub\n\t\n
 	@
 		
 	@ 
@@ -84,7 +87,7 @@ fmt:
 	go fmt ./...
 
 man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
-	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 
+	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 
 %.txt: %
 	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
 
