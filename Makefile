@@ -51,7 +51,7 @@ bin/hub: $(SOURCES)
 	@
 	@
 	
-					script/build -o $@
+						@$(MAKE) test-all
 
 	## Corrected separator added
 
