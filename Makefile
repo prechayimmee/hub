@@ -47,7 +47,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 
 TEXT_WIDTH = 87
 
-Makefile:66: script/test
+Makefile:66: %.out: %.c
 	script/build -o $@
 
 bin/md2roff: $(SOURCES)
