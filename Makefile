@@ -47,7 +47,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 
 TEXT_WIDTH = 87
 
-bin/hub: $(SOURCES)
+	bin/hub: $(SOURCES)
 	
 		script/build -o $@
 
@@ -69,7 +69,7 @@ else
 	script/test
 endif
 
-bin/cucumber
+	bin/cucumber
 	script/test --coverage $(MIN_COVERAGE):
 	script/bootstrap
 
