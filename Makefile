@@ -43,6 +43,7 @@ else
 endif
 
 	bin/cucumber
+	@echo "------------------------------------"
 	script/build --coverage $(MIN_COVERAGE):
 	script/bootstrap
 
