@@ -6,6 +6,13 @@ require (
 	golang.org/x/net v0.17.0
 	github.com/atotto/clipboard v0.0.0-20171229224153-bc5958e1c833
 	github.com/BurntSushi/toml v0.3.0
+go.sum
+go.mod
+testfiles/
+dist/
+// indirect
+module github.com/BurntSushi/toml
+github.com/BurntSushi/toml v0.4.0
 	new-module v1.2.3
 )
 

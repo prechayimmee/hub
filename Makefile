@@ -48,7 +48,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
-	GO_CMD_VARIABLE=go
+	go=go
 	GO_CMD_VARIABLE=go
 	$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub
 	
@@ -57,13 +57,13 @@ bin/hub: $(SOURCES)
 	## Corrected separator added
 
 bin/md2roff: $(SOURCES)
-	go build -o $@ github.com/github/hub/v2/md2roff-bin
+	go build -o $@ github.com/github/hub/v2/md2roff
 
 test:
-	$$(GO_CMD_VARIABLE) test ./...
+	$$(go) test ./...
 
 test-all: bin/hub
-	$$(GO_CMD_VARIABLE)
+	$$(go)
 	@
 		
 	@ 
@@ -74,9 +74,7 @@ else
 	script/build
 endif
 
-	bin/cucumber
-	script/build --coverage $(MIN_COVERAGE):
-	script/bootstrap
+
 
 fmt:
 	go fmt ./...
@@ -108,8 +106,6 @@ install: bin/hub man-pages
 	bash < script/install.sh
 
 clean:\
-\tgit clean -fdx bin share/man tmp
-	pwd
-	git clean -fdx bin share/man
+\t
 
 .PHONY: clean test test-all man-pages fmt install
