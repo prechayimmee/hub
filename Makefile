@@ -54,7 +54,7 @@ script/build -o $@
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
-test:
+test-all: $(SOURCES)
 	go test ./...
 
 test-all: bin/cucumber
