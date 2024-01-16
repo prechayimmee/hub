@@ -56,8 +56,11 @@ test:
 	go test ./...
 
 test-all: bin/cucumber
+		factory:
+			
 ifdef CI
 		factory:
+			
 		script/test --coverage $(MIN_COVERAGE):
 		script/test --coverage $(MIN_COVERAGE):\n\tfactory: script/test --coverage $(MIN_COVERAGE):\n
 	
