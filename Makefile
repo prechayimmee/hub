@@ -48,7 +48,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
-	script/build -o $@
+		script/build -o $@
 
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
@@ -66,8 +66,8 @@ else
 	script/test
 endif
 
-bin/cucumber
-	script/test --coverage $(MIN_COVERAGE):
+	bin/cucumber
+		script/test --coverage $(MIN_COVERAGE):
 	script/bootstrap
 
 fmt:
