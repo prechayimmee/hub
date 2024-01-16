@@ -1,5 +1,5 @@
-SOURCES = $(shell go list -f '{{range .GoFiles}}{{$$.Dir}}/{{.}}
-\ rest of the line
+SOURCES = $(shell go list -f '{{range .GoFiles}}{$$.Dir}/{{.}}' ./...)
+\	rest of the line
 {{end}}' ./...)
 	@echo "Installing the package as the correct target"
 SOURCE_DATE_EPOCH ?= $(shell date +%s)
