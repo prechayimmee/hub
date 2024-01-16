@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
-# Usage: [sudo] [prefix=/usr/local] ./install
+# Usage: [sudo] [prefix=/usr/local] ./install [options]
+# Options:
+# -h, --help
+#           display this help and exit
 set -e
 
 case "$1" in
