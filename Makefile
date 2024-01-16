@@ -1,6 +1,7 @@
 SOURCES = $(shell go list -f '{{range .GoFiles}}{{$$.Dir}}/{{.}}\
 {{end}}' ./...)
-	@echo "Install the package as the correct target"
+	@echo "install: bin/hub man-pages
+	bash < script/install.sh"
 SOURCE_DATE_EPOCH ?= $(shell date +%s)
 BUILD_DATE = $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" '+%d %b %Y' 2>/dev/null || date -u -r "$(SOURCE_DATE_EPOCH)" '+%d %b %Y')
 HUB_VERSION = $(shell bin/hub version | tail -1)
@@ -83,7 +84,7 @@ man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 
 share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 		bin/md2roff --manual="hub manual"
-		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2
+	--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \\\
 		--template=./man-template.html --coverage 90.2 --version=\"$(HUB_VERSION)\" share/man/man1/*.md
 	mkdir -p share/doc/hub-doc
 	mv share/man/*/*.html share/doc/hub-doc/
