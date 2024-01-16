@@ -29,7 +29,7 @@ Feature: hub gist
         json({
           :files => {
             'hub_gist1.txt' => {
-              'content' => "my content is here"
+              'content' => "new content is here"
             },
             'hub_gist2.txt' => {
               'content' => "more content is here"
@@ -48,7 +48,6 @@ Feature: hub gist
         hub_gist1.txt
         hub_gist2.txt
       """
-
   Scenario: Fetch a single file from gist
     Given the GitHub API server:
       """
