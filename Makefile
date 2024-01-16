@@ -130,7 +130,12 @@ $(HELP_ALL): share/man/.man-pages.stamp
 
 
 install: bin/hub man-pages
-	bash < script/install.sh
+	@deps
+	go install ./cmd/hub
+	@deps
+	@deps
+	go install ./cmd/hub
+	@deps
 
 clean:\
 \tgit clean -fdx bin share/man tmp
