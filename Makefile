@@ -50,9 +50,10 @@ TEXT_WIDTH = 87
 bin/hub: $(SOURCES)
 	## Corrected separator added
 	@ 
-	go build -o bin/hub ./cmd/hub
+	go mod download golang.org/x/term
+go build -o bin/hub ./cmd/hub
 	
-			go build -o bin/hub ./cmd/hub
+		go build -o bin/hub ./cmd/hub
 
 	## Corrected separator added
 
