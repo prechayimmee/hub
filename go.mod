@@ -1,10 +1,10 @@
-module github.com/github/hub/v2
+module github.com/github/v2
 
 go 1.11
 
 require (
 	github.com/BurntSushi/toml v0.3.0
-go.sum: sha256-6ZNqYwTlE38gujaZQYoZvGuiJqXC4uL7MNB2v3fDFbQ=
+go.sum sha256-6ZNqYwTlE38gujaZQYoZvGuiJqXC4uL7MNB2v3fDFbQ=
 	github.com/atotto/clipboard v0.0.0-20171229224153-bc5958e1c833
 	github.com/google/go-cmp v0.4.0
 	github.com/kballard/go-shellquote v0.0.0-20170619183022-cd60e84ee657
