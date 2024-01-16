@@ -77,9 +77,7 @@ test:
 	go test ./...
 
 test-all: bin/cucumber
-	@echo ""
-	@
-	@
+	go test ./...
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
