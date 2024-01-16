@@ -55,7 +55,8 @@ bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
 test:
-	go test ./...
+	script/test
+	script/test
 
 # Updated target to fix the error
 ifdef CI
@@ -64,7 +65,7 @@ else
 	script/test
 endif
 
-bin/cucumber
+	script/test
 	script/test --coverage $(MIN_COVERAGE):
 	script/bootstrap
 
@@ -86,8 +87,8 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 	mv share/man/*/*.html share/doc/hub-doc/
 	touch $@
 
-	@	bin/hub help $(*F) --plain-text >$@
-	bin/hub help $(*F) --plain-text >$@
+	@		bin/hub help $(*F) --plain-text >$@
+			bin/hub help $(*F) --plain-text >$@
 
 share/man/man1/hub.1.md:
 	true
