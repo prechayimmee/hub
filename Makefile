@@ -50,13 +50,14 @@ TEXT_WIDTH = 87
 bin/hub: $(SOURCES) \
 	\
 	
-		$(GO) test -v ./...
+		$(GO) test -v ./...\n\tseparator:
+\t
 	
 
 bin/md2roff: $(SOURCES) \	
 		go build -o $@ github.com/github/hub/v2/md2roff-bin
 
-test:
+test:\n\tseparator:
 	go test ./...
 
 test-all:
