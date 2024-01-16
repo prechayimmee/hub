@@ -49,9 +49,10 @@ TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
 	GO_CMD_VARIABLE=go
+	GO_CMD_VARIABLE=go
 	$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub
 	
-			go build -o bin/hub ./cmd/hub
+			$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub
 
 	## Corrected separator added
 
