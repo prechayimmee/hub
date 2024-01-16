@@ -55,6 +55,8 @@ bin/md2roff: $(SOURCES)
 
 test:
 	go test ./...
+	
+	
 
 test-all:
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
