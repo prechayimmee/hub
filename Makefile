@@ -63,7 +63,7 @@ else
 	script/test
 endif
 
-bin/cucumber
+	bin/cucumber
 	script/test --coverage $(MIN_COVERAGE):
 	script/bootstrap
 
