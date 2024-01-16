@@ -63,6 +63,8 @@ test:
 
 test-all:
 	@bin/hub
+	@go build -o bin/hub ./cmd/hub
+	@go test ./...
 	@
 		
 	@ 
