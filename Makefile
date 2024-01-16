@@ -48,6 +48,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
+	go fmt ./...
 	## Corrected separator added
 	@ 
 	go mod download golang.org/x/term
@@ -81,6 +82,7 @@ endif
 	script/bootstrap
 
 fmt:
+	go fmt ./...
 	go fmt ./...
 
 man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
