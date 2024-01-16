@@ -1,11 +1,11 @@
-module github.com/github/hub/v4
+module github.com/github/hub
 
 require (
-	golang.org/x/term v1.1.0
+	golang.org/x/term v1.3.0
 	golang.org/x/crypto v0.14.0
 	golang.org/x/net v0.17.0
 	github.com/atotto/clipboard v0.0.0-20171229224153-bc5958e1c833
-	github.com/BurntSushi/toml v0.3.0
+	github.com/BurntSushi/toml@v0.3.0
 	gopkg.in/yaml.v2 v2.2.8
 )
 
