@@ -28,6 +28,18 @@ HELP_CMD = \
 	share/man/man1/hub-release.1 \
 	share/man/man1/hub-issue.1 \
 	share/man/man1/hub-sync.1 \
+	share/man/man1/hub-am.1 \
+	share/man/man1/hub-apply.1 \
+	share/man/man1/hub-checkout.1 \
+	share/man/man1/hub-cherry-pick.1 \
+	share/man/man1/hub-clone.1 \
+	share/man/man1/hub-fetch.1 \
+	share/man/man1/hub-help.1 \
+	share/man/man1/hub-init.1 \
+	share/man/man1/hub-merge.1 \
+	share/man/man1/hub-push.1 \
+	share/man/man1/hub-remote.1 \
+	share/man/man1/hub-submodule.1 \
 
 HELP_EXT = \
 	share/man/man1/hub-am.1 \
@@ -78,7 +90,6 @@ man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 		--template=./man-template.html \
 		share/man/man1/*.md
 	mkdir -p share/doc/hub-doc
-
 %.txt: %
 	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
 
