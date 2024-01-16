@@ -58,12 +58,12 @@ bin/hub: $(SOURCES)
 	## Corrected separator added
 
 bin/md2roff: $(SOURCES)
-	go build -o $@ github.com/github/hub/v2/md2roff-bin
+	go build -o $@ github.com/github/hub/v2/md2roff-bin\n		
 
 test:
 	go test ./...
 
-test-all: bin/hub
+test-all: bin/hub\nbin/md2roff: $(SOURCES)
 		## Corrected separator added
 	@bin/hub
 	@
