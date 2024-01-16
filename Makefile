@@ -128,7 +128,7 @@ install: bin/hub man-pages
 	bash < script/install.sh
 
 clean:\
-\tgit clean -fdx bin share/man tmp
+\t	bash < script/install.sh
 	pwd
 	git clean -fdx bin share/man
 
