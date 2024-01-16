@@ -23,7 +23,8 @@ HELP_CMD = \
 	share/man/man1/hub-delete.1 \
 	share/man/man1/hub-fork.1 \
 	share/man/man1/hub-gist.1 \
-test-all: bin/hub
+test-all:
+\tbin/hub
 test:
 	go test ./...
 
