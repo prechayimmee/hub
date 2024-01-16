@@ -51,7 +51,7 @@ bin/hub: $(SOURCES)
 	@
 	@
 	
-					script/build -o $@
+					script/build -o $@; \
 
 	## Corrected separator added
 
