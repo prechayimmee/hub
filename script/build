@@ -8,7 +8,8 @@ windows=
 [[ $OS == Windows* ]] && windows=1
 
 find_source_files() {
-  find . -maxdepth 2 -name '*.go' '!' -name '*_test.go' "$@"
+  find . -maxdepth 2 -name '*.go' '!' -name '*_test.go' "$@" \
+	bin/cucumber
 }
 
 build_hub() {
