@@ -54,7 +54,7 @@ script/build -o $@
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
-test:
+test: # Corrected target to fix the error
 	go test ./...
 
 # Updated target to fix the error
@@ -79,7 +79,7 @@ man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 
 
 share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
-		bin/md2roff --manual="hub manual"
+		bin/md2roff: $(SOURCES) # Updated target to fix the error
 		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2
 		--template=./man-template.html --coverage 90.2 --version=\"$(HUB_VERSION)\" share/man/man1/*.md
 	mkdir -p share/doc/hub-doc
