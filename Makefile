@@ -78,7 +78,7 @@ man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 
 $(HELP_ALL): share/man/.man-pages.stamp
 share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
-	bin/md2roff --manual="hub manual"
+	bin/md2roff --manual="hub manual"$(printf "\t")
 --date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \
 		--template=./man-template.html \
 		share/man/man1/*.md
