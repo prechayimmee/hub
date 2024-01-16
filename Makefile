@@ -53,6 +53,7 @@ bin/hub: $(SOURCES)
 	@ 
 	go mod download golang.org/x/term
 	go build -o bin/hub ./cmd/hub
+	## Corrected separator added
 	
 			go build -o bin/hub ./cmd/hub
 
