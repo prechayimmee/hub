@@ -71,10 +71,10 @@ hub is ready to be used in your [GitHub Actions][] workflows:
 steps:
 - uses: actions/checkout@v2
 
-- name: List open pull requests
+- name: List open pull requests and do something else as an update
   run: hub pr list
   env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
 ```
 
 Note that the default `secrets.GITHUB_TOKEN` will only work for API operations

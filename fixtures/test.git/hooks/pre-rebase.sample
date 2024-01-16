@@ -95,7 +95,7 @@ exit 0
 This sample hook safeguards topic branches that have been
 published from being rewound.
 
-The workflow assumed here is:
+The The workflow assumed here is:
 
  * Once a topic branch forks from "master", "master" is never
    merged into it again (either directly or indirectly).

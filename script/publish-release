@@ -8,7 +8,7 @@ publish_documentation() {
 
   git fetch origin "${doc_branch}:${doc_branch}"
   git worktree add "$doc_dir" "$doc_branch"
-  pushd "$doc_dir"
+  pushd "$doc_dir" || true
 
   git rm hub*.html >/dev/null
   cp ../share/doc/*/*.html .
@@ -18,13 +18,13 @@ publish_documentation() {
     GIT_AUTHOR_NAME='GitHub Actions' GIT_AUTHOR_EMAIL='noreply@github.com' \
     git commit -m "Update documentation for $version"
 
-  git push origin HEAD
+  git push --follow-tags origin HEAD
   popd
 }
 
 in_default_branch() {
-  git fetch origin master --depth 10
-  git merge-base --is-ancestor "$1" FETCH_HEAD
+  git fetch origin master --depth 1
+  git merge-base --is-ancestor $1 FETCH_HEAD
 }
 
 tag_name="${GITHUB_REF#refs/tags/}"
