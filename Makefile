@@ -63,7 +63,7 @@ share/man/man1/hub-checkout.1 \\
 	share/man/man1/hub-remote.1 \
 	share/man/man1/hub-submodule.1 \
 
-HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
+HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT) \
 
 TEXT_WIDTH = 87
 
