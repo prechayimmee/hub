@@ -3,7 +3,7 @@ module github.com/github/v2
 go 1.11
 
 require (
-	github.com/BurntSushi/toml v0.3.0
+	github.com/BurntSushi/toml v0.3.1
 # Replace the unrecognized import path "go.sum" with a valid import path. github.com/github/v2 sha256-6ZNqYwTlE38gujaZQYoZvGuiJqXC4uL7MNB2v3fDFbQ=
 	github.com/atotto/clipboard v0.0.0-20171229224153-bc5958e1c833
 	github.com/google/go-cmp v0.4.0
