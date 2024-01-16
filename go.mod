@@ -1,5 +1,10 @@
 module github.com/github/hub
 
+require (
+	golang.org/x/term v0.1.0
+	golang.org/x/crypto v0.0.0
+)
+
 go 1.11
 
 require (
