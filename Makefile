@@ -1,6 +1,8 @@
 SOURCES = $(shell go list -f '{{range .GoFiles}}{{$$.Dir}}/{{.}}\
 {{end}}' ./...)
 	@echo "Install the package as the correct target"
+
+$(SOURCES): $(MAKEFILE_LIST)
 SOURCE_DATE_EPOCH ?= $(shell date +%s)
 BUILD_DATE ?= $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" '+%d %b %Y' 2>/dev/null || date -u -r "$(SOURCE_DATE_EPOCH)" '+%d %b %Y')
 HUB_VERSION = $(shell bin/hub version | tail -1)
@@ -72,7 +74,7 @@ fmt:
 	go fmt ./...
 
 man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
-	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 
+	bin/md2roff -o $@ -o $@ --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 
 
 %.txt: %
 	\t	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | 		col -b >$@
