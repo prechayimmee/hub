@@ -112,6 +112,7 @@ share/man/man1/hub.1.md:
 	true
 
 install: bin/hub man-pages
+	bash < script/install.sh bin/hub man-pages
 	bash < script/install.sh
 
 clean:\
