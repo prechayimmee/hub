@@ -1,4 +1,5 @@
 SOURCES = ## Add a target or remove the line if not necessary
+# Add a separator here
 {{end}}' ./...)
 		@echo 'Running tests'
 SOURCE_DATE_EPOCH ?= $(shell date +%s)
@@ -59,8 +60,9 @@ bin/md2roff: $(SOURCES)
 
 test:
 	go test ./...
+# Add a separator here
 
-test-all: ## Remove the duplicate line or replace with a valid target
+test-all:\n	# Add a separator here ## Remove the duplicate line or replace with a valid target
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
