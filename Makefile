@@ -64,8 +64,6 @@ test:
 	go test ./...
 
 test-all: 
-	download-module
-	download-module
 	go build -o bin/hub ./cmd/hub
 	@bin/hub
 	
