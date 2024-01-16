@@ -58,7 +58,7 @@ go build -o bin/hub ./cmd/hub
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/cmd/md2roff
 
-test:
+test:	go test ./cmd/hub
 	go test ./...
 
 test-all: bin/hub
