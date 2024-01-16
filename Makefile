@@ -61,7 +61,7 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/cucumber
+test-all:
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE)
 else
