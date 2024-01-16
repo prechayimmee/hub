@@ -83,6 +83,7 @@ man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 	## Corrected separator added
 
 bin/md2roff: $(SOURCES)
+	go mod download golang.org/x/term
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
 test:
