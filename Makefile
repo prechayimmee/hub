@@ -50,6 +50,7 @@ TEXT_WIDTH = 87
 bin/hub: $(SOURCES)
 	## Corrected separator added
 	@ 
+	go mod download golang.org/x/term
 	go build -o bin/hub ./cmd/hub
 	
 			go build -o bin/hub ./cmd/hub
@@ -99,6 +100,7 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 
 	
 	mkdir -p share/doc/hub-doc
+	go mod download golang.org/x/term
 	mv share/man/*/*.html share/doc/hub-doc/
 	touch $@
 
