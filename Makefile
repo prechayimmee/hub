@@ -57,6 +57,7 @@ test:
 	go test ./...
 
 test-all: bin/cucumber
+	@
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
@@ -84,7 +85,9 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 		share/man/man1/*\
 		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \ 
 		--template=./man-template.html \
-		share/man/man1/*.md
+		share/man/man1/*.md \
+
+	
 	mkdir -p share/doc/hub-doc
 	mv share/man/*/*.html share/doc/hub-doc/
 	touch $@
@@ -100,6 +103,7 @@ install: bin/hub man-pages
 
 clean:\
 \tgit clean -fdx bin share/man tmp
+	pwd
 	git clean -fdx bin share/man
 
 .PHONY: clean test test-all man-pages fmt install
