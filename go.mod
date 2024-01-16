@@ -13,7 +13,7 @@ require (
 	github.com/russross/blackfriday v0.0.0-20180526075726-670777b536d3
 		require golang.org/x/term v0.13.0
 golang.org/x/term v0.13.0
-	golang.org/x/term v0.13.0
+	require golang.org/x/term v0.13.0
 	golang.org/x/crypto v0.14.0
 	golang.org/x/net v0.17.0
 github.com/atotto/clipboard v0.0.0-20171229224153-bc5958e1c833
