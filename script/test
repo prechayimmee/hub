@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Usage: script/test [--coverage [<MIN>]] [<FEATURES>...]
+# Usage: make test [--coverage [<MIN>]] [<FEATURES>...]
 #
 # Run Go and Cucumber test suites for hub.
 
