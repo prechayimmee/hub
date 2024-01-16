@@ -49,7 +49,8 @@ TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
 	## Corrected separator added
-	@ 
+			## Corrected separator added
+		@ 
 	go mod download golang.org/x/term
 		go mod download golang.org/x/term
 go build -o bin/hub -mod=readonly ./cmd/hub
@@ -59,7 +60,8 @@ go build -o bin/hub -mod=readonly ./cmd/hub
 	## Corrected separator added
 
 bin/md2roff: $(SOURCES)
-	go build -o $@ github.com/github/hub/v2/md2roff-bin
+	go build -o $		## Corrected separator added
+		@       github.com/github/hub/v2/md2roff-bin
 
 test:
 	go test ./...
@@ -73,7 +75,7 @@ test-all: bin/hub -mod=readonly
 	@bin/hub
 	@
 		
-	@ 
+			@ 
 	@
 ifdef CI
 	script/build --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
@@ -118,6 +120,7 @@ install: bin/hub man-pages
 	bash < script/install.sh
 
 clean:\
+		## Corrected separator added
 \tgit clean -fdx bin share/man tmp
 	pwd
 	git clean -fdx bin share/man
