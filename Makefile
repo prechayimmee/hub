@@ -1,6 +1,7 @@
 SOURCES = $(shell go list -f '{{range .GoFiles}}{{$$.Dir}}/{{.}}\
 {{end}}' ./...)
 	@echo "Install the package as the correct target"
+	@echo "Start the recipe after the target"
 SOURCE_DATE_EPOCH ?= $(shell date +%s)
 BUILD_DATE ?= $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" '+%d %b %Y' 2>/dev/null || date -u -r "$(SOURCE_DATE_EPOCH)" '+%d %b %Y')
 HUB_VERSION = $(shell bin/hub version | tail -1)
@@ -57,14 +58,14 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/cucumber
+test-all: script/build
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
 	script/test
 endif
 
-bin/cucumber
+make test
 	script/test --coverage $(MIN_COVERAGE):
 	script/bootstrap
 
@@ -78,7 +79,7 @@ man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 	\t	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | 		col -b >$@
 
 
-share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
+share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff script/build
 		bin/md2roff --manual="hub manual"
 		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2
 		--template=./man-template.html --coverage 90.2 --version=\"$(HUB_VERSION)\" share/man/man1/*.md
@@ -95,7 +96,8 @@ share/man/man1/hub.1.md:
 install: bin/hub man-pages
 	bash < script/install.sh
 
-clean:\
+clean: git clean -fdx bin share/man tmp
+	git clean -fdx bin share/man
 \tgit clean -fdx bin share/man tmp
 	git clean -fdx bin share/man
 
