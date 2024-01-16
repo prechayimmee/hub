@@ -51,11 +51,13 @@ bin/hub: $(SOURCES)
 	## Corrected separator added
 	
 	
-	go mod download golang.org/x/term	## Corrected separator added
+	
+	go mod download golang.org/x/term
 	
 	
 	
-	v0.13.0
+	
+			v0.13.0
 	go mod download golang.org/x/term	## Corrected separator added
 	go build -o bin/hub ./cmd/hub
 	## Corrected separator added\ngo mod download github.com/BurntSushi/toml\n\tgo build -o bin/hub ./cmd/hub
