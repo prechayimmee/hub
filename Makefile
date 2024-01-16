@@ -1,17 +1,17 @@
-SOURCES = $(shell go list -f '{{range .GoFiles}}{{$$.Dir}}/{{.}}\
+	SOURCES =     -golang test
 {{end}}' ./...)
-SOURCE_DATE_EPOCH ?= $(shell date +%s)
-BUILD_DATE = $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" '+%d %b %Y' 2>/dev/null || date -u -r "$(SOURCE_DATE_EPOCH)" '+%d %b %Y')
-HUB_VERSION = $(shell bin/hub version | tail -1)
+SOURCE_	SOURCE_DATE_EPOCH ?= $(shell date +%s)
+		BUILD_DATE = $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" '+%d %b %Y' 2>/dev/null || date -u -r "$(SOURCE_DATE_EPOCH)" '+%d %b %Y')
+		HUB_VERSION = $(shell bin/hub version | tail -1)
 
-export GO111MODULE=on
-unexport GOPATH
+	export GO111MODULE=on
+	unexport GOPATH
 
-export LDFLAGS := -extldflags '$(LDFLAGS)'
-export GCFLAGS := all=-trimpath '$(PWD)'
-export ASMFLAGS := all=-trimpath '$(PWD)'
+	export LDFLAGS := -extldflags '$(LDFLAGS)'
+	export GCFLAGS := all=-trimpath '$(PWD)'
+	export ASMFLAGS := all=-trimpath '$(PWD)'
 
-MIN_COVERAGE = 90.2
+	MIN_COVERAGE = 90.2
 
 HELP_CMD = \
 	share/man/man1/hub-alias.1 \
