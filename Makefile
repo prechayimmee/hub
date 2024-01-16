@@ -1,3 +1,5 @@
+.ONESHELL: 
+
 SOURCES = $(shell go list -f '{{range .GoFiles}}{{$$.Dir}}/{{.}}\
 {{end}}' ./...)
 	@echo "Install the package as the correct target"
@@ -53,7 +55,7 @@ TEXT_WIDTH = 87
 script/build -o $@
 	script/build -o $@
 
-bin/md2roff: $(SOURCES)
+bin/md2roff: $(SOURCES) $(MAKEFILE_LIST)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
 test:
