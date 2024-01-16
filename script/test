@@ -13,7 +13,7 @@ while [ $# -gt 0 ]; do
       min_coverage="$2"
       shift 2
     else
-      min_coverage=1
+                        min_coverage=1
       shift 1
     fi
     ;;
