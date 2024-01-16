@@ -1,4 +1,4 @@
-SOURCES = ## Add a target or remove the line if not necessary
+SOURCES = 
 # Add a separator here
 {{end}}' ./...)
 		@echo 'Running tests'
@@ -62,7 +62,7 @@ test:
 	go test ./...
 # Add a separator here
 
-test-all:\n	# Add a separator here ## Remove the duplicate line or replace with a valid target
+test-all:\n
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
