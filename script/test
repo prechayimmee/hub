@@ -54,10 +54,9 @@ install_test() {
 }
 
 [ -z "$HUB_COVERAGE" ] || script/coverage prepare
-script/build
-go test ./... || STATUS="$?"
-script/ruby-test "$@" || STATUS="$?"
-[ -z "$HUB_COVERAGE" ] || script/coverage summarize "$min_coverage" || STATUS="$?"
+make test-all
+
+
 
 if [ -n "$CI" ]; then
   check_formatting || STATUS="$?"
