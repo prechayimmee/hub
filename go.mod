@@ -7,6 +7,7 @@ require (
 	github.com/atotto/clipboard v0.0.0-20171229224153-bc5958e1c833
 	github.com/BurntSushi/toml v0.3.0
 github.com/github/hub/v2 v2.12.1
+    gopkg.in/yaml.v2 v2.2.8
 	gopkg.in/yaml.v2 v2.2.8
 )
 
