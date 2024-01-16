@@ -47,14 +47,15 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 
 TEXT_WIDTH = 87
 
-bin/hub: $(SOURCES)
-		## Corrected separator added\n:
+: bin/hub: $(SOURCES)
+		## Corrected separator added
+		:\n:
 	
 					
 					
 								
 
-script/build -o $@
+: script/build -o $@
 
 		## Corrected separator added
 
@@ -73,13 +74,13 @@ test-all:
 	@ 
 	@
 ifdef CI
-	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+: script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
 	script/test
 endif
 
 bin/cucumber
-	script/test --coverage $(MIN_COVERAGE):
+	: script/test --coverage $(MIN_COVERAGE):
 	script/bootstrap
 
 fmt:
