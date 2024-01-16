@@ -66,13 +66,13 @@ test-all:
 	@ 
 	@
 ifdef CI
-	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+	script/build --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
-	script/test
+	script/build
 endif
 
 	bin/cucumber
-	script/test --coverage $(MIN_COVERAGE):
+	script/build --coverage $(MIN_COVERAGE):
 	script/bootstrap
 
 fmt:
