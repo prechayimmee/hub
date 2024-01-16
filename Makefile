@@ -48,7 +48,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 
 TEXT_WIDTH = 87
 
-	script/build -o $@
+		@groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | \tcol -b >$@
 	script/build -o $@
 
 bin/md2roff: $(SOURCES)
