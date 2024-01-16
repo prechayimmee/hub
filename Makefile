@@ -111,7 +111,7 @@ share/man/man1/hub.1.md:
 	true
 
 install:
-	@script/test --coverage $(MIN_COVERAGE)
+	# Insert the correct command here
 install:
 	@script/test --coverage $(MIN_COVERAGE)
 	## Replace the incorrect command with the correct one.
