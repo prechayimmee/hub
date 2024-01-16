@@ -49,9 +49,16 @@ TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
 	go mod download
-	go build -o bin/hub ./cmd/hub
+		script/update_go_mod.sh
+	bin/hub: script/update_go_mod.sh
+	install: update-go-mod
+	$(GO) install $(GOFLAGS) ./main.go
 	@echo Build successful
-	go build -o bin/hub ./cmd/hub
+
+build:
+	.\/script\/update_go_mod.sh
+	build: update-go-mod
+	$(GO) build -o bin/hub $(GOFLAGS) ./main.go
 	
 			go build -o bin/hub ./cmd/hub
 
@@ -63,28 +70,61 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/hub
+test-all: update-go-mod
+	$(GO) test -v ./...
+	update-go-mod
+script/update_go_mod.sh
 	@bin/hub
 	@
 		
 	@ 
 	@
 ifdef CI
-	script/build --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+	script/build
+update-go-mod --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
 	script/build
 endif
 
-	bin/cucumber
+	test:
+	go test ./...
 	script/build --coverage $(MIN_COVERAGE):
-	script/bootstrap
+	script/bootstrap:
+.PHONY: clean test test-all man-pages fmt install
+	.PHONY: clean
+clean:
+	git clean -fdx bin share/man tmp
+.PHONY: clean
+.PHONY: test
+test:
+	go test ./...
+.PHONY: test-all
+.PHONY: test-all
+test-all: script/update_go_mod.sh
+	$(GO) test -v ./...
+	update-go-mod
+script/update_go_mod.sh
+	@bin/hub
+
+man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
+	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 --coverage 90.2
+	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 --coverage 90.2
+	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 --coverage 90.2
+	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 --coverage 90.2
+%.txt: %
+	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
+$(HELP_ALL): share/man/.man-pages.stamp
+.PHONY: clean test test-all man-pages fmt install
 
 fmt:
 	go fmt ./...
 
 man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
-	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 
-%.txt: %
+	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 --coverage 90.2
+	man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
+	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 --coverage 90.2 --coverage 90.2 --coverage 90.2 
+%.txt: %\
+	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
 	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
 
 $(HELP_ALL): share/man/.man-pages.stamp
@@ -107,13 +147,67 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 
 share/man/man1/hub.1.md:
 	true
+install: bin/hub man-pages
 
 install: bin/hub man-pages
 	bash < script/install.sh
+install: bin/hub man-pages
 
-clean:\
-\tgit clean -fdx bin share/man tmp
-	pwd
+clean:
+	clean:
+	clean:
+	clean:
+	clean:
+	git clean -fdx bin share/man tmp
+.PHONY: clean
+.PHONY: clean
+.PHONY: clean
+.PHONY: clean
+.PHONY: clean
+	fmt:
+	fmt:
+	go fmt ./...
 	git clean -fdx bin share/man
 
-.PHONY: clean test test-all man-pages fmt install
+	.PHONY: clean
+clean:
+	git clean -fdx bin share/man tmp
+.PHONY: clean
+.PHONY: test
+test:
+	go test ./...
+.PHONY: test-all
+test-all:
+	script/update_go_mod.sh
+	$(GO) test -v ./...
+	update-go-mod
+script/update_go_mod.sh
+	@bin/hub
+.PHONY: man-pages
+man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
+	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 --coverage 90.2
+%.txt: %
+	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
+$(HELP_ALL): share/man/.man-pages.stamp
+share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
+script/update_go_mod.sh
+	@bin/hub
+.PHONY: man-pages
+man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
+	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 --coverage 90.2
+%.txt: %
+	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
+$(HELP_ALL): share/man/.man-pages.stamp
+share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
+	bin/md2roff --manual="hub manual" --date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 --template=./man-template.html share/man/man1/* --date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 --template=./man-template.html share/man/man1/*.md
+.PHONY: fmt
+fmt:
+	go fmt ./...
+.PHONY: install
+install: bin/hub man-pages
+	bash < script/install.sh
+.PHONY: install
+.PHONY: clean
+.PHONY: test
+.PHONY: test-all
+.PHONY: man-pages
