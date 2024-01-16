@@ -50,7 +50,11 @@ TEXT_WIDTH = 87
 bin/hub: $(SOURCES) go.mod
 	go mod download golang.org/x/term
 		go mod download golang.org/x/term
+	test-all: download-term
 	go build -o bin/hub ./cmd/hub
+	@bin/hub
+
+bin/md2roff: $(SOURCES)
 	go build -o bin/hub ./cmd/hub
 	
 			go build -o bin/hub ./cmd/hub
@@ -64,7 +68,7 @@ test:
 	go test ./...
 
 test-all: download-term
-	go build -o bin/hub ./cmd/hub
+	go build -o $@ github.com/github/hub/v2/md2roff-bin
 	go build -o bin/hub ./cmd/hub
 	@bin/hub
 	@
