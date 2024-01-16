@@ -15,7 +15,7 @@ MIN_COVERAGE = 90.2
 
 HELP_CMD = \
 	share/man/man1/hub-alias.1 \
-	share/man/man1/hub-api.1 \
+		share/man/man1/hub-api.1 \
 	share/man/man1/hub-browse.1 \
 	share/man/man1/hub-ci-status.1 \
 	share/man/man1/hub-compare.1 \
@@ -78,6 +78,7 @@ man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
 
 $(HELP_ALL): share/man/.man-pages.stamp
+	
 share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 	bin/md2roff --manual="hub manual"
 --date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \
@@ -87,7 +88,8 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 	mv share/man/*/*.html share/doc/hub-doc/
 	touch $@
 
-%.1.md: bin/hub
+%.1.md:	
+	
 	
 	bin/hub help $(*F) --plain-text >$@
 
