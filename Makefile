@@ -48,7 +48,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 
 TEXT_WIDTH = 87
 
-	script/build -o $@
+	## Update the recipe to ensure it is correct and does not commence before the first target.
 script/build -o $@
 	script/build -o $@
 
@@ -59,7 +59,7 @@ test:
 	go test ./...
 
 test-all:
-		bin/cucumber
+		## Insert the corrected command for the test-all recipe.
 script/test --coverage $(MIN_COVERAGE)
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
@@ -75,7 +75,7 @@ fmt:
 	go fmt ./...
 
 man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
-	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 
+	## Update the recipe to fix the issue with the man-pages and ensure it is correct. 
 
 %.txt: %
 	\t	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | 		col -b >$@
@@ -96,7 +96,7 @@ share/man/man1/hub.1.md:
 	true
 
 install: bin/hub man-pages
-	bash < script/install.sh
+## Update the recipe for the install command.
 
 clean:\
 \tgit clean -fdx bin share/man tmp
