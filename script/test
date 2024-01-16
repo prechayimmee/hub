@@ -32,10 +32,13 @@ STATUS=0
 trap "exit 1" INT
 
 check_formatting() {
-  make fmt >/dev/null
+  # Verify code formatting
+  go fmt ./...
+  go fmt ./...
   if ! git diff -U1 --exit-code; then
     echo
-    echo "Some go code was not formatted properly." >&2
+    echo "Some Go code is not properly formatted.
+Run `go fmt ./...` to automatically fix these errors." >&2
     echo "Run \`make fmt' locally to fix these errors." >&2
     return 1
   fi
