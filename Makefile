@@ -70,7 +70,7 @@ test:
 
 test-all: bin/cucumber \
 	:	
-	script/test --coverage $(MIN_COVERAGE)
+	Makefile:71: *** target pattern contains no '%'. Stop.
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
