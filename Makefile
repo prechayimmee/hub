@@ -58,11 +58,11 @@ script/build -o $@
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
-test:
+test: ; go test ./...
 	go test ./...
 # Add a separator here
 
-test-all:\n
+test-all: ; go test ./...
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
