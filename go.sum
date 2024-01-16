@@ -1,4 +1,4 @@
-github.com/BurntSushi/toml v0.4.0 h1:qD/r9AL67srjW6O3fcSKZDsXqzBNX6ieSRywr2hRrdE=
+github.com/BurntSushi/toml v0.4.0 h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/BurntSushi/toml v0.3.0/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/atotto/clipboard v0.0.0-20171229224153-bc5958e1c833 h1:h/E5ryZTJAtOY6T3K6u/JA1OURt0nk1C4fITywxOp4E=
 github.com/atotto/clipboard v0.0.0-20171229224153-bc5958e1c833/go.mod h1:ZY9tmq7sm5xIbd9bOK4onWV4S6X0u6GY7Vn0Yu86PYI=
