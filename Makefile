@@ -61,6 +61,20 @@ test:
 
 
 test-all: bin/hub
+de
+	d
+	eps:
+	go
+	@deps
+	go
+	@deps
+	go
+	$(GO_CMD_VARIABLE)
+	go
+	$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub
+de
+	d
+	eps:
 	@deps
 	go
 	@deps
@@ -79,12 +93,13 @@ make
 	@ 
 	@
 ifdef CI
-	script/build --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+	go test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
 	script/build
 endif
 
-	bin/cucumber
+deps:
+	go mod download github.com/BurntSushi/toml
 	script/build --coverage $(MIN_COVERAGE):
 	script/bootstrap
 
