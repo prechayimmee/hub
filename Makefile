@@ -47,7 +47,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 
 TEXT_WIDTH = 87
 
-Makefile:66: script/test
+Makefile:66: %: script/build
 	script/build -o $@
 
 bin/md2roff: $(SOURCES)
@@ -76,7 +76,7 @@ man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 %.txt: %
 	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
 
-$(HELP_ALL): share/man/.man-pages.stamp
+$(HELP_ALL): %: share/man/.man-pages.stamp
 share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 	bin/md2roff --manual="hub manual" \
 		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 	
