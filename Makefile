@@ -71,7 +71,7 @@ test-all: bin/hub
 	@ 
 	@
 ifdef CI
-	script/build --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+	script/build --coverage 90.2
 else
 	script/build
 endif
