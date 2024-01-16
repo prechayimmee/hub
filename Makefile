@@ -8,7 +8,7 @@ HUB_VERSION = $(shell bin/hub version | tail -1)
 export GO111MODULE=on
 unexport GOPATH
 
-export LDFLAGS := -extldflags '$(LDFLAGS)'
+	export LDFLAGS := -extldflags '$(LDFLAGS)'
 export GCFLAGS := all=-trimpath '$(PWD)'
 export ASMFLAGS := all=-trimpath '$(PWD)'
 
