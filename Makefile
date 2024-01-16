@@ -50,7 +50,7 @@ TEXT_WIDTH = 87
 : bin/hub: $(SOURCES)
 		- 
 	## Corrected separator added
-		:\n:
+			:
 	
 					
 					
