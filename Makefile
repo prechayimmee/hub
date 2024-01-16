@@ -65,8 +65,8 @@ else
 endif
 
 bin/cucumber
-	script/test --coverage $(MIN_COVERAGE):
-	script/bootstrap
+	script/test --coverage $(MIN_COVERAGE)
+	script/test --coverage $(MIN_COVERAGE)
 
 fmt:
 	go fmt ./...
@@ -93,7 +93,6 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 
 %.1.md: bin/hub
 	bin/hub help $(*F) --plain-text >$@
-
 share/man/man1/hub.1.md:
 	true
 
