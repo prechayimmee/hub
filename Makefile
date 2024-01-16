@@ -59,6 +59,31 @@ test:
 
 test-all: build
 ifdef CI
+\tscript/test
+else
+\tscript/test
+endif
+
+ifdef CI
+\tbin/cucumber
+\tscript/test --coverage $(MIN_COVERAGE)
+\tscript/bootstrap
+else
+\tbin/cucumber
+\tscript/test --coverage $(MIN_COVERAGE)
+\tscript/bootstrap
+endif
+\tifdef CI
+\tscript/test --coverage $(MIN_COVERAGE)
+else
+\tscript/test --coverage $(MIN_COVERAGE)
+endif
+\tifdef CI
+\tscript/bootstrap
+else
+\tscript/bootstrap
+endif
+ifdef CI
 	script/test
 else
 	script/test
