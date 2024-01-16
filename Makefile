@@ -98,7 +98,17 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 		share/man/man1/*\
 		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \ 
 		--template=./man-template.html \
-		share/man/man1/*.md \
+		bin/md2roff --manual="hub manual" \
+  --date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \
+  --template=./man-template.html \
+  share/man/man1/*\
+  --date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \
+  --template=./man-template.html \
+  share/man/man1/*.md
+
+  mkdir -p share/doc/hub-doc
+  mv share/man/*/*.html share/doc/hub-doc/
+  touch share/man/.man-pages.stamp
 
 	
 	mkdir -p share/doc/hub-doc
