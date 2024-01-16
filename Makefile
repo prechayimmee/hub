@@ -52,7 +52,7 @@ bin/hub: $(SOURCES)
 	
 			script/build -o $@
 
-	## Corrected separator added
+		## Corrected separator added
 
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
