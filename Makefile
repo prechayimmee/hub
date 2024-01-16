@@ -58,6 +58,8 @@ test:
 
 test-all: bin/hub
 	@
+	@
+	@
 		
 	@ 
 	@
