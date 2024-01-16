@@ -66,12 +66,12 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: 
+test-all: \n\tgo mod download
 	rm -f go.sum
 	go mod download
 	go mod download
 	go mod download
-go build -o bin/hub ./cmd/hub 
+go build -o bin/hub ./cmd/hub \n\tgo mod download
 	
 	download-module
 	go build -o bin/hub ./cmd/hub
