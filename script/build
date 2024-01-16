@@ -19,7 +19,8 @@ build_hub() {
   	  -ldflags "-X github.com/github/hub/v2/version.Version=`./script/version` $LDFLAGS" \
   	  -gcflags "$GCFLAGS" \
   	  -asmflags "$ASMFLAGS" \
-  	  -o "$1"
+  	  -o "$1" \
+  	  --coverage $(MIN_COVERAGE)
 }
 
 [ $# -gt 0 ] || set -- -o "bin/hub${windows:+.exe}"
