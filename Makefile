@@ -48,7 +48,8 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
-	$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub
+	@deps
+	go build -o bin/hub ./cmd/hub
 
 	## Corrected separator added
 
@@ -60,7 +61,19 @@ test:
 
 
 test-all: bin/hub
-	$$(GO_CMD_VARIABLE)
+	@deps
+	go
+	@deps
+	go
+	@deps
+	go
+	$(GO_CMD_VARIABLE)
+	go
+	$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub
+cd ./cmd/hub
+make
+	deps:
+	go mod download github.com/BurntSushi/toml
 	@
 		
 	@ 
