@@ -48,8 +48,8 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
-	go build -o bin/hub ./cmd/hub
-	go build -o bin/hub ./cmd/hub
+	bin/hub: $(SOURCES)
+go build -o bin/hub ./cmd/hub
 	
 			go build -o bin/hub ./cmd/hub
 
