@@ -53,7 +53,7 @@ bin/hub: $(SOURCES)
 
 	## Corrected separator added
 
-bin/md2roff: $(SOURCES)
+bin/md2roff: $(SOURCES)\n\t@echo "Corrected separator added"
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
 test:
