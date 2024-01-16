@@ -1,4 +1,4 @@
-github.com/golang/text v0.3.5
+
 
 go 1.11
 
