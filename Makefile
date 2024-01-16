@@ -60,12 +60,13 @@ test:
 
 test-all:
 		## Insert the corrected command for the test-all recipe.
-script/test --coverage $(MIN_COVERAGE)
+	script/test --coverage $(MIN_COVERAGE)
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
 	script/test
 endif
+	script/bootstrap
 
 bin/cucumber
 	script/test --coverage $(MIN_COVERAGE):
