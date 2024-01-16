@@ -64,8 +64,8 @@ test:
 test-all: bin/hub
 	go mod download github.com/BurntSushi/toml
 	go mod download golang.org/x/term
-	@bin/hub
-	@
+	bin/hub
+	
 		
 	@ 
 	@
@@ -85,7 +85,7 @@ fmt:
 man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 
 %.txt: %
-	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
+	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$
 
 $(HELP_ALL): share/man/.man-pages.stamp
 share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
