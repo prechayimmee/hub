@@ -13,6 +13,16 @@ export ASMFLAGS := all=-trimpath '$(PWD)'
 
 MIN_COVERAGE = 90.2
 
+require (
+	golang.org/x/term v0.13.0
+	golang.org/x/crypto v0.14.0
+	golang.org/x/net v0.17.0
+	github.com/atotto/clipboard v0.0.0-20171229224153-bc5958e1c833
+	github.com/BurntSushi/toml v0.3.0
+	gopkg.in/yaml.v2 v2.2.8
+	github.com/github/hub/v2 v2.12.1
+)
+
 HELP_CMD = \
 	share/man/man1/hub-alias.1 \
 	share/man/man1/hub-api.1 \
@@ -47,7 +57,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 
 TEXT_WIDTH = 87
 
-bin/hub: $(SOURCES)
+bin/hub: $(SOURCES) download-deps
 	go build -o bin/hub ./cmd/hub
 	@echo Build successful
 	go build -o bin/hub ./cmd/hub
