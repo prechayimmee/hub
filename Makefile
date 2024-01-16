@@ -49,7 +49,8 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 	## Update the recipe to ensure it is correct and does not commence before the first target.
-script/build -o $@
+test:
+\tgo test ./...
 	script/build -o $@
 
 bin/md2roff: $(SOURCES)
@@ -58,7 +59,8 @@ bin/md2roff: $(SOURCES)
 	test:
 		go test ./...
 	
-	test-all:
+	bin/md2roff: $(SOURCES)
+\tgo build -o $@ github.com/github/hub/v2/md2roff-bin
 	@script/test --coverage $(MIN_COVERAGE)
 			## Insert the corrected command for the test-all recipe.
 		script/test --coverage $(MIN_COVERAGE)
