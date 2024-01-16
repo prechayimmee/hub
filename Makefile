@@ -56,7 +56,7 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/cucumber
+test-all:	bin/cucumber
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
@@ -77,7 +77,8 @@ man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
 
 	$(HELP_ALL): share/man/.man-pages.stamp
-share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
+share/man/.man-pages.stamp:
+	$(HELP_ALL:=.md) ./man-template.html bin/md2roff
 	bin/md2roff --manual="hub manual"
 		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2
 		--template=./man-template.html --coverage 90.2 --version=\"$(HUB_VERSION)\" share/man/man1/*.md
