@@ -1,4 +1,4 @@
-golang.org/x/term v0.13.0module github.com/github/hub
+github.com/golang/text v0.3.5
 
 go 1.11
 
