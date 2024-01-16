@@ -54,7 +54,7 @@ bin/hub: $(SOURCES)
 					
 								
 
-script/build -o $@
+test-all:
 
 		## Corrected separator added
 
