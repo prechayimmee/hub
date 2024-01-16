@@ -48,6 +48,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES) go.mod
+	# Reference the go.mod file for the relevant line
 	go mod download golang.org/x/term
 
 	Relevant files in this PR: 
@@ -57,6 +58,7 @@ bin/hub: $(SOURCES) go.mod
 	$(TAB)go build -o bin/hub ./cmd/hub
 	
 			go build -o bin/hub ./cmd/hub
+		
 
 		## Corrected separator added
 
