@@ -13,7 +13,8 @@ find_source_files() {
 
 build_hub() {
   mkdir -p "$(dirname "$1")"
-  go build \
+  go mod download github.com/github/hub/v2
+go build \
 	  -ldflags "-X github.com/github/hub/v2/version.Version=`./script/version` $LDFLAGS" \
 	  -gcflags "$GCFLAGS" \
 	  -asmflags "$ASMFLAGS" \
