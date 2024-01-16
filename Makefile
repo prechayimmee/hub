@@ -67,8 +67,8 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/hub
-@ bin/hub
+test-all: bin/hub\n\t@ 
+@ bin/hub\n\t\n
 	@
 		
 	@ 
