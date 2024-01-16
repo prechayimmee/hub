@@ -8,13 +8,8 @@ set -e
 while [ $# -gt 0 ]; do
   case "$1" in
   --coverage )
-    export HUB_COVERAGE="$PWD/tmp/cover.out"
-    if [ "${2%.*}" -gt 0 ] 2>/dev/null; then
-      min_coverage="$2"
-      shift 2
-    else
-      min_coverage=1
-      shift 1
+    if [ -n "$HUB_COVERAGE" ]; then
+      script/coverage summarize "$min_coverage" || STATUS="$?"
     fi
     ;;
   -h | --help )
@@ -53,11 +48,12 @@ install_test() {
   rm share/man/man1/hub.1 share/doc/hub-doc/hub.1.html
 }
 
-[ -z "$HUB_COVERAGE" ] || script/coverage prepare
+if [ -z "$HUB_COVERAGE" ]; then
+  script/coverage prepare
+fi
 script/build
 go test ./... || STATUS="$?"
 script/ruby-test "$@" || STATUS="$?"
-[ -z "$HUB_COVERAGE" ] || script/coverage summarize "$min_coverage" || STATUS="$?"
 
 if [ -n "$CI" ]; then
   check_formatting || STATUS="$?"
@@ -65,3 +61,7 @@ if [ -n "$CI" ]; then
 fi
 
 exit "$STATUS"
+if [ -n "$CI" ]; then
+  check_formatting || STATUS="$?"
+  install_test || STATUS="$?"
+fi
