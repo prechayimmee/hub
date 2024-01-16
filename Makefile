@@ -1,5 +1,5 @@
 SOURCES = $(shell go list -f '{{range .GoFiles}}{{$$.Dir}}/{{.}}\
-{{end}}' ./...)
+{{end}}' ./...) \
 SOURCE_DATE_EPOCH ?= $(shell date +%s)
 BUILD_DATE = $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" '+%d %b %Y' 2>/dev/null || date -u -r "$(SOURCE_DATE_EPOCH)" '+%d %b %Y')
 HUB_VERSION = $(shell bin/hub version | tail -1)
@@ -38,6 +38,7 @@ HELP_EXT = \
 	share/man/man1/hub-fetch.1 \
 	share/man/man1/hub-help.1 \
 	share/man/man1/hub-init.1 \
+	share/man/man1/hub-cherry-pick.1 \
 	share/man/man1/hub-merge.1 \
 	share/man/man1/hub-push.1 \
 	share/man/man1/hub-remote.1 \
@@ -93,7 +94,6 @@ share/man/man1/hub.1.md:
 
 install: bin/hub man-pages
 	bash < script/install.sh
-
 clean:\
 \tgit clean -fdx bin share/man tmp
 	git clean -fdx bin share/man
