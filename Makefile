@@ -53,7 +53,10 @@ bin/hub: $(SOURCES) \
 		$(GO) test -v ./...
 	
 
-bin/md2roff: $(SOURCES) \	
+bin/md2roff: $(SOURCES)
+	@echo 'Error on line 50: Unnecessary backslash'
+	@exit 1
+	@	\ 	
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
 test:
