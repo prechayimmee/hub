@@ -49,7 +49,6 @@ TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
 	go build -o bin/hub ./cmd/hub
-	go build -o bin/hub ./cmd/hub
 	
 			go build -o bin/hub ./cmd/hub
 
