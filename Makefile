@@ -60,7 +60,7 @@ bin/hub: $(SOURCES)
 	## Corrected separator added
 
 bin/md2roff: $(SOURCES)
-	go build -o $@ github.com/github/hub/v2/md2roff-bin
+	go build -o $@ github.com/github/hub/v2/md2roff-bin@v0.0.0-20210927222741-03fcf44c2211
 
 test:
 	go test ./...
