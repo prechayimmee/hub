@@ -35,6 +35,7 @@ HELP_EXT = \
 	share/man/man1/hub-apply.1 \
 	share/man/man1/hub-checkout.1 \
 	share/man/man1/hub-cherry-pick.1 \
+	share/man/man1/hub-cherry-pick.1 \
 	share/man/man1/hub-clone.1 \
 	share/man/man1/hub-fetch.1 \
 	share/man/man1/hub-help.1 \
