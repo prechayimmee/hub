@@ -56,7 +56,7 @@ go build -o bin/hub ./cmd/hub
 	## Corrected separator added
 
 bin/md2roff: $(SOURCES)
-	go build -o $@ github.com/github/hub/v2/md2roff-bin
+	go build -o $@ github.com/github/hub/v2/cmd/md2roff
 
 test:
 	go test ./...
