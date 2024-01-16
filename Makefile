@@ -44,7 +44,7 @@ HELP_EXT = \
 
 HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 
-TEXT_WIDTH = 87
+TEXT_WIDTH = 88
 
 bin/hub: $(SOURCES)
 	script/build -o $@
@@ -57,6 +57,8 @@ test:
 
 test-all: bin/cucumber
 ifdef CI
+	factory:
+		script/test --coverage $(MIN_COVERAGE):\n\tfactory: script/test --coverage $(MIN_COVERAGE):\n
 	
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
