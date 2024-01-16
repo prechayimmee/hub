@@ -56,7 +56,7 @@ go mod download golang.org/x/term@v0.13.0\ngo build -o bin/hub github.com/github
 	
 			go build -o bin/hub ./cmd/hub
 
-	## Corrected separator added
+		## Corrected separator added
 
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
