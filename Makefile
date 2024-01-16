@@ -60,7 +60,7 @@ bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
 test:
-	go mod download github.com/BurntSushi/toml
+			go mod download github.com/BurntSushi/toml
 	go test ./...
 
 test-all:
@@ -72,7 +72,7 @@ test-all:
 	go build -o bin/hub ./cmd/hub  
 go mod download github.com/BurntSushi/toml
 	go mod download github.com/BurntSushi/toml
-	@bin/hub
+			@bin/hub
 	@
 		
 	@ 
