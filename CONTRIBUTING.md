@@ -34,7 +34,7 @@ feature is a good idea for hub if it improves some workflow for a GitHub user.
 
 1. [Clone the project](./README.md#source)
 2. Verify that existing tests pass:
-    `make test-all`
+    `	make test-all: bin/hub`
 3. Create a topic branch:
     `git checkout -b feature`
 4. **Make your changes.**
