@@ -50,13 +50,13 @@ TEXT_WIDTH = 87
 bin/hub: $(SOURCES)
 	script/build -o $@
 
-bin/md2roff: $(SOURCES)
+bin/md2roff: $(SOURCES) $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
 test:
 	go test ./...
 
-test-all: bin/cucumber:
+test-all: bin/cucumber $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt):
 	script/test --coverage $(MIN_COVERAGE)
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
