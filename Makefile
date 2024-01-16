@@ -48,6 +48,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES) go.mod
+go mod download
 
 		go mod download golang.org/x/term
 	
