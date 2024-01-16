@@ -1,6 +1,6 @@
 module github.com/github/hub/v2
 
-go 1.11
+go 1.16
 
 require (
 	github.com/BurntSushi/toml v0.3.0
