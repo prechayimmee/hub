@@ -54,8 +54,9 @@ script/build -o $@
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
-test-all: $(SOURCES)
-	go test ./...
+test-all:
+	script/build -o $@
+	script/build -o $@
 
 test-all: bin/cucumber
 ifdef CI
