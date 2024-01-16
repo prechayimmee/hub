@@ -9,7 +9,7 @@ Feature: hub gist
         json({
           :files => {
             'hub_gist1.txt' => {
-              'content' => "my content is here",
+              'content' => "new content is here",
             }
           },
           :description => "my gist",
