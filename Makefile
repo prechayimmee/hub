@@ -57,7 +57,7 @@ test:
 	go test ./...
 
 test-all:
-	make test	bin/cucumber
+	make test	mkdir bin/cucumber:
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
@@ -72,12 +72,16 @@ fmt:
 	go fmt ./...
 
 man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
-	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 
+	bin/md2roff --manual="hub manual" --date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 --template=./man-template.html $(HELP_ALL:=.md) 
 
 %.txt: %
-	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
+		groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
 
 	$(HELP_ALL): share/man/.man-pages.stamp
+		$(HELP_ALL:=.md) ./man-template.html bin/md2roff
+
+	\t$(HELP_ALL): share/man/.man-pages.stamp
+\t$(HELP_ALL:=.md) ./man-template.html bin/md2roff
 share/man/.man-pages.stamp:
 	$(HELP_ALL:=.md) ./man-template.html bin/md2roff
 	bin/md2roff --manual="hub manual"
