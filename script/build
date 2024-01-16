@@ -13,11 +13,7 @@ find_source_files() {
 
 build_hub() {
   mkdir -p "$(dirname "$1")"
-  go build \
-	  -ldflags "-X github.com/github/hub/v2/version.Version=`./script/version` $LDFLAGS" \
-	  -gcflags "$GCFLAGS" \
-	  -asmflags "$ASMFLAGS" \
-	  -o "$1"
+  $1"
 }
 
 [ $# -gt 0 ] || set -- -o "bin/hub${windows:+.exe}"
@@ -32,7 +28,8 @@ files )
 -h | --help )
   sed -ne '/^#/!q;s/.\{1,2\}//;1d;p' < "$0"
   exit
-  ;;
+  
+     ;;
 * )
   "$0" --help >&2
   exit 1

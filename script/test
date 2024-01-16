@@ -39,6 +39,11 @@ check_formatting() {
     echo "Run \`make fmt' locally to fix these errors." >&2
     return 1
   fi
+    echo
+    echo "Some go code was not formatted properly." >&2
+    echo "Run \`make fmt' locally to fix these errors." >&2
+    return 1
+  fi
 }
 
 install_test() {
