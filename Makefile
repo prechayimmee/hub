@@ -68,9 +68,8 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/cucumber \
-	:	
-	Makefile:71: *** target pattern contains no '%'. Stop.
+test-all: bin/cucumber %:	
+	Makefile:71: 	bin/cucumber\:
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
