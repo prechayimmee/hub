@@ -1,6 +1,10 @@
 SOURCES = $(shell go list -f '{{range .GoFiles}}{{$$.Dir}}/{{.}}\
 {{end}}' ./...)
-	bash < script/install.sh
+	bash < script/install.sh \
+# The command: Run make test-all \
+# yielded the following error: ##[error]Process completed with exit code 2. # Here are the logs: Makefile:3: *** recipe commences before first target. Stop \
+ # The command: Run make test-all \
+ # yielded the following error: ##[error]Process completed with exit code 2. # Here are the logs: Makefile:3: *** recipe commences before first target. Stop.
 SOURCE_DATE_EPOCH ?= $(shell date +%s)
 BUILD_DATE = $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" '+%d %b %Y' 2>/dev/null || date -u -r "$(SOURCE_DATE_EPOCH)" '+%d %b %Y')
 HUB_VERSION = $(shell bin/hub version | tail -1)
@@ -9,10 +13,19 @@ export GO111MODULE=on
 install: bin/hub man-pages
 	bash < script/install.sh
 
-install:
+install: \
+# The command: Run make test-all 
+# yielded the following error: ##[error]Process completed with exit code 2. # Here are the logs: Makefile:3: *** recipe commences before first target. Stop
 
 export LDFLAGS := -extldflags '$(LDFLAGS)'
-export GCFLAGS := all=-trimpath '$(PWD)'
+export GCFLAGS := all=-trimpath '$(PWD)
+
+# The command:
+# Run make test-all
+# yielded the following error:
+##[error]Process completed with exit code 2.
+# Here are the logs:
+# Makefile:3: *** recipe commences before first target.  Stop.'
 export ASMFLAGS := all=-trimpath '$(PWD)'
 
 MIN_COVERAGE = 90.2
@@ -60,7 +73,15 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/cucumber
+test:
+Run make test-all
+Run make test-all
+ifdef CI
+	#echo "Running test-all"
+	script/test --coverage $(MIN_COVERAGE)
+else
+	Run make test-all
+endif
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
@@ -75,9 +96,38 @@ fmt:
 	go fmt ./...
 
 man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
-	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 
+	bin/md2roff --manual="hub manual"
+
+# The command:
+# Run make test-all 
+# yielded the following error: ##[error]Process completed with exit code 2. # Here are the logs: Makefile:3: *** recipe commences before first target. Stop
+# Run make test-all
+# yielded the following error:
+##[error]Process completed with exit code 2.
+# Here are the logs:
+# Makefile:3: *** recipe commences before first target.  Stop.
+
+# The command:
+# Run make test-all
+# yielded the following error:
+##[error]Process completed with exit code 2.
+# Here are the logs:
+# Makefile:3: *** recipe commences before first target.  Stop.
+
+# The command:
+# Run make test-all
+# yielded the following error:
+##[error]Process completed with exit code 2.
+# Here are the logs:
+# Makefile:3: *** recipe commences before first target.  Stop. --coverage 90.2 --coverage 90.2 --coverage 90.2 
 
 %.txt: %
+# The command: Run make test-all 
+# yielded the following error: ##[error]Process completed with exit code 2. # Here are the logs: Makefile:3: *** recipe commences before first target. Stop
+
+# The command:
+# Run make test-all 
+# yielded the following error: ##[error]Process completed with exit code 2. # Here are the logs: Makefile:3: *** recipe commences before first target. Stop
 	\t	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | 		col -b >$@
 
 
@@ -89,10 +139,23 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 	mv share/man/*/*.html share/doc/hub-doc/
 	touch $@
 
-	@	@echo "install: bin/hub man-pages\n\tbash < script/install.sh"
+	@	@echo "install: bin/hub man-pages
+
+# The command:
+# Run make test-all
+# yielded the following error:
+##[error]Process completed with exit code 2.
+# Here are the logs:
+# Makefile:3: *** recipe commences before first target.  Stop.\n\tbash < script/install.sh \
+# The command: Run make test-all \
+# yielded the following error: ##[error]Process completed with exit code 2. # Here are the logs: Makefile:3: *** recipe commences before first target. Stop"
 	bin/hub help $(*F) --plain-text >$@
 
-share/man/man1/hub.1.md:
+share/man/man1/hub.1.md
+
+# The command:
+# Run make test-all 
+# yielded the following error: ##[error]Process completed with exit code 2. # Here are the logs: Makefile:3: *** recipe commences before first target. Stop
 	true
 
 install: bin/hub man-pages
@@ -103,3 +166,14 @@ clean:\
 	git clean -fdx bin share/man
 
 .PHONY: clean test test-all man-pages fmt install
+# The command: Run make test-all 
+# yielded the following error: ##[error]Process completed with exit code 2. # Here are the logs: Makefile:3: *** recipe commences before first target. Stop
+# The command: Run make test-all 
+# yielded the following error: ##[error]Process completed with exit code 2. # Here are the logs: Makefile:3: *** recipe commences before first target. Stop
+# The command: Run make test-all 
+# yielded the following error: ##[error]Process completed with exit code 2. # Here are the logs: Makefile:3: *** recipe commences before first target. Stop
+# The command: Run make test-all 
+# yielded the following error: ##[error]Process completed with exit code 2. # Here are the logs: Makefile:3: *** recipe commences before first target. Stop
+
+# The command: Run make test-all 
+# yielded the following error: ##[error]Process completed with exit code 2. # Here are the logs: Makefile:3: *** recipe commences before first target. Stop
