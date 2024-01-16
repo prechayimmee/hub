@@ -68,7 +68,7 @@ test-all: download-module
 	go build -o bin/hub ./cmd/hub
 	@bin/hub
 	@
-	go mod download golang.org/x/term
+	
 	@bin/hub
 	@
 		
