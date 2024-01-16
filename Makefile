@@ -49,7 +49,8 @@ TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
 	go mod download
-	go build -o bin/hub ./cmd/hub
+	bin/hub: script/update_go_mod.sh
+	$(GO) build -o $@ $(GOFLAGS) ./main.go
 	@echo Build successful
 	go build -o bin/hub ./cmd/hub
 	
@@ -64,6 +65,7 @@ test:
 	go test ./...
 
 test-all: bin/hub
+script/update_go_mod.sh
 	@bin/hub
 	@
 		
