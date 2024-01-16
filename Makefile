@@ -53,10 +53,10 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 build: $(SOURCES)
-	@echo ""
+	@echo "Fixing the error"
 	
 
-bin/md2roff: $(SOURCES)
+
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
 test:
