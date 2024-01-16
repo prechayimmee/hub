@@ -47,7 +47,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 
 TEXT_WIDTH = 87
 
-bin/hub: $(SOURCES)
+bin/hub: $(SOURCES) go.mod
 	go mod download golang.org/x/term
 go build -o bin/hub ./cmd/hub
 	go build -o bin/hub ./cmd/hub
@@ -116,3 +116,7 @@ clean:\
 	git clean -fdx bin share/man
 
 .PHONY: clean test test-all man-pages fmt install
+
+.PHONY: download-module
+download-module:
+	go mod download golang.org/x/term
