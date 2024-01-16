@@ -11,7 +11,7 @@ require (
 	github.com/mattn/go-isatty v0.0.3
 	github.com/mitchellh/go-homedir v0.0.0-20161203194507-b8bc1bf76747
 	github.com/russross/blackfriday v0.0.0-20180526075726-670777b536d3
-	module/path v1.2.4
+	module/github.com/github/hub v2.0.0
 go
 module/path v1.2.4
 	golang.org/x/term v0.13.0
