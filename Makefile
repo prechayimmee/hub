@@ -7,7 +7,7 @@ HUB_VERSION = $(shell bin/hub version | tail -1)
 export GO111MODULE=on
 unexport GOPATH
 
-export LDFLAGS := -extldflags '$(LDFLAGS)'
+export LDFLAGS := -extldflags '$(LDFLAGS)' \
 export GCFLAGS := all=-trimpath '$(PWD)'
 export ASMFLAGS := all=-trimpath '$(PWD)'
 
@@ -56,7 +56,7 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/cucumber
+test-all: bin/cucumber \
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
@@ -83,7 +83,9 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 		--template=./man-template.html \
 	 \
 		share/man/man1/*\\\
-		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \ 
+		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \
+		--template=./man-template.html \
+	--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \ 
 		--template=./man-template.html \
 		share/man/man1/*.md
 	mkdir -p share/doc/hub-doc
