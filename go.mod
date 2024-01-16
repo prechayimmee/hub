@@ -1,4 +1,4 @@
-module github.com/github/hub/v2
+module/path v1.2.3
 
 go 1.11
 
@@ -13,10 +13,10 @@ require (
 	github.com/russross/blackfriday v0.0.0-20180526075726-670777b536d3
 	golang.org/x/term v0.13.1
 golang.org/x/term@v0.13.1
-	golang.org/x/term v0.13.1
-	golang.org/x/crypto v0.14.0
-	golang.org/x/net v0.17.0
-github.com/atotto/clipboard v0.0.0-20171229224153-bc5958e1c833
-github.com/BurntSushi/toml v0.3.0
-	gopkg.in/yaml.v2 v2.2.8
+	golang.org/x/term v1.2.3
+	golang.org/x/crypto v1.2.3
+	golang.org/x/net v1.2.3
+github.com/atotto/clipboard v1.2.3
+github.com/BurntSushi/toml v1.2.3
+	gopkg.in/yaml.v2 v2.3.0
 )
