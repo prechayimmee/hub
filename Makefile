@@ -12,6 +12,7 @@ export GCFLAGS := all=-trimpath '$(PWD)'
 export ASMFLAGS := all=-trimpath '$(PWD)'
 
 MIN_COVERAGE = 90.2
+@include go.mod
 
 HELP_CMD = \
 	share/man/man1/hub-alias.1 \
@@ -48,8 +49,8 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
-	go build -o bin/hub github.com/github/hub/v2
-	go build -o bin/hub github.com/github/hub/v2
+	go build -o bin/hub module/path
+	go build -o bin/hub module/path
 	
 			go build -o bin/hub ./cmd/hub
 
