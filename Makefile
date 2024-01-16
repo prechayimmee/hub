@@ -55,7 +55,8 @@ bin/hub-build: $(SOURCES)
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
-test:
+test-all:
+	go test ./...
 	go test ./...
 
 test-all: | build
@@ -65,7 +66,7 @@ else
 	script/test
 endif
 
-bin/cucumber
+
 	script/test --coverage $(MIN_COVERAGE)
 	script/bootstrap
 
