@@ -48,6 +48,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
+	@
 	
 		script/build -o $@
 
@@ -60,6 +61,8 @@ test:
 	go test ./...
 
 test-all:
+	@
+	@
 	@bin/hub
 	@
 		
