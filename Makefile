@@ -6,7 +6,7 @@ BUILD_DATE = $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" '+%d %b %Y' 2>/dev/null 
 HUB_VERSION = $(shell bin/hub version | tail -1)
 
 export GO111MODULE=on
-install: bin/hub man-pages
+install:
 	bash < script/install.sh
 
 install:
@@ -62,7 +62,8 @@ test:
 
 test-all: bin/cucumber
 ifdef CI
-	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+	script/test: script/test
+	some_recipe_here --coverage $(MIN_COVERAGE)
 else
 	script/test
 endif
