@@ -50,6 +50,8 @@ TEXT_WIDTH = 87
 bin/hub: $(SOURCES)
 		:
 	
+					## Corrected separator added
+		
 			script/build -o $@
 
 		## Corrected separator added
