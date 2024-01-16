@@ -54,7 +54,7 @@ HELP_CMD = \
 		bin/md2roff --manual="hub manual" \
 			--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \
 			--template=./man-template.html \
-			share/man/man1/*\
+			<CORRECTED_OLD_CODE>
 			--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \ 
 			--template=./man-template.html \
 			share/man/man1/*.md \
