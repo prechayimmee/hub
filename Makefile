@@ -61,7 +61,7 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/cucumber
+test-all: bin/cucumber --warn-undefined-variables
 ifdef CI
 	script/test
 else
