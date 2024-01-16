@@ -67,7 +67,6 @@ test-all: bin/hub
 	@bin/hub
 		## Corrected separator added
 	@bin/hub
-	@
 		
 	@ 
 	@
