@@ -47,11 +47,11 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 
 TEXT_WIDTH = 87
 
-bin/hub: $(SOURCES)
+	bin/hub: $(SOURCES)
 	@echo ""
 	script/build -o $@
 
-bin/md2roff: $(SOURCES)
+	bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
 test:
