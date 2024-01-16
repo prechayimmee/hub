@@ -60,10 +60,10 @@ bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
 test:
-	$(GO_CMD_VARIABLE) test ./...
+	$$(GO_CMD_VARIABLE) test ./...
 
 test-all: bin/hub
-	@$(GO_CMD_VARIABLE)
+	$$(GO_CMD_VARIABLE)
 	@
 		
 	@ 
