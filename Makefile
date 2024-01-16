@@ -54,12 +54,12 @@ script/build -o $@
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
-test:
+all: test
 	go test ./...
 
 build: $(SOURCES)
 ifdef CI
-	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+	script/test-all --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
 	script/test
 endif
@@ -73,7 +73,7 @@ fmt:
 
 
 
-%.txt: %
+all: test
 	\t	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | 		col -b >$@
 
 
@@ -98,4 +98,4 @@ clean:\
 \tgit clean -fdx bin share/man tmp tmp
 	git clean -fdx bin share/man
 
-.PHONY: clean test test-all man-pages fmt install
+.PHONY: clean test-all man-pages fmt install
