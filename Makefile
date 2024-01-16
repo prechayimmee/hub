@@ -57,7 +57,7 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-	test-all:	
+		test-all:	
 	bin/cucumber
 	
 ifdef CI
@@ -85,8 +85,8 @@ man-pages:
 
 $(HELP_ALL): share/man/.man-pages.stamp
 share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
-	bin/md2roff --manual="hub manual"
-		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2
+	bin/md2roff --manual="hub manual" \
+		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \
 		--template=./man-template.html \
 		share/man/man1/*.md
 mkdir -p share/doc/hub-doc
