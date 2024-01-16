@@ -50,7 +50,7 @@ TEXT_WIDTH = 87
 bin/hub: $(SOURCES) \
 	\
 	
-		$(GO) test -v ./...
+				$(GO) test -v ./...
 	
 
 bin/md2roff: $(SOURCES)
