@@ -48,7 +48,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 
 TEXT_WIDTH = 87
 
-	script/build -o $@
+	bin/md2roff: $(SOURCES)
 	script/build -o $@
 
 bin/md2roff: $(SOURCES)
@@ -59,7 +59,7 @@ test:
 
 test-all: bin/cucumber
 ifdef CI
-	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+	script/test --coverage $(MIN_COVERAGE)
 else
 	script/test
 endif
