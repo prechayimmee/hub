@@ -108,7 +108,8 @@ share/man/man1/hub.1.md:
 	true
 
 install: bin/hub man-pages
-## Update the recipe for the install command.
+install: bin/hub man-pages
+	## Replace the incorrect command with the correct one.
 
 clean:\
 \tgit clean -fdx bin share/man tmp
