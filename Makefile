@@ -76,7 +76,7 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/cucumber
+test-all: # Remove the incorrect target
 	@echo ""
 	@
 	@
