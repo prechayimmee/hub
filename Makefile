@@ -58,8 +58,8 @@ test:
 
 test-all: $(SOURCES)
 	@ 
-		ifndef CI
-	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+	ifndef CI
+	script/test --coverage $(MIN_COVERAGE)
 else
 	script/test
 endif
