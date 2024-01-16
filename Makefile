@@ -50,7 +50,7 @@ TEXT_WIDTH = 87
 bin/hub: $(SOURCES) go.mod
 	go mod download golang.org/x/term
 		go mod download golang.org/x/term
-	go build -o bin/hub ./cmd/hub
+	
 	go build -o bin/hub ./cmd/hub
 	
 			go build -o bin/hub ./cmd/hub
@@ -64,7 +64,7 @@ test:
 	go test ./...
 
 test-all: download-module
-	go build -o bin/hub ./cmd/hub
+	
 	go build -o bin/hub ./cmd/hub
 	@bin/hub
 	@
@@ -81,7 +81,7 @@ else
 endif
 
 	bin/cucumber
-	script/build --coverage $(MIN_COVERAGE):
+	
 	script/bootstrap
 
 fmt:
