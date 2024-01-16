@@ -62,7 +62,7 @@ test:
 
 test-all:
 	bin/cucumber
-ifdef CI
+	ifdef CI
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
@@ -102,7 +102,7 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 install: bin/hub man-pages
 	bash < script/install.sh
 
-clean:\\
+clean:\\ 	
 	
 \tgit clean -fdx bin share/man tmp
 	git clean -fdx bin share/man
