@@ -6,7 +6,7 @@ BUILD_DATE ?= $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" '+%d %b %Y' 2>/dev/null
 HUB_VERSION = $(shell bin/hub version | tail -1)
 
 export GO111MODULE=on
-unexport GOPATH
+export GOPATH='$(HOME)/go'
 
 export LDFLAGS := -extldflags '$(LDFLAGS)'
 export GCFLAGS := all=-trimpath '$(PWD)'
@@ -86,7 +86,7 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 	mv share/man/*/*.html share/doc/hub-doc/
 	touch $@
 
-	@	bin/hub help $(*F) --plain-text >$@
+	@	bin/hub help $(*F) --plain-text > $@
 	bin/hub help $(*F) --plain-text >$@
 
 share/man/man1/hub.1.md:
