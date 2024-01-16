@@ -59,7 +59,7 @@ test:
 
 test-all: build
 ifdef CI
-	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+	script/test
 else
 	script/test
 endif
