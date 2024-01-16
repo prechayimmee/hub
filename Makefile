@@ -48,7 +48,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
-	go mod download github.com/github/hub/v2
+	go mod download
 	go build -o bin/hub ./cmd/hub
 	@echo Build successful
 	go build -o bin/hub ./cmd/hub
