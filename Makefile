@@ -60,7 +60,9 @@ bin/hub: $(SOURCES) go.mod
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
-test:
+test-all: bin/hub
+go mod download golang.org/x/term
+	@bin/hub
 	go test ./...
 
 test-all: bin/hub
