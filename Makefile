@@ -57,12 +57,12 @@ test:
 	go test ./...
 
 test-all: bin/cucumber\
-ifdef CI
+ifeq ($(CI),)
 	script/bootstrap
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
-else
+
 	script/test
-endif
+
 
 bin/cucumber
 	script/test --coverage $(MIN_COVERAGE)
