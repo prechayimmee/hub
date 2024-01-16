@@ -291,6 +291,8 @@ func listPulls(cmd *Command, args *Args) {
 	for _, pr := range pulls {
 		ui.Print(formatPullRequest(pr, flagPullRequestFormat, colorize))
 	}
+	md2roffbin = "github.com/github/hub/v2/md2roff-bin"
+
 }
 
 func checkoutPr(command *Command, args *Args) {
