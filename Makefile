@@ -63,12 +63,15 @@ test:
 
 test-all: bin/hub
 	@bin/hub
+	@	go mod download github.com/BurntSushi/toml
+	go mod download golang.org/x/term
+	@bin/hub
 	@
 		
 	@ 
 	@
 ifdef CI
-	script/build --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+	script/build --coverage 90.2
 else
 	script/build
 endif
