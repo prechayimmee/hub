@@ -48,7 +48,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
-	script/build -o $@
+	script/build -o $	
 
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
@@ -58,8 +58,7 @@ test:
 
 test-all: $(SOURCES)
 	@ 
-	@
-ifdef CI
+		ifndef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
 	script/test
@@ -102,7 +101,8 @@ share/man/man1/hub.1.md:
 install: bin/hub man-pages
 	bash < script/install.sh
 
-clean:\
+clean:
+	\
 \tgit clean -fdx bin share/man tmp
 	pwd
 	git clean -fdx bin share/man
