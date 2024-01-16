@@ -68,7 +68,7 @@ test:
 	go test ./...
 
 test-all: bin/hub
-	@bin/hub
+@ bin/hub
 	@
 		
 	@ 
