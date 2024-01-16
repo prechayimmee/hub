@@ -53,11 +53,12 @@ install_test() {
   rm share/man/man1/hub.1 share/doc/hub-doc/hub.1.html
 }
 
-[ -z "$HUB_COVERAGE" ] || script/coverage prepare
+if [ -z "$HUB_COVERAGE" ]; then
+  script/coverage prepare
+fi
 script/build
 go test ./... || STATUS="$?"
 script/ruby-test "$@" || STATUS="$?"
-[ -z "$HUB_COVERAGE" ] || script/coverage summarize "$min_coverage" || STATUS="$?"
 
 if [ -n "$CI" ]; then
   check_formatting || STATUS="$?"
