@@ -48,8 +48,8 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
-	## Adding a separator at line 82
-	## Adding separator at line 82
+		## Adding a separator at line 82
+		## Adding separator at line 82
 	
 	go mod download golang.org/x/term	## Corrected separator added
 	
