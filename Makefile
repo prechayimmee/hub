@@ -48,7 +48,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 
 TEXT_WIDTH = 87
 
-bin/hub-build: $(SOURCES)
+bin/hub-build: $(SOURCES) vendor
 	go build -o $@ github.com/github/hub/v2
 	script/build -o $@
 
@@ -58,14 +58,14 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: build
+test-all: bin/hub-build
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
 	script/test
 endif
 
-bin/cucumber
+bin/hub-build
 	script/test --coverage $(MIN_COVERAGE)
 	script/bootstrap
 
