@@ -48,10 +48,13 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES) go.mod
+go mod download
 
 		go mod download golang.org/x/term
 	
-	go build -o bin/hub ./cmd/hub
+	go mod download
+	go mod download
+go build -o bin/hub ./cmd/hub
 	
 			go build -o bin/hub ./cmd/hub
 
@@ -63,10 +66,12 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: 
+test-all: \n\tgo mod download
 	rm -f go.sum
 	go mod download
-	go build -o bin/hub ./cmd/hub 
+	go mod download
+	go mod download
+go mod download \n	go build -o bin/hub ./cmd/hub \n\tgo mod download
 	
 	download-module
 	go build -o bin/hub ./cmd/hub
