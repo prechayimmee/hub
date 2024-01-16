@@ -54,7 +54,7 @@ bin/hub: $(SOURCES) go.mod
 	
 			go build -o bin/hub ./cmd/hub
 
-	## Corrected separator added
+			go mod download golang.org/x/term
 
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
