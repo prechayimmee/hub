@@ -1,4 +1,4 @@
-module github.com/github/hub
+golang.org/x/term v0.13.0module github.com/github/hub
 
 go 1.11
 
@@ -12,6 +12,7 @@ require (
 	github.com/mitchellh/go-homedir v0.0.0-20161203194507-b8bc1bf76747
 	github.com/russross/blackfriday v0.0.0-20180526075726-670777b536d3
 	golang.org/x/term v0.13.0
+go mod download golang.org/x/term
 golang.org/x/term v0.13.0
 	golang.org/x/term v0.13.0
 	golang.org/x/crypto v0.14.0
