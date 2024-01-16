@@ -72,7 +72,7 @@ bin/md2roff: $(SOURCES)
 		script/bootstrap
 	
 	bin/cucumber
-		script/test --coverage $(MIN_COVERAGE):
+	
 		script/bootstrap
 	
 	fmt:
