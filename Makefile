@@ -25,7 +25,11 @@ HELP_CMD = \
 	share/man/man1/hub-gist.1 \
 bin/hub: $(SOURCES)
 	go build -o bin/hub ./cmd/hub
-	@echo Build successful
+	@if [ $$? -eq 0 ]; then\
+		echo 'Build successful';\
+	else\
+		echo 'Build failed';\
+	fi
 	go fmt ./...
 
 man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
