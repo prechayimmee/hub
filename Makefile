@@ -1,4 +1,4 @@
-SOURCES = ## Add a target or remove the line if not necessary:
+SOURCES = ## Add a target or remove the line if not necessary:\n\t
       
 {{end}}' ./...)
 	@echo "Install the package as the correct target"
