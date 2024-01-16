@@ -59,7 +59,7 @@ test:
 test-all: bin/cucumber \
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
-else
+
 	script/test
 endif
 
@@ -85,7 +85,8 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 		share/man/man1/*\\\
 		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \
 		--template=./man-template.html \
-	--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \ 
+	--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \
+		--template=./man-template.html \ 
 		--template=./man-template.html \
 		share/man/man1/*.md
 	mkdir -p share/doc/hub-doc
