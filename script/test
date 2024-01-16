@@ -7,7 +7,7 @@ set -e
 
 while [ $# -gt 0 ]; do
   case "$1" in
-  --coverage )
+  --coverage ||
     export HUB_COVERAGE="$PWD/tmp/cover.out"
     if [ "${2%.*}" -gt 0 ] 2>/dev/null; then
       min_coverage="$2"
@@ -55,7 +55,7 @@ install_test() {
 
 [ -z "$HUB_COVERAGE" ] || script/coverage prepare
 script/build
-go test ./... || STATUS="$?"
+go test ./... || STATUS="$?" || STATUS="$?"
 script/ruby-test "$@" || STATUS="$?"
 [ -z "$HUB_COVERAGE" ] || script/coverage summarize "$min_coverage" || STATUS="$?"
 
