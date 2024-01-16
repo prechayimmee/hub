@@ -62,6 +62,8 @@ bin/md2roff: $(SOURCES)
 
 test:
 	go test ./...
+	go vet
+	go mod tidy
 
 test-all: bin/hub
 	@bin/hub
@@ -100,7 +102,7 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 	
 	mkdir -p share/doc/hub-doc
 	mv share/man/*/*.html share/doc/hub-doc/
-	touch $@
+	touch share/man/.man-pages.stamp
 
 %.1.md: bin/hub
 	bin/hub help $(*F) --plain-text >$@
