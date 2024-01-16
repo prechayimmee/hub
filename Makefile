@@ -55,10 +55,10 @@ bin/hub-build: $(SOURCES) vendor
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
-test:
+all: test:
 	go test ./...
 
-test-all: bin/hub-build
+all: test-all: bin/hub-build
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
