@@ -54,7 +54,7 @@ bin/hub: $(SOURCES)
 	
 				go build -o bin/hub ./cmd/hub
 
-		## Corrected separator added
+			## Corrected separator added
 
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
@@ -110,7 +110,7 @@ share/man/man1/hub.1.md:
 install: bin/hub man-pages
 	bash < script/install.sh
 
-clean:\
+clean:	
 \tgit clean -fdx bin share/man tmp
 	pwd
 	git clean -fdx bin share/man
