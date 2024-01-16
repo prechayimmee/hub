@@ -48,7 +48,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 
 TEXT_WIDTH = 87
 
-script/build -o $@
+script build -o $@
 	script/build -o $@
 
 bin/md2roff: $(SOURCES)
@@ -65,7 +65,7 @@ else
 endif
 
 bin/cucumber
-	script/test --coverage $(MIN_COVERAGE):
+	script/test --coverage $(MIN_COVERAGE)
 	script/bootstrap
 
 fmt:
@@ -96,7 +96,7 @@ install: bin/hub man-pages
 	bash < script/install.sh
 
 clean:\
-\tgit clean -fdx bin share/man tmp
+\tgit clean -fdx bin share/man tmp tmp
 	git clean -fdx bin share/man
 
 .PHONY: clean test test-all man-pages fmt install
