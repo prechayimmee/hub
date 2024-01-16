@@ -1,13 +1,13 @@
 SOURCES = $(shell go list -f '{{range .GoFiles}}{{$$.Dir}}/{{.}}\
 {{end}}' ./...)
-	@echo "install: bin/hub man-pages
-	make -s -f script/install.sh"
+SOURCES = $(shell go list -f '{{range .GoFiles}}{{$$.Dir}}/{{.}}\
+{{end}}' ./...)
 SOURCE_DATE_EPOCH ?= $(shell date +%s)
 BUILD_DATE = $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" '+%d %b %Y' 2>/dev/null || date -u -r "$(SOURCE_DATE_EPOCH)" '+%d %b %Y')
 HUB_VERSION = $(shell bin/hub version | tail -1)
 
 export GO111MODULE=on
-install: bin/hub man-pages
+
 	bash < script/install.sh
 
 install:
