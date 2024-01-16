@@ -57,6 +57,8 @@ test:
 	go test ./...
 
 test-all: bin/cucumber
+	@echo "Running test-all recipe"
+	make test
 	@echo ""
 	@
 	@
