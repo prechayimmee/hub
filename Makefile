@@ -49,6 +49,7 @@ TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
 	go mod download golang.org/x/term@v0.13.0\ngo build -o bin/hub ./cmd/hub
+	go mod download golang.org/x/term@v0.13.0
 	go build -o bin/hub ./cmd/hub
 	
 			go build -o bin/hub ./cmd/hub
@@ -78,6 +79,7 @@ endif
 	script/bootstrap
 
 fmt:
+	go fmt ./...
 	go fmt ./...
 
 man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
