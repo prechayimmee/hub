@@ -52,7 +52,7 @@ bin/hub: $(SOURCES)
 		@
 	@ \
 	go mod download golang.org/x/term
-	go build -o bin/hub ./cmd/hub
+	script/build --coverage $(MIN_COVERAGE)
 	
 		go build -o bin/hub ./cmd/hub
 
@@ -73,7 +73,7 @@ test-all: bin/hub
 	@ 
 	@
 ifdef CI
-	script/build --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+	script/build --coverage $(MIN_COVERAGE)
 else
 	script/build
 endif
