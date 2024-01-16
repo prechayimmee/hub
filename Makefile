@@ -71,7 +71,7 @@ test-all: \n\tgo mod download
 	go mod download
 	go mod download
 	go mod download
-go build -o bin/hub ./cmd/hub \n\tgo mod download
+go mod download \n	go build -o bin/hub ./cmd/hub \n\tgo mod download
 	
 	download-module
 	go build -o bin/hub ./cmd/hub
