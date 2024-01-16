@@ -50,6 +50,7 @@ TEXT_WIDTH = 87
 bin/hub: $(SOURCES)
 	go fmt ./...
 	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2
+	## Corrected separator added
 	@ 
 		## Corrected separator added
 	
