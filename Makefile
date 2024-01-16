@@ -49,7 +49,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 		@groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | \tcol -b >$@
-	script/build -o $@
+	script/build: make test-all
 
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
