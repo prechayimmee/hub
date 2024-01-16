@@ -27,7 +27,7 @@ HELP_CMD = \
 	share/man/man1/hub-pull-request.1 \
 	share/man/man1/hub-release.1 \
 	share/man/man1/hub-issue.1 \
-	share/man/man1/hub-sync.1 \
+	share/man/man1/hub-sync.1
 
 HELP_EXT = \
 	share/man/man1/hub-am.1 \
@@ -41,7 +41,7 @@ HELP_EXT = \
 	share/man/man1/hub-merge.1 \
 	share/man/man1/hub-push.1 \
 	share/man/man1/hub-remote.1 \
-	share/man/man1/hub-submodule.1 \
+	share/man/man1/hub-submodule.1
 
 HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 
