@@ -64,7 +64,10 @@ test:
 	go test ./...
 
 test-all: 
-	download-module
+	rm -f go.sum
+	go mod download
+	go build -o bin/hub ./cmd/hub 
+	
 	download-module
 	go build -o bin/hub ./cmd/hub
 	@bin/hub
