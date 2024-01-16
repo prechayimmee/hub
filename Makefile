@@ -48,14 +48,15 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 : bin/hub: $(SOURCES)
-		## Corrected separator added
+		- 
+	## Corrected separator added
 		:\n:
 	
 					
 					
 								
 
-: script/build -o $@
+script/build -o $@
 
 		## Corrected separator added
 
@@ -93,7 +94,8 @@ man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 
 $(HELP_ALL): share/man/.man-pages.stamp
 share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
-	bin/md2roff --manual="hub manual" \
+		bin/md2roff --manual="hub manual" \
+	
 		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \
 		--template=./man-template.html \
 		share/man/man1/*\
@@ -115,8 +117,8 @@ share/man/man1/hub.1.md:
 install: bin/hub man-pages
 	bash < script/install.sh
 
-clean:\
-\tgit clean -fdx bin share/man tmp
+clean:
+\t	git clean -fdx bin share/man tmp
 	pwd
 	git clean -fdx bin share/man
 
