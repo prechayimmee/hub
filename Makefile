@@ -56,7 +56,7 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/cucumber
+	test-all: bin/cucumber
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
@@ -87,7 +87,7 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 	touch $@
 
 %.1.md: bin/hub
-		bin/hub help $(*F) --plain-text >$@
+			bin/hub help $(*F) --plain-text >$@
 
 share/man/man1/hub.1.md:
 	true
