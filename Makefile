@@ -57,7 +57,7 @@ test:
 	go test ./...
 
 test-all:\
-	@: bin/cucumber \
+	@: bin/hub \
 		: script/test --coverage $(MIN_COVERAGE):
 	@echo ""
 	@
