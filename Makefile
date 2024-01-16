@@ -48,6 +48,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
+	
 		@
 		@
 	go mod download golang.org/x/term@v0.13.0@v0.13.0
@@ -62,6 +63,7 @@ bin/hub: $(SOURCES)
 
 go mod download golang.org/x/term@v0.13.0
 	go mod download golang.org/x/term@v0.13.0\nbin/md2roff: $(SOURCES)
+	
 	go mod download golang.org/x/term@v0.13.0
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
