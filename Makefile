@@ -62,7 +62,6 @@ test:	go test ./cmd/hub
 	go test ./...
 
 test-all: bin/hub
-	@bin/hub
 	@
 		
 	@ 
