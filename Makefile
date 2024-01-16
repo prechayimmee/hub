@@ -1,4 +1,4 @@
-SOURCES = $(shell go list -f '{{range .GoFiles}}{{$$.Dir}}/{{.}}\
+SOURCES = ## Add a target or remove the line if not necessary
 {{end}}' ./...)
 	@echo "Install the package as the correct target"
 SOURCE_DATE_EPOCH ?= $(shell date +%s)
@@ -60,7 +60,7 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/cucumber
+test-all: ## Remove the duplicate line or replace with a valid target
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
