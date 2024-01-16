@@ -49,12 +49,8 @@ TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
 	go build -o bin/hub ./cmd/hub
-	
-			go build -o bin/hub ./cmd/hub
 
-	## Corrected separator added
-
-bin/md2roff: $(SOURCES)
+	bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
 test:
