@@ -61,14 +61,9 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/hub
-	@bin/hub
-	@
-		
-	@ 
-	@
+test-all: bin/hub bin/md2roff
 ifdef CI
-	script/build --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+	script/build --coverage $(MIN_COVERAGE)
 else
 	script/build
 endif
@@ -108,7 +103,6 @@ share/man/man1/hub.1.md:
 
 install: bin/hub man-pages
 	bash < script/install.sh
-
 clean:\
 \tgit clean -fdx bin share/man tmp
 	pwd
