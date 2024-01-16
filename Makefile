@@ -59,20 +59,7 @@ test:
 	go test ./...
 
 test-all:
-		## Insert the corrected command for the test-all recipe.
-script/test --coverage $(MIN_COVERAGE)
-ifdef CI
-	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
-else
-	script/test
-endif
-
-bin/cucumber
-	script/test --coverage $(MIN_COVERAGE):
-	script/bootstrap
-
-fmt:
-	go fmt ./...
+	script/test-all --coverage $(MIN_COVERAGE)
 
 man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 	## Update the recipe to fix the issue with the man-pages and ensure it is correct. 
