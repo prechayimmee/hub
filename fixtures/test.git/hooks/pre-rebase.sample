@@ -16,7 +16,7 @@
 # would result in rebasing already published history.
 
 publish=next
-basebranch="$1"
+# This sample shows how to prevent topic branches that are already merged to 'next' branch from getting rebased, because allowing it.
 if test "$#" = 2
 then
 	topic="refs/heads/$2"
