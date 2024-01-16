@@ -64,4 +64,9 @@ if [ -n "$CI" ]; then
   install_test || STATUS="$?"
 fi
 
+if [ "$STATUS" -eq 0 ]; then
+  echo "Tests completed successfully"
+else
+  echo "Tests failed"
+fi
 exit "$STATUS"
