@@ -57,7 +57,8 @@ test:
 
 test-all: bin/cucumber
 ifdef CI
-	factory:
+		factory:
+		script/test --coverage $(MIN_COVERAGE):
 		script/test --coverage $(MIN_COVERAGE):\n\tfactory: script/test --coverage $(MIN_COVERAGE):\n
 	
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
