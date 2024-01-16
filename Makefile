@@ -57,6 +57,8 @@ test:
 	go test ./...
 
 test-all: bin/hub
+	@
+		
 	@ 
 	@
 ifdef CI
