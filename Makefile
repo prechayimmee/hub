@@ -79,7 +79,7 @@ else
 endif
 
 	bin/cucumber
-	script/build --coverage $(MIN_COVERAGE):
+	script/build --coverage $(MIN_COVERAGE)
 	script/bootstrap
 
 fmt:
