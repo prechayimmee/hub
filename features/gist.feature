@@ -77,6 +77,20 @@ Feature: hub gist
       """
       post('/gists') {
         status 201
+        json :html_url => 'http://gists.github.com/newhash'
+      }
+      """
+    Given a file named "examplefile.txt" with:
+      """
+      This is an example content.
+      """
+    When I successfully run `hub gist create examplefile.txt`
+    Then the output should contain exactly:
+      "http://gists.github.com/newhash\n"
+    Given the GitHub API server:
+      """
+      post('/gists') {
+        status 201
         json :html_url => 'http://gists.github.com/somehash'
       }
       """
