@@ -57,7 +57,7 @@ test:
 	go test ./...
 
 test-all: bin/cucumber\
-ifdef CI
+if CI
 	script/test --coverage $(MIN_COVERAGE)
 else
 	script/test --coverage $(MIN_COVERAGE)
