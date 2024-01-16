@@ -57,7 +57,7 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-	test-all:
+	test-all:	
 	bin/cucumber
 	
 ifdef CI
