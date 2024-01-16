@@ -49,6 +49,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 script/build -o $@
+	@
 	script/build -o $@
 
 bin/md2roff: $(SOURCES)
