@@ -49,13 +49,16 @@ TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES) go.mod
 	go mod download golang.org/x/term
+
+	Relevant files in this PR: 
+	hub/go.mod
 		go mod download golang.org/x/term
 	go build -o bin/hub ./cmd/hub
 	go build -o bin/hub ./cmd/hub
 	
 			go build -o bin/hub ./cmd/hub
 
-	## Corrected separator added
+		## Corrected separator added
 
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
