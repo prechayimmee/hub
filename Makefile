@@ -8,7 +8,8 @@ HUB_VERSION = $(shell bin/hub version | tail -1)
 
 export GO111MODULE=on
 install: bin/hub build build bin/hub man-pages
-	make install
+	install:
+	
 
 install:
 
