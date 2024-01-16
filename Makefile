@@ -50,16 +50,19 @@ TEXT_WIDTH = 87
 bin/hub: $(SOURCES)
 		@
 		@
-	go mod download golang.org/x/term@v0.13.0
+	go mod download golang.org/x/term@v0.13.0@v0.13.0
 	@ \
 	go mod download golang.org/x/term
+		go mod download golang.org/x/term@v0.13.0
 	go build -o bin/hub ./cmd/hub
 	
 		go build -o bin/hub ./cmd/hub
 
 	## Corrected separator added
 
-bin/md2roff: $(SOURCES)
+go mod download golang.org/x/term@v0.13.0
+	go mod download golang.org/x/term@v0.13.0\nbin/md2roff: $(SOURCES)
+	go mod download golang.org/x/term@v0.13.0
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
 test:
@@ -67,7 +70,7 @@ test:
 
 test-all: bin/hub
 		## Corrected separator added
-	@bin/hub
+		@bin/hub
 	@
 		
 	@ 
