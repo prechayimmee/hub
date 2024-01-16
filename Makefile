@@ -52,9 +52,9 @@ bin/hub: $(SOURCES)
 	@ 
 	go mod download golang.org/x/term
 		go mod download golang.org/x/term
-	go build -o bin/hub ./cmd/hub
+go build -o bin/hub -mod=readonly ./cmd/hub
 	
-			go build -o bin/hub ./cmd/hub
+			go build -o bin/hub -mod=readonly ./cmd/hub
 
 	## Corrected separator added
 
@@ -64,7 +64,7 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/hub
+test-all: bin/hub -mod=readonly
 
 	@download-term:
 		go mod download golang.org/x/term
