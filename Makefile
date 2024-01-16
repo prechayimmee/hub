@@ -53,7 +53,7 @@ bin/hub: $(SOURCES) \
 		$(GO) test -v ./...
 	
 
-bin/md2roff: $(SOURCES)
+bin/md2roff: $(SOURCES) \	
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
 test:
