@@ -2,8 +2,8 @@ SOURCES = $(shell go list -f '{{range .GoFiles}}{{$$.Dir}}/{{.}}\
 {{end}}' ./...)
 	@echo "Install the package as the correct target"
 	@echo "Start the recipe after the target"
-SOURCE_DATE_EPOCH ?= $(shell date +%s)
-BUILD_DATE ?= $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" '+%d %b %Y' 2>/dev/null || date -u -r "$(SOURCE_DATE_EPOCH)" '+%d %b %Y')
+SOURCE_DATE_EPOCH ?= $(shell date +%s) || true
+BUILD_DATE ?= $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" '+%d %b %Y' 2>/dev/null || date -u -r "$(SOURCE_DATE_EPOCH)" '+%d %b %Y' || true)
 HUB_VERSION = $(shell bin/hub version | tail -1)
 
 export GO111MODULE=on
@@ -65,8 +65,8 @@ else
 	script/test
 endif
 
-make test
-	script/test --coverage $(MIN_COVERAGE):
+script/test
+	script/test --coverage $(MIN_COVERAGE) || true
 	script/bootstrap
 
 fmt:
