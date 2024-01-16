@@ -63,7 +63,11 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: download-module
+test-all: 
+	download-module
+	download-module
+	go build -o bin/hub ./cmd/hub
+	@bin/hub
 	
 	go build -o bin/hub ./cmd/hub
 	@bin/hub
