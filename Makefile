@@ -87,7 +87,7 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 	touch $@
 
 %.1.md: bin/hub
-	bin/hub help $(*F) --plain-text >$@
+	bin/hub help $(*F) --plain-text >\t$@
 
 share/man/man1/hub.1.md:
 	true
