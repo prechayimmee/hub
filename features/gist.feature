@@ -9,7 +9,7 @@ Feature: hub gist
         json({
           :files => {
             'hub_gist1.txt' => {
-              'content' => "my content is here",
+              'content' => "new content is here",
             }
           },
           :description => "my gist",
@@ -29,7 +29,7 @@ Feature: hub gist
         json({
           :files => {
             'hub_gist1.txt' => {
-              'content' => "my content is here"
+              'content' => "new content is here"
             },
             'hub_gist2.txt' => {
               'content' => "more content is here"
@@ -48,7 +48,6 @@ Feature: hub gist
         hub_gist1.txt
         hub_gist2.txt
       """
-
   Scenario: Fetch a single file from gist
     Given the GitHub API server:
       """
@@ -56,7 +55,7 @@ Feature: hub gist
         json({
           :files => {
             'hub_gist1.txt' => {
-              'content' => "my content is here"
+              'content' => "new content is here"
             },
             'hub_gist2.txt' => {
               'content' => "more content is here"
@@ -74,6 +73,20 @@ Feature: hub gist
       """
 
   Scenario: Create a gist from file
+    Given the GitHub API server:
+      """
+      post('/gists') {
+        status 201
+        json :html_url => 'http://gists.github.com/newhash'
+      }
+      """
+    Given a file named "examplefile.txt" with:
+      """
+      This is an example content.
+      """
+    When I successfully run `hub gist create examplefile.txt`
+    Then the output should contain exactly:
+      "http://gists.github.com/newhash\n"
     Given the GitHub API server:
       """
       post('/gists') {

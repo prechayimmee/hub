@@ -8,15 +8,16 @@ publish_documentation() {
 
   git fetch origin "${doc_branch}:${doc_branch}"
   git worktree add "$doc_dir" "$doc_branch"
-  pushd "$doc_dir" || true
+  pushd "$doc_dir" >/dev/null || true
 
-  git rm hub*.html >/dev/null
-  cp ../share/doc/*/*.html .
+  git rm -rf hub*.html >/dev/null
+  cp -r ../share/doc/*/*.html .
+  cp -r ../share/doc/*/*.html .
 
-  git add hub*.html
+  git add .
   GIT_COMMITTER_NAME='GitHub Actions' GIT_COMMITTER_EMAIL='noreply@github.com' \
     GIT_AUTHOR_NAME='GitHub Actions' GIT_AUTHOR_EMAIL='noreply@github.com' \
-    git commit -m "Update documentation for $version"
+    git commit -m "Update documentation for version $version"
 
   git push --follow-tags origin HEAD
   popd

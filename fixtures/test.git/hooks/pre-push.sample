@@ -44,7 +44,7 @@ do
 		commit=`git rev-list -n 1 --grep '^WIP' "$range"`
 		if [ -n "$commit" ]
 		then
-			echo "Found WIP commit in $local_ref, not pushing"
+			echo "Found a 'Work In Progress' (WIP) commit in $local_ref. Push is not allowed."
 			exit 1
 		fi
 	fi

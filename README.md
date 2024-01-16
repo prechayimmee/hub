@@ -71,10 +71,14 @@ hub is ready to be used in your [GitHub Actions][] workflows:
 steps:
 - uses: actions/checkout@v2
 
-- name: List open pull requests and do something else as an update
-  run: hub pr list
-  env:
-    GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+- name: List open pull requests
+  run: hub pr list -f "is:open"
+  If you need to interact with other repositories, [generate a Personal Access Token][pat] with at least the `repo` scope
+and add it to your [repository secrets][].
+
+[github actions]: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
+[pat]: https://github.com/settings/tokens
+[repository secrets]: https://docs.github.com/en/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets
 ```
 
 Note that the default `secrets.GITHUB_TOKEN` will only work for API operations
