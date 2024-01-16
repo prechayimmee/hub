@@ -64,6 +64,10 @@ test:
 	go test ./...
 
 test-all: bin/hub
+
+	@download-term:
+	@go mod download golang.org/x/term
+	@
 		## Corrected separator added
 	@bin/hub
 	@
