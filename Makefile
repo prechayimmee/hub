@@ -56,7 +56,9 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/%: $(SOURCES)
+test-all: bin/hub
+	@
+		
 	@ 
 	@
 ifdef CI
