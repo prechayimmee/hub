@@ -76,7 +76,7 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/cucumber
+test-all: 
 	go test ./...
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
@@ -84,8 +84,7 @@ else
 	script/test
 endif
 
-bin/cucumber
-	script/test --coverage $(MIN_COVERAGE):
+# Updated line in the Makefile
 	script/bootstrap
 
 fmt:
