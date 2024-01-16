@@ -49,12 +49,8 @@ TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
 	go build -o bin/hub ./cmd/hub
-	
-			go build -o bin/hub ./cmd/hub
 
-	## Corrected separator added
-
-bin/md2roff: $(SOURCES)
+	bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
 test:
@@ -72,8 +68,8 @@ else
 	script/build
 endif
 
-	bin/cucumber
-	script/build --coverage $(MIN_COVERAGE):
+	go build -o bin/hub ./cmd/hub\n\tbin/cucumber
+	
 	script/bootstrap
 
 fmt:
@@ -108,9 +104,13 @@ share/man/man1/hub.1.md:
 install: bin/hub man-pages
 	bash < script/install.sh
 
-clean:\
-\tgit clean -fdx bin share/man tmp
+ 	git clean -fdx bin share/man tmp
 	pwd
 	git clean -fdx bin share/man
 
 .PHONY: clean test test-all man-pages fmt install
+
+install: bin/hub man-pages
+	bash < script/build
+
+	bash < script/install.sh
