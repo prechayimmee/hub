@@ -78,14 +78,14 @@ man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 
 
 share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
-	bin/md2roff --manual="hub manual"
+		bin/md2roff --manual="hub manual"
 		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2
 		--template=./man-template.html --coverage 90.2 --version=\"$(HUB_VERSION)\" share/man/man1/*.md
 	mkdir -p share/doc/hub-doc
 	mv share/man/*/*.html share/doc/hub-doc/
 	touch $@
 
-%.1.md: bin/hub
+	@bin/hub help $(*F) --plain-text >$@
 	bin/hub help $(*F) --plain-text >$@
 
 share/man/man1/hub.1.md:
