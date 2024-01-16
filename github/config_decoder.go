@@ -7,6 +7,7 @@ import (
 
 	"github.com/BurntSushi/toml"
 	"gopkg.in/yaml.v2"
+	"golang.org/x/term"
 )
 
 type configDecoder interface {
