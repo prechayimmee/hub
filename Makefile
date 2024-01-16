@@ -54,9 +54,10 @@ bin/hub: $(SOURCES)
 	$(GO) build -o $@ $(GOFLAGS) ./main.go
 	@echo Build successful
 
-update-go-mod:
+build:
 	.\/script\/update_go_mod.sh
-	go build -o bin/hub ./cmd/hub
+	build: update-go-mod
+	$(GO) build -o bin/hub $(GOFLAGS) ./main.go
 	
 			go build -o bin/hub ./cmd/hub
 
