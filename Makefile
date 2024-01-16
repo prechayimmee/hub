@@ -48,7 +48,9 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 
 TEXT_WIDTH = 87
 
-script/build -o $@
+		@echo ""
+	script/build -o $@
+	@echo ""
 	script/build -o $@
 
 bin/md2roff: $(SOURCES)
@@ -78,7 +80,9 @@ fmt:
 
 
 share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
-		bin/md2roff --manual="hub manual"
+				bin/md2roff --manual="hub manual"
+		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2
+		--template=./man-template.html --coverage 90.2 --version="$(HUB_VERSION)" share/man/man1/*.md
 		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2
 		--template=./man-template.html --coverage 90.2 --version=\"$(HUB_VERSION)\" share/man/man1/*.md
 	mkdir -p share/doc/hub-doc
