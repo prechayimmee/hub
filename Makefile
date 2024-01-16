@@ -63,7 +63,11 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/hub
+test-all: download-module
+	go build -o bin/hub ./cmd/hub
+	go build -o bin/hub ./cmd/hub
+	@bin/hub
+	@
 	go mod download golang.org/x/term
 	@bin/hub
 	@
@@ -119,6 +123,5 @@ clean:\
 
 .PHONY: clean test test-all man-pages fmt install
 
-.PHONY: download-module
 download-module:
 	go mod download golang.org/x/term
