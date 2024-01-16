@@ -57,7 +57,7 @@ test:
 	go test ./...
 
 test-all:\
-	@: bin/cucumber
+	@: %
 	@echo ""
 	@
 	@
