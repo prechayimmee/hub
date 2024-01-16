@@ -52,6 +52,7 @@ go mod download
 
 		go mod download golang.org/x/term
 	
+	go mod download
 	go build -o bin/hub ./cmd/hub
 	
 			go build -o bin/hub ./cmd/hub
