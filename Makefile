@@ -50,6 +50,32 @@ TEXT_WIDTH = 87
 bin/hub: $(SOURCES) go.mod
 	go mod download golang.org/x/term
 		go build -o bin/hub ./cmd/hub
+
+bin/md2roff: $(SOURCES)
+	go build -o $@ github.com/github/hub/v2/md2roff-bin
+
+test:
+	go test ./...
+
+go mod download golang.org/x/term
+test-all: bin/hub
+	@bin/hub
+
+ifdef CI
+	script/build --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+else
+	script/build
+endif
+
+bin/cucumber
+script/build --coverage $(MIN_COVERAGE):
+script/bootstrap
+
+fmt:
+	go fmt ./...
+
+man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
+	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 
 	go build -o bin/hub ./cmd/hub
 	
 			go build -o bin/hub ./cmd/hub
@@ -62,7 +88,7 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-go mod download golang.org/x/term
+
 	test-all: bin/hub
 	@bin/hub
 	@
