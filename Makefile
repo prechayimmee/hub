@@ -50,7 +50,7 @@ TEXT_WIDTH = 87
 bin/hub: $(SOURCES)
 	@
 	
-			script/build -o $@
+					script/build -o $@
 
 	## Corrected separator added
 
@@ -61,12 +61,12 @@ test:
 	go test ./...
 
 test-all:
-	@
-	@
-	@bin/hub
-	@
-		
-	@ 
+		@
+		@
+		@bin/hub
+		@
+			
+		@ 
 	@
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
