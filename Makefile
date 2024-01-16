@@ -53,7 +53,8 @@ bin/hub: $(SOURCES) \
 		$(GO) test -v ./...
 	
 
-bin/md2roff: $(SOURCES) \	
+bin/md2roff: $(SOURCES) \
+	@$(GO) test -v ./...	
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
 test:
@@ -95,7 +96,7 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 %.1.md: bin/hub
 	bin/hub help $(*F) --plain-text >$@
 
-share/man/man1/hub.1.md:
+	share/man/man1/hub.1.md:
 	true
 
 install: bin/hub man-pages
