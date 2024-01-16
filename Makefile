@@ -1,6 +1,6 @@
 SOURCES = $(shell go list -f '{{range .GoFiles}}{{$$.Dir}}/{{.}}\\
 {{end}}' ./...)
-	@echo "Install the package as the correct target"
+	@		@echo "Install the package as the correct target"
 SOURCE_DATE_EPOCH ?= $(shell date +%s)
 BUILD_DATE ?= $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" '+%d %b %Y' 2>/dev/null || date -u -r "$(SOURCE_DATE_EPOCH)" '+%d %b %Y')
 HUB_VERSION = $(shell bin/hub version | tail -1)
