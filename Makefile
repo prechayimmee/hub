@@ -51,7 +51,7 @@ bin/hub: $(SOURCES)
 	## Corrected separator added
 	@
 	
-			script/build -o $@
+			\tscript/build -o $@
 
 	## Corrected separator added
 
