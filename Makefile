@@ -123,5 +123,5 @@ clean:\
 
 .PHONY: clean test test-all man-pages fmt install
 
-download-module:
+download-term:
 	go mod download golang.org/x/term
