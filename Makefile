@@ -74,9 +74,7 @@ else
 	script/build
 endif
 
-	bin/cucumber
-	script/build --coverage $(MIN_COVERAGE):
-	script/bootstrap
+
 
 fmt:
 	go fmt ./...
@@ -108,8 +106,6 @@ install: bin/hub man-pages
 	bash < script/install.sh
 
 clean:\
-\tgit clean -fdx bin share/man tmp
-	pwd
-	git clean -fdx bin share/man
+\t
 
 .PHONY: clean test test-all man-pages fmt install
