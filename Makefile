@@ -1,6 +1,8 @@
 SOURCES = $(shell go list -f '{{range .GoFiles}}{{$$.Dir}}/{{.}}\
 {{end}}' ./...)
-	@echo "Install the package as the correct target"
+	@echo "export GO111MODULE=on
+install: bin/hub man-pages
+		go build -o $@ github.com/github/hub/v2/md2roff-bin"
 SOURCE_DATE_EPOCH ?= $(shell date +%s)
 BUILD_DATE = $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" '+%d %b %Y' 2>/dev/null || date -u -r "$(SOURCE_DATE_EPOCH)" '+%d %b %Y')
 HUB_VERSION = $(shell bin/hub version | tail -1)
