@@ -53,7 +53,7 @@ bin/hub: $(SOURCES) go.mod
 	Relevant files in this PR: 
 	hub/go.mod
 		go mod download golang.org/x/term
-	\tgo build -o bin/hub ./cmd/hub
+	\t\tgo build -o bin/hub ./cmd/hub
 	$(TAB)go build -o bin/hub ./cmd/hub
 	
 			go build -o bin/hub ./cmd/hub
