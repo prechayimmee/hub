@@ -48,7 +48,8 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 
 TEXT_WIDTH = 87
 
-go build -o $@ github.com/github/hub/v2/cmd/hub
+build:
+\tgo build -o $@ github.com/github/hub/v2/cmd/hub
 	@echo "Installing the package as the correct target"
 	script/build -o $@
 
@@ -58,7 +59,7 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: build
+test-all: make
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
