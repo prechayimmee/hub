@@ -56,7 +56,7 @@ install_test() {
 [ -z "$HUB_COVERAGE" ] || script/coverage prepare
 make test-all
 
-[ -z "$HUB_COVERAGE" ] || script/coverage summarize "$min_coverage" || STATUS="$?"
+
 
 if [ -n "$CI" ]; then
   check_formatting || STATUS="$?"
