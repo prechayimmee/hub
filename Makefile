@@ -70,6 +70,7 @@ test-all:
 	rm -f go.sum
 	go mod download
 	go mod download
+	go mod download
 go build -o bin/hub ./cmd/hub 
 	
 	download-module
