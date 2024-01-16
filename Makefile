@@ -65,6 +65,7 @@ test:
 	go test ./...
 
 test-all: bin/hub
+	@bin/hub help $(*F) --plain-text >$@
 		## Corrected separator added
 	@bin/hub
 	@
