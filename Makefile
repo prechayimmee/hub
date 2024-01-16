@@ -51,7 +51,8 @@ bin/hub: $(SOURCES)
 	go mod download
 		script/update_go_mod.sh
 	bin/hub: script/update_go_mod.sh
-	$(GO) build -o $@ $(GOFLAGS) ./main.go
+	install: update-go-mod
+	$(GO) install $(GOFLAGS) ./main.go
 	@echo Build successful
 
 build:
@@ -69,7 +70,7 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: script/update_go_mod.sh
+test-all: update-go-mod
 	$(GO) test -v ./...
 	update-go-mod
 script/update_go_mod.sh
