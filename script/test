@@ -60,7 +60,7 @@ script/ruby-test "$@" || STATUS="$?"
 [ -z "$HUB_COVERAGE" ] || script/coverage summarize "$min_coverage" || STATUS="$?"
 
 if [ -n "$CI" ]; then
-  check_formatting || STATUS="$?"
+  make test-all || STATUS="$?"
   install_test || STATUS="$?"
 fi
 
