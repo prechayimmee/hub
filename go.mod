@@ -1,4 +1,4 @@
-module github.com/github/hub/v2
+module github.com/prechayimmee/hub/v2
 
 go 1.17
 
@@ -11,7 +11,7 @@ require (
 	github.com/mattn/go-isatty
 	github.com/mitchellh/go-homedir
 	github.com/russross/blackfriday v0.0.0-20180526075726-670777b536d3
-	github.com/shurcooL/sanitized_anchor_name v0.0.0-20170918181015-86672fcb3f95 // indirect
+	github.com/shurcooL/sanitized_anchor_name v1.0.0
 	golang.org/x/crypto v0.14.0
 	golang.org/x/net
 	gopkg.in/yaml.v2 v2.2.8
