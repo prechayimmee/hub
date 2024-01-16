@@ -56,7 +56,7 @@ build:
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
-test:
+test: | make
 	go test ./...
 
 test-all: make
