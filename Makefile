@@ -62,7 +62,8 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/hub
+go mod download golang.org/x/term
+	test-all: bin/hub
 	@bin/hub
 	@
 		
