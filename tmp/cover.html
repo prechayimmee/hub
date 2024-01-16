@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# ...
+
+generate() {
+  # ...
+
+  # Write coverage report to tmp/cover.html
+  go tool cover -html="$HUB_COVERAGE"~ -o "tmp/cover.html"
+
+  # ...
+}
+
+summarize() {
+  # ...
+
+  # Create tmp/cover.html file
+  go tool cover -html="$HUB_COVERAGE"~ -o "tmp/cover.html"
+
+  # ...
+}
