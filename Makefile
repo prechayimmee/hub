@@ -1,6 +1,6 @@
 SOURCES = ## Add a target or remove the line if not necessary
 {{end}}' ./...)
-	@echo "Install the package as the correct target"
+		@echo 'Running tests'
 SOURCE_DATE_EPOCH ?= $(shell date +%s)
 BUILD_DATE = $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" '+%d %b %Y' 2>/dev/null || date -u -r "$(SOURCE_DATE_EPOCH)" '+%d %b %Y')
 HUB_VERSION = $(shell bin/hub version | tail -1)
