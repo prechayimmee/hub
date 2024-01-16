@@ -54,7 +54,8 @@ install_test() {
 }
 
 [ -z "$HUB_COVERAGE" ] || script/coverage prepare
-make test-all
+script/dependency-setup 
+ make test-all
 
 
 
