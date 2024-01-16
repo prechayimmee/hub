@@ -58,16 +58,15 @@ bin/hub: $(SOURCES) go.mod
 	## Corrected separator added
 
 bin/md2roff: $(SOURCES)
-	go build -o $@ github.com/github/hub/v2/md2roff-bin
+	go build -o $ github.com/github/hub/v2/md2roff-bin
 
 test:
 	go test ./...
 
 test-all: download-module
 	
-	go build -o bin/hub ./cmd/hub
-	@bin/hub
-	@
+	
+
 
 	@bin/hub
 	@
