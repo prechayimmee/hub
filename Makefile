@@ -33,7 +33,15 @@ HELP_EXT = \
 	share/man/man1/hub-am.1 \
 	share/man/man1/hub-apply.1 \
 	share/man/man1/hub-checkout.1 \
-	share/man/man1/hub-cherry-pick.1 \
+	share/man/man1/hub-cherry-pick.1
+	share/man/man1/hub-clone.1 \
+	share/man/man1/hub-fetch.1 \
+	share/man/man1/hub-help.1 \
+	share/man/man1/hub-init.1 \
+	share/man/man1/hub-merge.1 \
+	share/man/man1/hub-push.1 \
+	share/man/man1/hub-remote.1 \
+	share/man/man1/hub-submodule.1 \
 	share/man/man1/hub-clone.1 \
 	share/man/man1/hub-fetch.1 \
 	share/man/man1/hub-help.1 \
@@ -78,7 +86,7 @@ man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 
 	$(HELP_ALL): share/man/.man-pages.stamp
 share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
-	bin/md2roff --manual="hub manual"
+	bin/md2roff --manual="hub manual" --date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 --template=./man-template.html --coverage 90.2 --version=\"$(HUB_VERSION)\" share/man/man1/*.md
 		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2
 		--template=./man-template.html --coverage 90.2 --version=\"$(HUB_VERSION)\" share/man/man1/*.md
 	mkdir -p share/doc/hub-doc
