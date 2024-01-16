@@ -1,4 +1,4 @@
-SOURCES = $(shell go list -f '{{range .GoFiles}}{{$$.Dir}}/{{.}}\
+SOURCES = $(shell go list -f '{{range .GoFiles}}{{$$.Dir}}/{{.}}\\
 {{end}}' ./...)
 	@echo "Install the package as the correct target"
 SOURCE_DATE_EPOCH ?= $(shell date +%s)
@@ -59,7 +59,7 @@ test-all:
 	script/build -o $@
 
 test-all: bin/cucumber
-ifdef CI
+# ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
 	script/test
