@@ -59,6 +59,7 @@ bin/md2roff: $(SOURCES)
 		go test ./...
 	
 	test-all:
+	@script/test --coverage $(MIN_COVERAGE)
 			## Insert the corrected command for the test-all recipe.
 		script/test --coverage $(MIN_COVERAGE)
 	ifdef CI
@@ -107,8 +108,10 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 share/man/man1/hub.1.md:
 	true
 
-install: bin/hub man-pages
-install: bin/hub man-pages
+install:
+	@script/test --coverage $(MIN_COVERAGE)
+install:
+	@script/test --coverage $(MIN_COVERAGE)
 	## Replace the incorrect command with the correct one.
 
 clean:\
