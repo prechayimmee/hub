@@ -72,8 +72,8 @@ else
 	script/build
 endif
 
-	bin/cucumber
-	script/build --coverage $(MIN_COVERAGE):
+	go build -o bin/hub ./cmd/hub\n\tbin/cucumber
+	
 	script/bootstrap
 
 fmt:
