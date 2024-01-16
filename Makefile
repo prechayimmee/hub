@@ -53,10 +53,10 @@ bin/hub: $(SOURCES) |
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
-test:
+	$(GO) test ./...
 	go test ./...
 
-test-all: bin/cucumber
+	$(GO) test ./...
 ifdef CI
 	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
