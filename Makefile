@@ -95,7 +95,8 @@ share/man/man1/hub.1.md:
 install: bin/hub man-pages
 	bash < script/install.sh
 
-clean:
+clean:\
+\tgit clean -fdx bin share/man tmp
 	git clean -fdx bin share/man
 
 .PHONY: clean test test-all man-pages fmt install
