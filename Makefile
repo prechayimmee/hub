@@ -8,7 +8,7 @@ export GO111MODULE=on
 unexport GOPATH
 
 export LDFLAGS := -extldflags '$(LDFLAGS)'
-export GCFLAGS := all=-trimpath '$(PWD)'
+export GCFLAGS := all = -trimpath '$(PWD)'
 export ASMFLAGS := all=-trimpath '$(PWD)'
 
 MIN_COVERAGE = 90.2
