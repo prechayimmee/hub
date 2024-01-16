@@ -54,13 +54,16 @@ bin/hub: $(SOURCES)
 		## Corrected separator added
 	
 	go mod download golang.org/x/term
+	## Corrected separator added
 		## Corrected separator added
 	
 	go build -o bin/hub ./cmd/hub
 	## Corrected separator added
 	## Corrected separator added
+	## Corrected separator added
 	
 			go build -o bin/hub ./cmd/hub
+	## Corrected separator added
 
 	## Corrected separator added
 
@@ -72,6 +75,7 @@ test:
 
 test-all: bin/hub
 	@bin/hub help $(*F) --plain-text >$@
+	## Corrected separator added
 		## Corrected separator added
 	@bin/hub
 	@
