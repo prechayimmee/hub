@@ -65,6 +65,7 @@ test:
 	go test ./...
 
 test-all: bin/hub
+	
 		## Corrected separator added
 	@bin/hub
 	@
