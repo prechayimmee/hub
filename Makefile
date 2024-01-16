@@ -54,29 +54,40 @@ script/build -o $@
 
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
-
-test:
-	go test ./...
-
-test-all:
-		## Insert the corrected command for the test-all recipe.
-	script/test --coverage $(MIN_COVERAGE)
-ifdef CI
-	script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
-else
-	script/test
-endif
-	script/bootstrap
-
-bin/cucumber
-	script/test --coverage $(MIN_COVERAGE):
-	script/bootstrap
-
-fmt:
-	go fmt ./...
-
-man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
-	## Update the recipe to fix the issue with the man-pages and ensure it is correct. 
+	
+	test:
+		go test ./...
+	
+	test-all:
+			## Insert the corrected command for the test-all recipe.
+		script/test --coverage $(MIN_COVERAGE)
+	ifdef CI
+		script/test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+	else
+		script/test
+	endif
+		script/bootstrap
+	
+	bin/cucumber
+		script/test --coverage $(MIN_COVERAGE):
+		script/bootstrap
+	
+	fmt:
+		go fmt ./...
+	
+	man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
+		## Update the recipe to fix the issue with the man-pages and ensure it is correct. 
+	%.txt: %
+		\t	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | 		col -b >$@
+	
+	
+	share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
+			bin/md2roff --manual="hub manual"
+			--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2
+			--template=./man-template.html --coverage 90.2 --version=\"$(HUB_VERSION)\" share/man/man1/*.md
+		mkdir -p share/doc/hub-doc
+		mv share/man/*/*.html share/doc/hub-doc/
+		touch $@
 
 %.txt: %
 	\t	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | 		col -b >$@
