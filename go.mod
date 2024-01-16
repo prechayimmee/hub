@@ -1,7 +1,7 @@
 module github.com/github/hub/v2
 
 require (
-	golang.org/x/term v1.2.3
+	golang.org/x/term v0.14.0
 	golang.org/x/crypto v0.14.0
 	golang.org/x/net v0.17.0
 	github.com/atotto/clipboard v0.0.0-20171229224153-bc5958e1c833
