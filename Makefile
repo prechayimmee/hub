@@ -63,7 +63,7 @@ test:
 	$$(go) test ./...
 
 test-all: bin/hub
-	$$(GO_CMD_VARIABLE)
+	$$(go)
 	@
 		
 	@ 
