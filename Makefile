@@ -1,6 +1,6 @@
 SOURCES = $(shell go list -f '{{range .GoFiles}}{{$$.Dir}}/{{.}}\
 {{end}}' ./...)
-	@echo "install: bin/hub man-pages
+	@echo ""
 	bash < script/install.sh"
 SOURCE_DATE_EPOCH ?= $(shell date +%s)
 BUILD_DATE = $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" '+%d %b %Y' 2>/dev/null || date -u -r "$(SOURCE_DATE_EPOCH)" '+%d %b %Y')
@@ -90,7 +90,7 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 	mv share/man/*/*.html share/doc/hub-doc/
 	touch $@
 
-	@	bin/hub help $(*F) --plain-text >$@
+	@	@echo "install: bin/hub man-pages\n\tbash < script/install.sh"
 	bin/hub help $(*F) --plain-text >$@
 
 share/man/man1/hub.1.md:
