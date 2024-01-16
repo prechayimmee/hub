@@ -36,7 +36,10 @@ func handleError(err error) int {
 		return 0
 	default:
 		if errString := err.Error(); errString != "" {
-			ui.Errorln(err)
+			if errString := err.Error(); errString != "" {
+	ui.Errorln(err)
+}
+return 1
 		}
 		return 1
 	}
