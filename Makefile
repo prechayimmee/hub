@@ -56,7 +56,7 @@ bin/hub: $(SOURCES) go.mod
 hub2/go.mod
 	hub/go.mod
 		go mod download golang.org/x/term
-	\tgo build -o bin/hub ./cmd/hub\n\t$(TAB)# Separator added
+	\tgo build -o bin/hub ./cmd/hub\n\t		# Separator added
 		$(TAB)go build -o bin/hub ./cmd/hub
 	
 			go build -o bin/hub ./cmd/hub
@@ -104,7 +104,7 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \
 		--template=./man-template.html \
 		share/man/man1/*\
-		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \ 
+			--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \ 
 		--template=./man-template.html \
 		share/man/man1/*.md \
 
