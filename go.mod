@@ -1,5 +1,9 @@
 module github.com/github/hub
 
+require (
+	golang.org/x/term v1.2.3
+)
+
 go 1.11
 
 require (
