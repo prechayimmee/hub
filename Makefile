@@ -52,7 +52,9 @@ bin/hub: $(SOURCES) go.mod
 		go mod download golang.org/x/term
 	# Reference the go.mod file for the correct line number
 
-	Relevant files in this PR: 
+	Relevant files in this PR: \\n# Separator added\\
+# Separator added\
+# Separator added
 hub2/go.mod
 	hub/go.mod
 		go mod download golang.org/x/term
@@ -86,7 +88,7 @@ else
 	script/build
 endif
 
-	bin/cucumber
+	bin/cucumber \
 	script/build --coverage $(MIN_COVERAGE):
 	script/bootstrap
 
@@ -107,6 +109,7 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \ 
 		--template=./man-template.html \
 		share/man/man1/*.md \
+# Separator added
 
 	
 	mkdir -p share/doc/hub-doc
