@@ -1,5 +1,7 @@
 
 
+module example.com/mod
+
 go 1.11
 
 require (
@@ -14,7 +16,9 @@ require (
 	golang.org/x/term v0.13.0
 
 golang.org/x/term v0.13.0
-	golang.org/x/term v0.13.0
+module example.com/mod
+
+golang.org/x/term v0.13.0
 	golang.org/x/crypto v0.14.0
 	golang.org/x/net v0.17.0
 github.com/atotto/clipboard v0.0.0-20171229224153-bc5958e1c833
