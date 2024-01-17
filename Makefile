@@ -48,7 +48,8 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
-	$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub
+	@deps
+	go build -o bin/hub ./cmd/hub
 
 	## Corrected separator added
 
@@ -60,18 +61,45 @@ test:
 
 
 test-all: bin/hub
-	$$(GO_CMD_VARIABLE)
+de
+	d
+	eps:
+	go
+	@deps
+	go
+	@deps
+	go
+	$(GO_CMD_VARIABLE)
+	go
+	$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub
+de
+	d
+	eps:
+	@deps
+	go
+	@deps
+	go
+	@deps
+	go
+	$(GO_CMD_VARIABLE)
+	go
+	$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub
+cd ./cmd/hub
+make
+	deps:
+	go mod download github.com/BurntSushi/toml
 	@
 		
 	@ 
 	@
 ifdef CI
-	script/build --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+	go test --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
 	script/build
 endif
 
-	bin/cucumber
+deps:
+	go mod download github.com/BurntSushi/toml
 	script/build --coverage $(MIN_COVERAGE):
 	script/bootstrap
 
@@ -102,7 +130,12 @@ $(HELP_ALL): share/man/.man-pages.stamp
 
 
 install: bin/hub man-pages
-	bash < script/install.sh
+	@deps
+	go install ./cmd/hub
+	@deps
+	@deps
+	go install ./cmd/hub
+	@deps
 
 clean:\
 \tgit clean -fdx bin share/man tmp

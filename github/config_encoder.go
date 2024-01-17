@@ -8,10 +8,14 @@ import (
 )
 
 type configEncoder interface {
+    Encode(w io.Writer, c *Config) error
 	Encode(w io.Writer, c *Config) error
 }
 
 type tomlConfigEncoder struct {
+}
+
+func (t *tomlConfigEncoder) Encode(w io.Writer, c *Config) error {
 }
 
 func (t *tomlConfigEncoder) Encode(w io.Writer, c *Config) error {
@@ -20,6 +24,9 @@ func (t *tomlConfigEncoder) Encode(w io.Writer, c *Config) error {
 }
 
 type yamlConfigEncoder struct {
+}
+
+func (y *yamlConfigEncoder) Encode(w io.Writer, c *Config) error {
 }
 
 func (y *yamlConfigEncoder) Encode(w io.Writer, c *Config) error {
