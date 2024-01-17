@@ -2,6 +2,7 @@
 # Usage: script/test [--coverage [<MIN>]] [<FEATURES>...]
 #
 # Run Go and Cucumber test suites for hub.
+# Note: Test commands are defined in the Makefile.
 
 set -e
 
