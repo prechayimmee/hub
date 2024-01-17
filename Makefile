@@ -31,7 +31,7 @@ test:
 go mod download golang.org/x/term
 	test-all: bin/hub
 	@bin/hub
-	@
+		@
 		
 	@ 
 	@
