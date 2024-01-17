@@ -1,4 +1,12 @@
 golang.org/x/term v0.13.0
+golang.org/x/crypto v0.14.0
+golang.org/x/net v0.17.0
+golang.org/x/mod v0.2.0
+golang.org/x/sys v0.0.0-20210426182820-c53e23b2caa5
+    golang.org/x/crypto v0.14.0
+    golang.org/x/net v0.17.0
+    golang.org/x/mod v0.2.0
+    golang.org/x/sys v0.0.0-20210426182820-c53e23b2caa5
 	golang.org/x/crypto v0.14.0
 	golang.org/x/net v0.17.0
 	golang.org/x/mod v0.2.0
@@ -16,6 +24,10 @@ require (
 	github.com/mitchellh/go-homedir v0.0.0-20161203194507-b8bc1bf76747
 	github.com/russross/blackfriday v0.0.0-20180526075726-670777b536d3
 	golang.org/x/term v0.13.0
+        golang.org/x/crypto v0.14.0
+        golang.org/x/net v0.17.0
+        golang.org/x/mod v0.2.0
+        golang.org/x/sys v0.0.0-20210426182820-c53e23b2caa5
 
 golang.org/x/term v0.13.0
 	golang.org/x/term v0.13.0
