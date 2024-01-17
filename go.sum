@@ -1,7 +1,7 @@
 github.com/BurntSushi/toml v0.4.0 h1:e1/Ivsx3Z0FVTV0NSOv/aVgbUWyQuzj7DDnFblkRvsY=
-github.com/BurntSushi/toml v0.3.0/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
+github.com/BurntSushi/toml v0.4.0 h1:e1/Ivsx3Z0FVTV0NSOv/aVgbUWyQuzj7DDnFblkRvsY=
 github.com/atotto/clipboard v0.0.0-20171229224153-bc5958e1c833 h1:h/E5ryZTJAtOY6T3K6u/JA1OURt0nk1C4fITywxOp4E=
-github.com/BurntSushi/toml v0.3.0 h1:e1/Ivsx3Z0FVTV0NSOv/aVgbUWyQuzj7DDnFblkRvsY=
+github.com/BurntSushi/toml v0.4.0 h1:e1/Ivsx3Z0FVTV0NSOv/aVgbUWyQuzj7DDnFblkRvsY=
 github.com/google/go-cmp v0.4.0 h1:xsAVV57WRhGj6kEIi8ReJzQlHHqcBYCElAvkovg3B/4=
 github.com/kballard/go-shellquote v0.0.0-20170619183022-cd60e84ee657 h1:vE7J1m7cCpiRVEIr1B5ccDxRpbPsWT5JU3if2Di5nE4=
 github.com/mattn/go-colorable v0.0.9 h1:UVL0vNpWh04HeJXV0KLcaT7r06gOH2l4OW6ddYRUIY4=
