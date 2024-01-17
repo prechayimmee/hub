@@ -26,7 +26,8 @@ HELP_CMD = \
 	test:	go test ./cmd/hub
 		go test ./...
 	
-	test-all: bin/hub
+	test-all:
+\tbin/hub
 	go test ./...
 			
 		@ 
