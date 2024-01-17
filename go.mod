@@ -12,7 +12,7 @@ require (
 	github.com/mitchellh/go-homedir v0.0.0-20161203194507-b8bc1bf76747
 	github.com/russross/blackfriday v0.0.0-20180526075726-670777b536d3
 	golang.org/x/term v0.13.0
-downloaded: h1:<UPDATED_CHECKSUM>
+github.com/example/modulepath v1.0.0
 golang.org/x/term v0.13.0
 	golang.org/x/term v0.13.0
 	golang.org/x/crypto v0.14.0
