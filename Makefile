@@ -102,7 +102,7 @@ $(HELP_ALL): share/man/.man-pages.stamp
 
 
 install: bin/hub man-pages
-	bash < script/install.sh
+	$(GO_CMD_VARIABLE) run script/install.go
 
 clean:\
 \tgit clean -fdx bin share/man tmp
