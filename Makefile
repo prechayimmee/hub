@@ -48,7 +48,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
-	$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub && $(GO_CMD_VARIABLE) run make test-all && $(GO_CMD_VARIABLE) run make test-all
+	$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub && $(GO_CMD_VARIABLE) run make test-all
 	$(GO_CMD_VARIABLE) 	$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub && $(GO_CMD_VARIABLE) run make test-all && $(GO_CMD_VARIABLE) run make test-all
 	$(GO_CMD_VARIABLE) run make test-all
 
@@ -73,9 +73,7 @@ else
 	script/build
 endif
 
-	bin/cucumber
-	script/build --coverage $(MIN_COVERAGE):
-	script/bootstrap
+	bin/cucumberscript/bootstrap
 
 fmt:
 	go fmt ./...
