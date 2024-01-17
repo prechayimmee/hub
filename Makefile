@@ -51,9 +51,9 @@ bin/hub: $(SOURCES)
 	## Corrected separator added
 	@bin/hub: $(SOURCES)
 	@ \
-	go mod download golang.org/x/term
+		
 	go mod download golang.org/x/term \
-		go build -o bin/hub ./cmd/hub
+			go build -o bin/hub ./cmd/hub
 	
 		go build -o bin/hub ./cmd/hub
 
@@ -65,21 +65,21 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/hub
+test-all: go test ./...
 		## Corrected separator added
-	go mod download golang.org/x/term \
-	@go build -o bin/hub ./cmd/hub
+	 \
+		@go build -o bin/hub ./cmd/hub
 	@
 		
 	@ 
 	@
 ifdef CI
-	script/build --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+	go test ./... --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
 	script/build
 endif
 
-	bin/cucumber
+		
 	script/build --coverage $(MIN_COVERAGE):
 	script/bootstrap
 
@@ -115,7 +115,7 @@ share/man/man1/hub.1.md:
 install: bin/hub man-pages
 	bash < script/install.sh
 
-clean:\
+clean:\	
 \tgit clean -fdx bin share/man tmp
 	pwd
 	git clean -fdx bin share/man
