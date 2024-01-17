@@ -49,6 +49,7 @@ HELP_CMD = \
 	%.txt: %
 		groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
 	
+	# Update to fix recipe error
 	$(HELP_ALL): share/man/.man-pages.stamp
 	share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 		bin/md2roff --manual="hub manual" \
