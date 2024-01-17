@@ -48,11 +48,11 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
-	go build -o bin/hub ./cmd/hub && $(GO_CMD_VARIABLE) run make test-all
-	$(GO_CMD_VARIABLE) 	$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub && $(GO_CMD_VARIABLE) run make test-all && $(GO_CMD_VARIABLE) run make test-all
+	go build -o bin/hub ./cmd/hub && run make test-all
+	$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub && $(GO_CMD_VARIABLE) run make test-all && run make test-all
 	$(GO_CMD_VARIABLE) run make test-all
 
-	## Corrected separator added
+
 
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
