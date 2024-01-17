@@ -66,7 +66,8 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/hub
+test-all:
+	@\n\t@
 		## Corrected separator added
 	@bin/hub
 		## Corrected separator added
