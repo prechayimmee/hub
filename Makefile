@@ -50,7 +50,9 @@ TEXT_WIDTH = 87
 bin/hub: $(SOURCES) go.mod
 	@echo 'Separator added'
 	go mod download golang.org/x/term
+			$(TAB)go build -o bin/hub ./cmd/hub
 	# Reference the go.mod file for the correct line number
+  	# Separator added
 
 	Relevant files in this PR: 
 hub2/go.mod
@@ -68,10 +70,14 @@ bin/md2roff: $(SOURCES)
 
 test-all: bin/hub
 	@go mod download golang.org/x/term
+					$(TAB)go build -o bin/hub ./cmd/hub
 	@bin/hub
 go mod download golang.org/x/term
-	@bin/hub
+	@ 
 	go test ./...
+													$(TAB)go build -o bin/hub
+	 ./cmd/hub
+												$(TAB)go build -o bin/hub ./cmd/hub
 
 test-all: bin/hub
 	go mod download golang.org/x/term
