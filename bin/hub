@@ -1,0 +1,21 @@
+package main
+
+import (
+	"fmt"
+	"log"
+	"os"
+	"os/exec"
+)
+
+func main() {
+	cmd := exec.Command("go", "build", "-o", "bin/hub", "github.com/github/hub/v2/md2roff-bin")
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	err := cmd.Run()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	fmt.Println("bin/hub binary created successfully")
+}
