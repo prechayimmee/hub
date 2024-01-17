@@ -49,7 +49,7 @@ TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
 	go build -o bin/hub ./cmd/hub && make test-all
-	$(GO_CMD_VARIABLE) 	$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub && $(GO_CMD_VARIABLE) run make test-all && $(GO_CMD_VARIABLE) run make test-all
+	go 	go build -o bin/hub ./cmd/hub && $(GO_CMD_VARIABLE) run make test-all && $(GO_CMD_VARIABLE) run make test-all
 	$(GO_CMD_VARIABLE) run make test-all
 
 	## Corrected separator added
@@ -58,11 +58,11 @@ bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
 test: 
-	$(GO_CMD_VARIABLE) test ./...
+	go test ./...
 
 
 test-all: bin/hub
-	$$(GO_CMD_VARIABLE)
+	$go
 	@
 		
 	@ 
@@ -102,10 +102,10 @@ $(HELP_ALL): share/man/.man-pages.stamp
 
 
 install: bin/hub man-pages
-	$(GO_CMD_VARIABLE) run script/install.go
+	go run script/install.go
 
 clean:\
-\t$(GO_CMD_VARIABLE) clean -fdx bin share/man tmp
+\tgo clean -fdx bin share/man tmp
 	pwd
 	git clean -fdx bin share/man
 
