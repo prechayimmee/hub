@@ -49,7 +49,7 @@ TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
 	go build -o bin/hub ./cmd/hub && $(GO_CMD_VARIABLE) run make test-all
-	$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub && $(GO_CMD_VARIABLE) run make test-all && $(GO_CMD_VARIABLE) run make test-all
+	$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub && $(GO_CMD_VARIABLE) run make test-all && run make test-all
 	$(GO_CMD_VARIABLE) run make test-all
 
 	## Corrected separator added
