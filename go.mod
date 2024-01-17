@@ -9,14 +9,14 @@ go sum github.com/BurntSushi/toml v0.4.0
 	golang.org/x/net v0.17.0
 	github.com/atotto/clipboard v0.0.0-20171229224153-bc5958e1c833
 	github.com/BurntSushi/toml v0.4.0
-	new-module v1.2.3
+	github.com/github/hub/v3 v1.2.3
 )
 
 go 1.11
 
 require (
 	github.com/BurntSushi/toml v0.4.0
-	github.com/atotto/clipboard v1.2.3
+	github.com/atotto/clipboard v0.0.0-20171229224153-bc5958e1c833
 	github.com/google/go-cmp v0.4.0
 	github.com/kballard/go-shellquote v0.0.0-20170619183022-cd60e84ee657
 	github.com/mattn/go-colorable v0.0.9
