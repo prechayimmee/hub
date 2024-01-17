@@ -55,7 +55,8 @@ bin/hub: $(SOURCES) go.mod
 	
 			go build -o bin/hub ./cmd/hub
 
-	## Corrected separator added
+		## Corrected separator added
+	##---------------------------------------------
 
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
@@ -65,6 +66,7 @@ test:
 
 go mod download golang.org/x/term
 	test-all: bin/hub
+	@echo "Running test-all"
 	
 	@bin/hub
 	@
