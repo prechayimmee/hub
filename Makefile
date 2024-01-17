@@ -49,7 +49,9 @@ TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
 		## Adding a separator at line 82
+	# Separator added
 		## Adding separator at line 82
+	# Separator added
 	
 	go mod download golang.org/x/term	## Corrected separator added
 	
@@ -58,7 +60,11 @@ bin/hub: $(SOURCES)
 	v0.13.0
 	go mod download golang.org/x/term	## Corrected separator added
 	go build -o bin/hub ./cmd/hub
-	## Corrected separator added\ngo mod download github.com/BurntSushi/toml\n\tgo build -o bin/hub ./cmd/hub
+	## Corrected separator added
+	# Separator added
+	# Added separator at line 82
+	go mod download github.com/BurntSushi/toml
+	# Separator added
 	
 	
 		go build -o bin/hub ./cmd/hub
