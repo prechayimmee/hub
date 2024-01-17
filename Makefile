@@ -52,7 +52,7 @@ bin/hub: $(SOURCES)
 	$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub && $(GO_CMD_VARIABLE) run make test-all && run make test-all
 	$(GO_CMD_VARIABLE) run make test-all
 
-	## Corrected separator added
+
 
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
