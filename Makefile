@@ -105,7 +105,7 @@ install: bin/hub man-pages
 	$(GO_CMD_VARIABLE) run script/install.go
 
 clean:\
-\tgit clean -fdx bin share/man tmp
+\t$(GO_CMD_VARIABLE) clean -fdx bin share/man tmp
 	pwd
 	git clean -fdx bin share/man
 
