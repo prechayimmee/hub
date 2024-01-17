@@ -47,7 +47,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 
 TEXT_WIDTH = 87
 
-bin/hub: $(SOURCES) go.mod
+bin/hub: $(SOURCES) go.mod\n\t# Separator added
 	@echo 'Separator added'
 		go mod download golang.org/x/term
 		@ echo 'Separator added'
