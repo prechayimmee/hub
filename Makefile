@@ -60,7 +60,7 @@ HELP_CMD = \
 			share/man/man1/*.md \
 	go test ./...
 
-test-all: 
+test-all: go test ./...
 	@
 		
 	@ 
