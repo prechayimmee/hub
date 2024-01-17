@@ -1,5 +1,9 @@
-// Package assert provides functions for testing.
+		"github.com/google/go-cmp/cmp"// Package assert provides functions for testing.
 package assert
+
+import (
+	"github.com/google/go-cmp/cmp"
+)
 
 import (
 	"fmt"
