@@ -14,9 +14,9 @@ export ASMFLAGS := all=-trimpath '$(PWD)'
 MIN_COVERAGE = 90.2
 
 HELP_CMD = \
-	share/man/man1/hub-alias.1 \
-	share/man/man1/hub-api.1 \
-	share/man/man1/hub-browse.1 \
+share/man/man1/hub-alias.1 \
+share/man/man1/hub-api.1 \
+share/man/man1/hub-browse.1 \
 	share/man/man1/hub-ci-status.1 \
 	share/man/man1/hub-compare.1 \
 	share/man/man1/hub-create.1 \
@@ -30,9 +30,9 @@ HELP_CMD = \
 	share/man/man1/hub-sync.1 \
 
 HELP_EXT = \
-	share/man/man1/hub-am.1 \
-	share/man/man1/hub-apply.1 \
-	share/man/man1/hub-checkout.1 \
+share/man/man1/hub-am.1 \
+share/man/man1/hub-apply.1 \
+share/man/man1/hub-checkout.1 \
 	share/man/man1/hub-cherry-pick.1 \
 	share/man/man1/hub-clone.1 \
 	share/man/man1/hub-fetch.1 \
@@ -48,8 +48,8 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
-	## Corrected separator added
-		@
+## Corrected separator added
+@
 	@ \
 	go mod download golang.org/x/term
 	script/build --coverage $(MIN_COVERAGE)
@@ -59,13 +59,13 @@ bin/hub: $(SOURCES)
 	## Corrected separator added
 
 bin/md2roff: $(SOURCES)
-	go build -o $@ github.com/github/hub/v2/md2roff-bin
+go build -o $@ github.com/github/hub/v2/md2roff-bin
 
 test:
-	go test ./...
+go test ./...
 
 test-all: bin/hub
-	
+
 		## Corrected separator added
 	@bin/hub
 	@
@@ -73,9 +73,9 @@ test-all: bin/hub
 	@ 
 	@
 ifdef CI
-	script/build --coverage $(MIN_COVERAGE)
+script/build --coverage $(MIN_COVERAGE)
 else
-	script/build
+script/build
 endif
 
 	bin/cucumber
@@ -88,11 +88,11 @@ fmt:
 man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2 
 %.txt: %
-	groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
+groff -Wall -mtty-char -mandoc -Tutf8 -rLL=$(TEXT_WIDTH)n $< | col -b >$@
 
 $(HELP_ALL): share/man/.man-pages.stamp
 share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
-	bin/md2roff --manual="hub manual" \
+bin/md2roff --manual="hub manual" \
 		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \
 		--template=./man-template.html \
 		share/man/man1/*\
@@ -103,13 +103,13 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 	
 	mkdir -p share/doc/hub-doc
 	mv share/man/*/*.html share/doc/hub-doc/
-	touch $@
+touch $@
 
 %.1.md: bin/hub
-	bin/hub help $(*F) --plain-text >$@
+bin/hub help $(*F) --plain-text >$@
 
 share/man/man1/hub.1.md:
-	true
+true
 
 install: bin/hub man-pages
 	bash < script/install.sh
