@@ -49,7 +49,7 @@ TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES) go.mod
 
-		go mod download golang.org/x/term v0.13.0
+	
 	
 		go mod download golang.org/x/term
 	go build -o bin/hub ./cmd/hub
@@ -65,7 +65,7 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: download-module
+test-all:
 	
 	go build -o bin/hub ./cmd/hub
 	@bin/hub
@@ -125,5 +125,5 @@ clean:\
 
 .PHONY: clean test test-all man-pages fmt install
 
-download-module:
+
 	go mod download golang.org/x/term
