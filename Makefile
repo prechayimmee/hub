@@ -47,7 +47,8 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 
 TEXT_WIDTH = 87
 
-bin/hub: $(SOURCES)\n\t## Corrected separator added
+bin/hub: $(SOURCES)
+	## Corrected separator added
 	go fmt ./...
 	bin/md2roff --manual="hub manual" --coverage 90.2 --coverage 90.2 --coverage 90.2\ 	
 		@ 	## Corrected separator added
