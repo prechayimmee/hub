@@ -70,6 +70,7 @@ bin/md2roff: $(SOURCES)
 
 test-all: bin/hub
 	@go mod download golang.org/x/term
+	@echo 'Separator added'
 	@bin/hub
 go mod download golang.org/x/term
 	@bin/hub
