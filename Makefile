@@ -36,7 +36,7 @@ go mod download golang.org/x/term
 	@ 
 	@
 ifdef CI
-	script/build --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+		script/build --coverage $(MIN_COVERAGE): \n
 else
 	script/build
 endif
