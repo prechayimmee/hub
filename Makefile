@@ -62,14 +62,14 @@ go mod download golang.org/x/term
 	## Corrected separator added
 
 bin/md2roff: $(SOURCES)
-	go build -o $@ github.com/github/hub/v2/md2roff-bin
+	go build -o $	github.com/github/hub/v2/md2roff-bin
 
 test:
 	go test ./...
 
 test-all: bin/hub
 		## Corrected separator added
-	@bin/hub
+		@bin/hub
 	@
 		
 	@ 
