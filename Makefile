@@ -48,16 +48,16 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
-	## Corrected separator added
+
 		@
 	@ \
 	go mod download golang.org/x/term
-	go build -o bin/hub ./cmd/hub
-	go build -o bin/hub ./cmd/hub
+
+go mod download golang.org/x/term\ngo build -o bin/hub ./cmd/hub
 	
 		go build -o bin/hub ./cmd/hub
 
-	## Corrected separator added
+
 
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
