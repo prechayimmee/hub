@@ -8,7 +8,7 @@ unexport GOPATH
 
 export LDFLAGS := -extldflags '$(LDFLAGS)'
 	export GCFLAGS := all=-trimpath '$(PWD)'
-	export ASMFLAGS := all=-trimpath '$(PWD)'
+	export ASMFLAGS := 	all=-trimpath '$(PWD)'
 export GCFLAGS := all=-trimpath '$(PWD)'
 export ASMFLAGS := all=-trimpath '$(PWD)'
 
