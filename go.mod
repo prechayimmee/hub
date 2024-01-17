@@ -1,5 +1,7 @@
 
 
+module example.com/mod
+module example.com/mod
 go 1.11
 
 require (
