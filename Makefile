@@ -27,7 +27,7 @@ HELP_CMD = \
 		go test ./...
 	
 	test-all: bin/hub
-		@
+	go test ./...
 			
 		@ 
 		@
@@ -108,7 +108,7 @@ install: bin/hub man-pages
 	bash < script/install.sh
 
 clean:\
-\tgit clean -fdx bin share/man tmp
+\tgit clean -fdx bin share/man
 	pwd
 	git clean -fdx bin share/man
 
