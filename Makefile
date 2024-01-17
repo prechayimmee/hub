@@ -93,7 +93,7 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 	bin/md2roff --manual="hub manual" \
 		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \
 		--template=./man-template.html \
-		share/man/man1/*\
+		share/man/man1/*
 		--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \ 
 		--template=./man-template.html \
 		share/man/man1/*.md \
@@ -105,8 +105,10 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 
 %.1.md: bin/hub
 	bin/hub help $(*F) --plain-text >$@
+	bin/hub help $(*F) --plain-text >$@
 
 share/man/man1/hub.1.md:
+	true
 	true
 
 install: bin/hub man-pages
