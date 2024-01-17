@@ -54,7 +54,9 @@ bin/hub: $(SOURCES) go.mod
 	# Reference the go.mod file for the correct line number
   	# Separator added
 
-	Relevant files in this PR: 
+	Relevant files in this PR:
+#	Separator added
+   
 hub2/go.mod
 	hub/go.mod
 		go mod download golang.org/x/term
