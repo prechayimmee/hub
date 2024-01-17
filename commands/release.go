@@ -259,7 +259,12 @@ func listReleases(cmd *Command, args *Args) {
 
 		colorize := colorizeOutput(args.Flag.HasReceived("--color"), args.Flag.Value("--color"))
 		for _, release := range releases {
-			flagReleaseFormat := "%T%n"
+			var flagReleaseFormat string
+	if args.Flag.HasReceived("--coverage") {
+		flagReleaseFormat = "\%T\%n"
+	} else {
+		flagReleaseFormat = "%T%n"
+	}
 			if args.Flag.HasReceived("--format") {
 				flagReleaseFormat = args.Flag.Value("--format")
 			}
