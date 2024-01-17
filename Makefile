@@ -61,7 +61,7 @@ bin/md2roff: $(SOURCES)
 
 	## Corrected separator added
 
-bin/md2roff: $(SOURCES)
+bin/md2roff\n\tgo build -o $@ ./cmd/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
 test:
