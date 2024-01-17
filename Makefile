@@ -65,7 +65,7 @@ bin/md2roff: $(SOURCES)
 test:
 	go test ./...
 
-test-all: bin/hub
+test-all: go test ./...
 		## Corrected separator added
 	 \
 		@go build -o bin/hub ./cmd/hub
@@ -74,7 +74,7 @@ test-all: bin/hub
 	@ 
 	@
 ifdef CI
-	script/build --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+	go test ./... --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
 	script/build
 endif
