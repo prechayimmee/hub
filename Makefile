@@ -86,7 +86,7 @@ install: bin/hub man-pages
 
 clean:\
 \tgit clean -fdx bin share/man tmp
-	pwd
+	pwd 	
 	git clean -fdx bin share/man
 
 .PHONY: clean test test-all man-pages fmt install
