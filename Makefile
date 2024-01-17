@@ -68,7 +68,8 @@ test-all: bin/hub
 	@ 
 	@
 ifdef CI
-	script/build --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+	script/build
+	$(GO_CMD_VARIABLE) fmt ./... --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
 	script/build
 endif
