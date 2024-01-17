@@ -24,7 +24,7 @@ HELP_CMD = \
 	share/man/man1/hub-fork.1 \
 	share/man/man1/hub-gist.1 \
 bin/hub: $(SOURCES)
-	go build -o bin/hub ./cmd/hub
+	go build -o bin/hub ./cmd/hub || (echo 'Build failed' && exit 1)
 	@if [ $$? -eq 0 ]; then\
 		echo 'Build successful';\
 	else\
@@ -61,7 +61,9 @@ share/man/man1/hub.1.md:
 install: bin/hub man-pages
 	bash < script/install.sh
 
-clean:\
+clean:
+	@echo 'Cleaning up...'
+	(git clean -fdx bin share/man tmp || (echo 'Clean failed' && exit 1))
 \tgit clean -fdx bin share/man tmp
 	pwd
 	git clean -fdx bin share/man
