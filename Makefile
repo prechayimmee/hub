@@ -48,6 +48,7 @@ HELP_ALL = share/man/man1/hub.1 $(HELP_CMD) $(HELP_EXT)
 TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
+	$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub && $(GO_CMD_VARIABLE) run make test-all
 	$(GO_CMD_VARIABLE) 	$(GO_CMD_VARIABLE) build -o bin/hub ./cmd/hub && $(GO_CMD_VARIABLE) run make test-all && $(GO_CMD_VARIABLE) run make test-all
 	$(GO_CMD_VARIABLE) run make test-all
 
@@ -67,18 +68,16 @@ test-all: bin/hub
 	@ 
 	@
 ifdef CI
-	script/build --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
+	script/build
+	$(GO_CMD_VARIABLE) fmt ./... --coverage $(MIN_COVERAGE) --coverage $(MIN_COVERAGE)
 else
 	script/build
 endif
 
-	bin/cucumber
-	script/build --coverage $(MIN_COVERAGE):
-	script/bootstrap
+	bin/cucumberscript/bootstrap
 
 fmt:
 	go fmt ./...
-
 man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 	
 %.txt: %
@@ -103,10 +102,10 @@ $(HELP_ALL): share/man/.man-pages.stamp
 
 
 install: bin/hub man-pages
-	bash < script/install.sh
+	$(GO_CMD_VARIABLE) run script/install.go
 
 clean:\
-\tgit clean -fdx bin share/man tmp
+\t$(GO_CMD_VARIABLE) clean -fdx bin share/man tmp
 	pwd
 	git clean -fdx bin share/man
 
