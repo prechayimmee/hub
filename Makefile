@@ -56,7 +56,7 @@ bin/hub: $(SOURCES) go.mod
 hub2/go.mod
 	hub/go.mod
 		go mod download golang.org/x/term
-	\tgo build -o bin/hub ./cmd/hub\n\t		# Separator added
+	\t\tgo build -o bin/hub ./cmd/hub\n\t		# Separator added
 		$(TAB)go build -o bin/hub ./cmd/hub
 	
 			go build -o bin/hub ./cmd/hub
