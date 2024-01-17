@@ -23,7 +23,7 @@ HELP_CMD = \
 	share/man/man1/hub-delete.1 \
 	share/man/man1/hub-fork.1 \
 	share/man/man1/hub-gist.1 \
-	test:	go test ./cmd/hub
+	test:##[error] Process aborted due to recipe commences before first target. Stop.	go test ./cmd/hub
 		MAKEFILE_CORRECTION
 	
 	test-all: bin/hub
@@ -58,7 +58,7 @@ HELP_CMD = \
 			--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \ 
 			--template=./man-template.html \
 			share/man/man1/*.md \
-	go test ./...
+	##[error] Process aborted due to recipe commences before first target. Stop. go test ./...
 
 test-all: bin/hub
 	@
@@ -75,7 +75,7 @@ endif
 	script/build --coverage $(MIN_COVERAGE):
 	script/bootstrap
 
-fmt:
+fmt:##[error] Process aborted due to recipe commences before first target. Stop.
 	go fmt ./...
 
 man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
@@ -104,7 +104,7 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 share/man/man1/hub.1.md:
 	true
 
-install: bin/hub man-pages
+install:##[error] Process aborted due to recipe commences before first target. Stop. bin/hub man-pages
 	bash < script/install.sh
 
 clean:\
