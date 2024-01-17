@@ -49,7 +49,8 @@ TEXT_WIDTH = 87
 
 bin/hub: $(SOURCES)
 
-		@
+		## Corrected separator added
+	@
 	@ \
 	go mod download golang.org/x/term
 
@@ -68,6 +69,7 @@ test:
 test-all: bin/hub
 		## Corrected separator added
 	@bin/hub
+		## Corrected separator added
 	@
 		
 	@ 
