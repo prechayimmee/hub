@@ -11,9 +11,9 @@ require (
 	github.com/mattn/go-isatty v0.0.3
 	github.com/mitchellh/go-homedir v0.0.0-20161203194507-b8bc1bf76747
 	github.com/russross/blackfriday v0.0.0-20180526075726-670777b536d3
-	golang.org/x/term@v1.2.3
+	golang.org/x/term/v2@v2.0.0
 golang.org/x/term/v2 v2.0.0 h1:vl9Fol5iMsc501bM7Th+j6cpH1reZFL93cSKzuUF8gA=
-golang.org/x/term v1.2.3 h1:vl9Fol5iMsc501bM7Th+j6cpH1reZFL93cSKzuUF8gA=
+golang.org/x/term/v2 v2.0.0 h1:vl9Fol5iMsc501bM7Th+j6cpH1reZFL93cSKzuUF8gA=
 golang.org/x/term v1.2.3
 	golang.org/x/term v0.13.0
 golang.org/x/term/v0.13.0 v0.13.0 h1:4ya8tE6sVHlFq2ariUlyGDcMcD8mBIVCavDp+LvHxBI=
