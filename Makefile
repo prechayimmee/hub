@@ -107,9 +107,7 @@ share/man/.man-pages.stamp: $(HELP_ALL:=.md) ./man-template.html bin/md2roff
 	bin/hub help $(*F) --plain-text >$@
 	bin/hub help $(*F) --plain-text >$@
 
-share/man/man1/hub.1.md:
-	true
-	true
+bin/hub help $(\*F) --plain-text >$(FILE)
 
 install: bin/hub man-pages
 	bash < script/install.sh
