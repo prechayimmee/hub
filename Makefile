@@ -46,7 +46,7 @@ endif
 
 	bin/cucumber
 	@echo "------------------------------------"
-	script/build --coverage $(MIN_COVERAGE):
+		script/build --coverage $(MIN_COVERAGE):
 	script/bootstrap
 
 fmt:
