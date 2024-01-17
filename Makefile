@@ -50,7 +50,7 @@ TEXT_WIDTH = 87
 bin/hub: $(SOURCES) go.mod
 	test-all: bin/hub
 	
-go mod download golang.org/x/term
+	go mod download golang.org/x/term
 					go build -o bin/hub ./cmd/hub
 	
 	go build -o bin/hub ./cmd/hub
