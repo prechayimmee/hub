@@ -53,7 +53,7 @@ bin/hub: $(SOURCES)
 	@ \
 		
 	go mod download golang.org/x/term \
-		go build -o bin/hub ./cmd/hub
+			go build -o bin/hub ./cmd/hub
 	
 		go build -o bin/hub ./cmd/hub
 
@@ -68,7 +68,7 @@ test:
 test-all: bin/hub
 		## Corrected separator added
 	 \
-	@go build -o bin/hub ./cmd/hub
+		@go build -o bin/hub ./cmd/hub
 	@
 		
 	@ 
@@ -79,7 +79,7 @@ else
 	script/build
 endif
 
-	bin/cucumber
+		bin/cucumber
 	script/build --coverage $(MIN_COVERAGE):
 	script/bootstrap
 
@@ -115,7 +115,7 @@ share/man/man1/hub.1.md:
 install: bin/hub man-pages
 	bash < script/install.sh
 
-clean:\
+clean:\	
 \tgit clean -fdx bin share/man tmp
 	pwd
 	git clean -fdx bin share/man
