@@ -26,7 +26,7 @@ HELP_CMD = \
 	test:	go test ./cmd/hub
 		go test ./...
 	
-	test-all: bin/hub
+	test-all: go test ./...
 	go test ./...
 			
 		@ 
@@ -60,7 +60,7 @@ HELP_CMD = \
 			share/man/man1/*.md \
 	go test ./...
 
-test-all: bin/hub
+test-all: 
 	@
 		
 	@ 
