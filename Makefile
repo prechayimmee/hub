@@ -24,7 +24,7 @@ HELP_CMD = \
 	share/man/man1/hub-fork.1 \
 	share/man/man1/hub-gist.1 \
 	test:##[error] Process aborted due to recipe commences before first target. Stop.	go test ./cmd/hub
-		MAKEFILE_CORRECTION
+		
 	
 	test-all: bin/hub
 		@
@@ -107,7 +107,7 @@ share/man/man1/hub.1.md:
 install:##[error] Process aborted due to recipe commences before first target. Stop. bin/hub man-pages
 	bash < script/install.sh
 
-clean:\
+clean:
 \tgit clean -fdx bin share/man tmp
 	pwd
 	git clean -fdx bin share/man
