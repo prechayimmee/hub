@@ -56,7 +56,7 @@ bin/hub: $(SOURCES)
 	@ 
 		## Corrected separator added
 	
-	go mod download golang.org/x/term
+		go mod download golang.org/x/term
 	## Corrected separator added
 		## Corrected separator added
 	
@@ -140,7 +140,7 @@ share/man/man1/hub.1.md:
 install: bin/hub man-pages
 	bash < script/install.sh
 
-clean:\
+	clean:\
 \t	bash < script/install.sh
 	pwd
 	git clean -fdx bin share/man
