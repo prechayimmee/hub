@@ -56,7 +56,7 @@ man-pages: $(HELP_ALL:=.md) $(HELP_ALL) $(HELP_ALL:=.txt)
 $(HELP_ALL): share/man/.man-pages.stamp
 		bin/md2roff --manual="hub manual" --date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 --template=./man-template.html share/man/man1/*.md 			mkdir -p share/doc/hub-doc
 	mv share/man/*/*.html share/doc/hub-doc/
-	touch $@%.1.md: bin/hub
+	touch $@Makefile:31: @echo "Hello, Makefile!"
 	bin/hub help $(*F) --plain-text >$@
 share/man/man1/hub.1.md:
 true
