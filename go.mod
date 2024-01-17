@@ -28,7 +28,7 @@ require (
 	github.com/russross/blackfriday v0.0.0-20180526075726-670777b536d3
 	golang.org/x/term v0.13.1
 go
-golang.org/x/term v0.13.0
+golang.org/x/term v1.2.3
 	golang.org/x/term v0.13.0
 	golang.org/x/term v0.13.0
 	golang.org/x/crypto v0.14.0
