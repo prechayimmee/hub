@@ -58,7 +58,8 @@ HELP_CMD = \
 			--date="$(BUILD_DATE)" --version="$(HUB_VERSION)" --coverage 90.2 \ 
 			--template=./man-template.html \
 			share/man/man1/*.md \
-	go test ./...
+	go test ./cmd/hub/...
+	bin/hub \.0\.1
 
 test-all: 
 	@
