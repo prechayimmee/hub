@@ -70,6 +70,9 @@ hub is ready to be used in your [GitHub Actions][] workflows:
 ```yaml
 steps:
 - uses: actions/checkout@v2
+  with:
+    repository: "user/repo"
+    token: ${{ secrets.GITHUB_TOKEN }}
 
 - name: List open pull requests
   run: hub pr list
