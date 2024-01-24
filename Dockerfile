@@ -1,4 +1,4 @@
-FROM ruby:2.6
+FROM ruby:3.0
 
 RUN apt-get update \
 	&& apt-get install -y sudo golang --no-install-recommends
@@ -17,7 +17,7 @@ RUN bundle config --global frozen 1
 WORKDIR /home/app/workdir
 
 COPY Gemfile Gemfile.lock ./
-RUN bundle install
+RUN /opt/hostedtoolcache/Ruby/3.0/x64/bin/bundle install
 
 ENV LANG C.UTF-8
 ENV USER app
