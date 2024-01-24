@@ -28,7 +28,8 @@ else
 fi
 
 case "$topic" in
-refs/heads/??/*)
+WIP*/) continue ;;
+
 	;;
 *)
 	exit 0 ;# we do not interrupt others.
@@ -42,7 +43,7 @@ esac
 git show-ref -q "$topic" || {
 	echo >&2 "No such branch $topic"
 	exit 1
-}
+
 
 # Is topic fully merged to master?
 not_in_master=`git rev-list --pretty=oneline ^master "$topic"`
@@ -66,14 +67,14 @@ then
 		exit 0
 	fi
 else
-	not_in_next=`git rev-list --pretty=oneline ^${publish} "$topic"`
+	not_in_next=`git rev-list --pretty=oneline ^${publish "$topic"`
 	/usr/bin/perl -e '
 		my $topic = $ARGV[0];
 		my $msg = "* $topic has commits already merged to public branch:\n";
 		my (%not_in_next) = map {
 			/^([0-9a-f]+) /;
 			($1 => 1);
-		} split(/\n/, $ARGV[1]);
+		 split(/\n/, $ARGV[1]);
 		for my $elem (map {
 				/^([0-9a-f]+) (.*)$/;
 				[$1 => $2];
@@ -87,7 +88,7 @@ else
 			}
 		}
 	' "$topic" "$not_in_next" "$not_in_master"
-	exit 1
+	
 fi
 
 exit 0
@@ -102,20 +103,18 @@ The workflow assumed here is:
  * Once a topic branch forks from "master", "master" is never
    merged into it again (either directly or indirectly).
 
- * Once a topic branch is fully cooked and merged into "master",
-   it is deleted.  If you need to build on top of it to correct
-   earlier mistakes, a new topic branch is created by forking at
-   the tip of the "master".  This is not strictly necessary, but
-   it makes it easier to keep your history simple.
+ 
 
  * Whenever you need to test or publish your changes to topic
    branches, merge them into "next" branch.
 
-The script, being an example, hardcodes the publish branch name
-to be "next", but it is trivial to make it configurable via
-$GIT_DIR/config mechanism.
+The script, More importantly, you should not build on top of it -- other people may already want to
+    change things related to the topic as patches against your
+    "master", so if you need further changes, it is better to
+    fork the topic (perhaps with the same name) afresh from the
+    tip of "master".
 
-With this workflow, you would want to know:
+
 
 (1) ... if a topic branch has ever been merged to "next".  Young
     topic branches can have stupid mistakes you would rather
@@ -130,7 +129,7 @@ With this workflow, you would want to know:
     change things related to the topic as patches against your
     "master", so if you need further changes, it is better to
     fork the topic (perhaps with the same name) afresh from the
-    tip of "master".
+   tip of "master".
 
 Let's look at this example:
 
@@ -145,22 +144,8 @@ Let's look at this example:
     ---o---o---o---o---o---o---o---o---o---o---o "master"
 
 
-A, B and C are topic branches.
 
- * A has one fix since it was merged up to "next".
 
- * B has finished.  It has been fully merged up to "master" and "next",
-   and is ready to be deleted.
-
- * C has not merged to "next" at all.
-
-We would want to allow C to be rebased, refuse A, and encourage
-B to be deleted.
-
-To compute (1):
-
-	git rev-list ^master ^topic next
-	git rev-list ^master        next
 
 	if these match, topic has not merged in next at all.
 
