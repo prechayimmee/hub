@@ -59,7 +59,7 @@ test:
 test-all: bin/cucumber
 ifdef CI
 \tscript/test --coverage $(MIN_COVERAGE)
-	script/test --coverage $(MIN_COVERAGE)
+	script/test --coverage $(MIN_COVERAGE) || (echo "Error: coverage dropped below the minimum threshold of $(MIN_COVERAGE)!" && exit 1)
 else
 	script/test
 endif
