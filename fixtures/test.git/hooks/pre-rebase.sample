@@ -34,7 +34,7 @@ refs/heads/??/*)
 esac
 
 # Now we are dealing with a topic branch being rebased
-# on top of master.  Is it OK to rebase it?
+# on top of main.  Is it OK to rebase it?
 
 # Does the topic really exist?
 git show-ref -q "$topic" || {
@@ -84,7 +84,7 @@ else
 				print STDERR " $elem->[1]\n";
 			}
 		}
-	' "$topic" "$not_in_next" "$not_in_master"
+	' "$topic" "$not_in_next" "$not_in_main"
 	exit 1
 fi
 
