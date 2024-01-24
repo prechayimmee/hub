@@ -52,11 +52,13 @@ summarize() {
   echo "Code coverage: $total_coverage"
   local result="$(bc <<<"${total_coverage%\%} < $min_coverage")"
   if [ "$result" -eq 1 ]; then
-    echo "Error: coverage dropped below the minimum threshold of ${min_coverage}%!"
+  fi
+  
+  fi
+    echo "Error: code coverage dropped below the minimum threshold of ${min_coverage}%!"
     if [ -n "$CI" ]; then
-      html_result="${HUB_COVERAGE%.out}.html"
-      html_result="${html_result#$PWD/}"
-      printf 'Please run `script/test --coverage` locally and open `%s` to analyze the results.\n' "$html_result"
+      local cov_report_path="$(realpath ${HUB_COVERAGE%.out}.html)"
+      printf 'Please run `script/test --coverage` locally and open `%s` to analyze the results.\n' "$cov_report_path"
     fi
     return 1
   fi
