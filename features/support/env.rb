@@ -14,7 +14,7 @@ Aruba.configure do |aruba|
 end
 
 hub_dir = Dir.mktmpdir('hub_build')
-raise 'hub build failed' unless system("./script/build -o #{hub_dir}/hub")
+raise 'hub build failed' unless system("ruby2.6.10 ./script/build -o #{hub_dir}/hub")
 
 Before do
   author_name  = "Hub"
