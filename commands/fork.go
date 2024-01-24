@@ -42,7 +42,8 @@ func init() {
 	CmdRunner.Use(cmdFork)
 }
 
-func fork(cmd *Command, args *Args) {
+func forkRepository(cmd *Command, args *Args) {
+	// Add comprehensive tests for forking functionality
 	localRepo, err := github.LocalRepo()
 	utils.Check(err)
 
@@ -71,12 +72,18 @@ func fork(cmd *Command, args *Args) {
 	client := github.NewClient(project.Host)
 	existingRepo, err := client.Repository(forkProject)
 	if err == nil {
-		existingProject, err := github.NewProjectFromRepo(existingRepo)
+		if err == nil {
+		existingProject, err = github.NewProjectFromRepo(existingRepo)
+		if err != nil {
+			utils.Log(err)
+			return
+		}
+	}
 		if err == nil && !existingProject.SameAs(forkProject) {
 			existingRepo = nil
 		}
 	}
-	if err == nil && existingRepo != nil {
+	if existingRepo != nil && existingRepo.HasParent() {
 		var parentURL *github.URL
 		if parent := existingRepo.Parent; parent != nil {
 			parentURL, _ = github.ParseURL(parent.HTMLURL)
