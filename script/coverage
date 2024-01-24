@@ -37,7 +37,7 @@ generate() {
     END { for (k in a) print k, a[k] }
   ' >> "$HUB_COVERAGE"~
 
-  go tool cover -func="$HUB_COVERAGE"~ > "${HUB_COVERAGE%.out}.func"
+  go tool cover -func="$HUB_COVERAGE"~ | awk '/^total:/ { print $(NF) }' > "${HUB_COVERAGE%.out}.func"
   if [ -z "$CI" ]; then
     go tool cover -html="$HUB_COVERAGE"~ -o "${HUB_COVERAGE%.out}.html"
   fi
@@ -48,7 +48,7 @@ generate() {
 summarize() {
   local total_coverage
   local min_coverage="$(MIN_COVERAGE)"
-  total_coverage="$(generate)"
+  total_coverage="$(generate | awk '/^total:/ { print $(NF) }')"
   echo "Code coverage: $total_coverage"
   local result="$(bc <<<"${total_coverage%\%} < $min_coverage")"
   if [ "$result" -eq 1 ] || [ "$(MIN_COVERAGE)" -eq 1 ]; then
