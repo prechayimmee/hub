@@ -78,7 +78,7 @@ func browse(command *Command, args *Args) {
 		project = github.NewProject("", dest, "")
 		branch = localRepo.MasterBranch()
 	} else if subpage != "" && subpage != "commits" && subpage != "tree" && subpage != "blob" && subpage != "settings" {
-		project, err = localRepo.MainProject()
+		project, _ = localRepo.RemoteBranchAndProject("", false)
 		branch = localRepo.MasterBranch()
 		utils.Check(err)
 	} else {
