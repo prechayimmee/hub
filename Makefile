@@ -53,12 +53,13 @@ bin/hub: $(SOURCES)
 bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
-test:
+test: script/coverage
+ifdef CI
 	go test ./...
 
 test-all: bin/cucumber
 ifdef CI
-	script/test --coverage $(MIN_COVERAGE)
+	script/test --coverage --coverage $(MIN_COVERAGE)
 else
 	script/test
 endif
