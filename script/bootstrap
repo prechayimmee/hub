@@ -3,8 +3,8 @@ set -e
 
 STATUS=0
 
-{ ruby --version
-  bundle install
+{ /opt/hostedtoolcache/Ruby/3.0/x64/bin/ruby --version
+  /opt/hostedtoolcache/Ruby/3.0/x64/bin/bundle install
   bundle binstub cucumber --path bin
 } || {
   echo "You need Ruby 1.9 or higher and Bundler to run hub tests" >&2
