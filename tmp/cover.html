@@ -26,13 +26,14 @@ prepare() {
 
   rm -rf "$HUB_COVERAGE"
   mkdir -p "${HUB_COVERAGE%/*}"
+  rm -f "tmp/cover.html"
 }
 
 generate() {
   source_files | xargs git checkout --
 
   echo 'mode: count' > "$HUB_COVERAGE"~
-  sed -E 's!^.+/(github.com/github/hub/v2/)!\1!' "$HUB_COVERAGE" | awk -F ' ' 
+  sed -E 's!^.+/(github.com/github/hub/v2/)!\1!' "$HUB_COVERAGE" | awk '
     { a[substr($0, 0, length()-2)] += $(NF) }
     END { for (k in a) print k, a[k] }
   ' >> "$HUB_COVERAGE"~
@@ -47,7 +48,7 @@ generate() {
 
 summarize() {
   local total_coverage
-  local min_coverage="$(MIN_COVERAGE)"
+  local min_coverage="${1?}"
   total_coverage="$(generate)"
   echo "Code coverage: $total_coverage"
   local result="$(bc <<<"${total_coverage%\%} < $min_coverage")"
