@@ -28,6 +28,7 @@ jobs:
 
         - name: Fork repository
         run: script/fork-repository.sh
+        if: "!contains(github.ref, '-')" # skip prereleases
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         if: "!contains(github.ref, '-')" # skip prereleases
