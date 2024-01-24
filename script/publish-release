@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-publish_documentation() {
+publish_release() {
   set -u
   local version="$1"
   local doc_dir="site"
