@@ -12,7 +12,7 @@ publish_documentation() {
   pushd "$doc_dir"
 
   git rm hub*.html >/dev/null
-  cp -r ../share/doc/*/*.html .
+  cp -r ../share/doc/**/*.html .
 
   git add hub*.html
   GIT_COMMITTER_NAME='GitHub Actions' GIT_COMMITTER_EMAIL='noreply@github.com' && continue_execution=true \
