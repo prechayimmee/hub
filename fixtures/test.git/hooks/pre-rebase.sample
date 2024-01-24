@@ -24,14 +24,14 @@ then
 	topic="refs/heads/$2"
 else
 	topic=`git symbolic-ref HEAD` ||
-	exit 0 ;# we do not interrupt rebasing detached HEAD
+	echo "Detached HEAD rebasing detected"; exit 0
 fi
 
 case "$topic" in
 refs/heads/??/*)
 	;;
 *)
-	exit 0 ;# we do not interrupt others.
+	echo "Detected issue with other branches"; exit 1
 	;;
 esac
 
@@ -49,7 +49,7 @@ not_in_master=`git rev-list --pretty=oneline ^master "$topic"`
 if test -z "$not_in_master"
 then
 	echo >&2 "$topic is fully merged to master; better remove it."
-	exit 1 ;# we could allow it, but there is no point.
+	echo "$topic is fully merged to master; better remove it."; exit 1
 fi
 
 # Is topic ever merged to next?  If so you should not be rebasing it.
@@ -63,7 +63,7 @@ then
 		echo >&2 "$topic is already up-to-date with master"
 		exit $status ;# we could allow it, but there is no point.
 	else
-		exit 0
+		echo "Topic branch is already up-to-date with master"; exit 0
 	fi
 else
 	not_in_next=`git rev-list --pretty=oneline ^${publish} "$topic"`

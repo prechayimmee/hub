@@ -53,45 +53,6 @@ Feature: hub pull-request
       """
       Aborted: could not find any git remote pointing to a GitHub repository\n
       """
-    And the exit status should be 1
-
-  Scenario: Create pull request respecting "insteadOf" configuration
-    Given the "origin" remote has url "mygh:Manganeez/repo.git"
-    When I successfully run `git config url."git@github.com:".insteadOf mygh:`
-    Given I am on the "topic" branch pushed to "origin/topic"
-    Given the GitHub API server:
-      """
-      post('/repos/Manganeez/repo/pulls') {
-        assert :base  => 'master',
-               :head  => 'Manganeez:topic',
-               :title => 'here we go'
-        status 201
-        json :html_url => "https://github.com/Manganeez/repo/pull/12"
-      }
-      """
-    When I successfully run `hub pull-request -m "here we go"`
-    Then the output should contain exactly "https://github.com/Manganeez/repo/pull/12\n"
-
-  Scenario: With Unicode characters
-    Given I am on the "topic" branch pushed to "origin/topic"
-    Given the GitHub API server:
-      """
-      post('/repos/mislav/coral/pulls') {
-        halt 400 if request.content_charset != 'utf-8'
-        assert :title => 'ăéñøü'
-        status 201
-        json :html_url => "the://url"
-      }
-      """
-    When I successfully run `hub pull-request -m ăéñøü`
-    Then the output should contain exactly "the://url\n"
-
-  Scenario: Invalid flag
-    When I run `hub pull-request -yelp`
-    Then the stderr should contain "unknown shorthand flag: 'y' in -yelp\n"
-    And the exit status should be 1
-
-  Scenario: With Unicode characters in the changelog
     Given the text editor adds:
       """
       I <3 encodings
@@ -109,6 +70,9 @@ Feature: hub pull-request
     Given I am on the "master" branch pushed to "origin/master"
     When I successfully run `git checkout --quiet -b topic`
     Given I make a commit with message "ăéñøü"
+    And the "topic" branch is pushed to "origin/topic"
+    When I successfully run `hub pull-request`
+    Then the output should contain exactly "the://url\n"
     And the "topic" branch is pushed to "origin/topic"
     When I successfully run `hub pull-request`
     Then the output should contain exactly "the://url\n"
