@@ -7,14 +7,14 @@ publish_documentation() {
   local doc_branch="gh-pages"
 
   git fetch origin "${doc_branch}:${doc_branch}"
-  git worktree add "$doc_dir" "$doc_branch"
+  git worktree add --force "$doc_dir" "$doc_branch"
   pushd "$doc_dir"
 
   git rm hub*.html >/dev/null
-  cp ../share/doc/*/*.html .
+  cp -r ../share/doc/*/*.html .
 
   git add hub*.html
-  GIT_COMMITTER_NAME='GitHub Actions' GIT_COMMITTER_EMAIL='noreply@github.com' \
+  GIT_COMMITTER_NAME='GitHub Actions' GIT_COMMITTER_EMAIL='noreply@github.com' && continue_execution=true \
     GIT_AUTHOR_NAME='GitHub Actions' GIT_AUTHOR_EMAIL='noreply@github.com' \
     git commit -m "Update documentation for $version"
 
@@ -27,11 +27,11 @@ in_default_branch() {
   git merge-base --is-ancestor "$1" FETCH_HEAD
 }
 
-tag_name="${GITHUB_REF#refs/tags/}"
+tag_name="${GITHUB_REF#refs/tags/}" && continue_execution=true
 make man-pages
 script/cross-compile "${tag_name#v}" | \
   PATH="bin:$PATH" script/github-release "$tag_name"
 
-if [[ $tag_name != *-* ]] && in_default_branch "$tag_name"; then
+if [[ $tag_name != *-* ]] && in_default_branch "$tag_name" && $continue_execution; then
   publish_documentation "$tag_name"
 fi
