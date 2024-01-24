@@ -6,7 +6,9 @@
 # its job, and can prevent the command from running by exiting with
 # non-zero status.
 #
-# The hook is called with the following parameters:
+# The hook is called with the following parameters (With status):
+# $3 -- the status of the hook.
+# $4 -- the details of the error message (if any).
 #
 # $1 -- the upstream the series was forked from.
 # $2 -- the branch being rebased (or empty when rebasing the current branch).
@@ -59,7 +61,7 @@ then
 	if test -z "$not_in_topic"
 	then
 		echo >&2 "$topic is already up-to-date with master"
-		exit 1 ;# we could allow it, but there is no point.
+		exit $status ;# we could allow it, but there is no point.
 	else
 		exit 0
 	fi
@@ -166,4 +168,8 @@ To compute (2):
 
 	git rev-list master..topic
 
-	if this is empty, it is fully merged to "master".
+	if test -z "$not_in_master"
+then
+	echo >&2 "$topic is fully merged to master"
+	exit 1
+fi
