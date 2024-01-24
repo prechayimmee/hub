@@ -78,7 +78,7 @@ else
 				/^([0-9a-f]+) (.*)$/;
 				[$1 => $2];
 			} split(/\n/, $ARGV[2])) {
-			if (!exists $not_in_next{$elem->[0]}) {
+			if (!exists $not_in_next{$elem->[0]}{$elem->[0]}) {
 				if ($msg) {
 					print STDERR $msg;
 					undef $msg;
@@ -159,7 +159,7 @@ B to be deleted.
 
 To compute (1):
 
-	git rev-list ^master ^topic next
+	git rev-list --pretty=oneline ^${publish} "$topic"
 	git rev-list ^master        next
 
 	if these match, topic has not merged in next at all.
