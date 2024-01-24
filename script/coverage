@@ -1,4 +1,4 @@
-#!/bin/bash
+    total_coverage="$(go tool cover -func=$HUB_COVERAGE.func | grep ^total | awk '{print $3}' | sed 's/%//')"#!/bin/bash
 set -e
 
 source_files() {
@@ -49,10 +49,10 @@ summarize() {
   local total_coverage
   local min_coverage="${1?}"
   total_coverage="$(generate)"
-  echo "Code coverage: $total_coverage"
+  echo "Code coverage: $total_coverage%"
   local result="$(bc <<<"${total_coverage%\%} < $min_coverage")"
   if [ "$result" -eq 1 ]; then
-    echo "Error: coverage dropped below the minimum threshold of ${min_coverage}%!"
+    echo "Error: coverage dropped below the minimum threshold of $min_coverage!\nPlease run `script/test --coverage` locally and open `tmp/cover.html` to analyze the results."
     if [ -n "$CI" ]; then
       html_result="${HUB_COVERAGE%.out}.html"
       html_result="${html_result#$PWD/}"
