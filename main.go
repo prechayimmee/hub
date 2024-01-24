@@ -36,7 +36,7 @@ func handleError(err error) int {
 		return 0
 	default:
 		if errString := err.Error(); errString != "" {
-			ui.Errorln(err)
+			ui.Errorf("Error: %v", err)
 		}
 		return 1
 	}
