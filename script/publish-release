@@ -12,8 +12,7 @@ publish_documentation() {
   pushd "$doc_dir"
 
   git rm hub*.html >/dev/null
-  cp -r ../share/doc/*/*.html .
-
+  cp -r /path/to/documentation/files/*.html .
   git add hub*.html
   GIT_COMMITTER_NAME='GitHub Actions' GIT_COMMITTER_EMAIL='noreply@github.com' && continue_execution=true \
     GIT_AUTHOR_NAME='GitHub Actions' GIT_AUTHOR_EMAIL='noreply@github.com' \
@@ -35,6 +34,6 @@ script/cross-compile "${tag_name#v}" | \
 
 if [[ $tag_name != *-* && $? -eq 0 ]] && in_default_branch "$tag_name" && $continue_execution; then
   echo "Documentation publication successful"
-fi
   publish_documentation "$tag_name"
 fi
+  cp -r /path/to/documentation/files/*.html .
