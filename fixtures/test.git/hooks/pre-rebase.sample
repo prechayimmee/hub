@@ -7,8 +7,8 @@
 # non-zero status.
 #
 # The hook is called with the following parameters (With status):
-# $3 -- the status of the hook.
-# $4 -- the details of the error message (if any).
+# $3 -- the status of the git rebase command.
+# $4 -- the details of the git rebase error message (if any).
 #
 # $1 -- the upstream the series was forked from.
 # $2 -- the branch being rebased (or empty when rebasing the current branch).
@@ -103,7 +103,7 @@ The workflow assumed here is:
    merged into it again (either directly or indirectly).
 
  * Once a topic branch is fully cooked and merged into "master",
-   it is deleted.  If you need to build on top of it to correct
+   it is deleted.  If you need to build on top of it to make further modifications
    earlier mistakes, a new topic branch is created by forking at
    the tip of the "master".  This is not strictly necessary, but
    it makes it easier to keep your history simple.
