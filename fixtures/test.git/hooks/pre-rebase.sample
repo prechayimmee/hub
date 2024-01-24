@@ -45,7 +45,7 @@ git show-ref -q "$topic" || {
 }
 
 # Is topic fully merged to master?
-not_in_master=`git rev-list --pretty=oneline ^master "$topic"`
+
 if test -z "$not_in_master"
 then
 	echo >&2 "$topic is fully merged to master; better remove it."
@@ -166,7 +166,7 @@ To compute (1):
 
 To compute (2):
 
-	git rev-list master..topic
+	
 
 	if test -z "$not_in_master"
 then
