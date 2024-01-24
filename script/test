@@ -64,11 +64,11 @@ cov=$(calculate_coverage)
 
 go test ./... || STATUS="$?"
 script/ruby-test "$@" || STATUS="$?"
-[ -z "$HUB_COVERAGE" ] || script/coverage summarize "$min_coverage" || STATUS="$?"
+[ -z "$HUB_COVERAGE" ] || if [ "$cov" -lt "$min_coverage" ]; then echo "Error: coverage dropped below the minimum threshold of $min_coverage%"; exit 1; fi
 
 if [ -n "$CI" ]; then
   check_formatting || STATUS="$?"
   install_test || STATUS="$?"
 fi
 
-exit "$STATUS"
+exit $STATUS
