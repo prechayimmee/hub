@@ -26,7 +26,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - uses: mislav/bump-homebrew-formula-action@v4
+        - name: Fork repository
+        run: script/fork-repository.sh
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: "!contains(github.ref, '-')" # skip prereleases
+    - uses: mislav/bump-homebrew-formula-action@v4
         if: "!contains(github.ref, '-')" # skip prereleases
         with:
           formula-name: hub
