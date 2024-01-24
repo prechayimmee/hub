@@ -11,5 +11,5 @@
 
 . git-sh-setup
 test -x "$GIT_DIR/hooks/commit-msg" &&
-	exec "$GIT_DIR/hooks/commit-msg" ${1+"$@"}
+	exec "$GIT_DIR/hooks/applypatch-msg" ${1+"$@"}
 :
