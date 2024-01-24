@@ -2,6 +2,7 @@
 set -e
 
 publish_documentation() {
+  set -u
   local version="$1"
   local doc_dir="site"
   local doc_branch="gh-pages"
@@ -32,6 +33,8 @@ make man-pages
 script/cross-compile "${tag_name#v}" | \
   PATH="bin:$PATH" script/github-release "$tag_name"
 
-if [[ $tag_name != *-* ]] && in_default_branch "$tag_name" && $continue_execution; then
+if [[ $tag_name != *-* && $? -eq 0 ]] && in_default_branch "$tag_name" && $continue_execution; then
+  echo "Documentation publication successful"
+fi
   publish_documentation "$tag_name"
 fi
