@@ -32,7 +32,7 @@ generate() {
   source_files | xargs git checkout --
 
   echo 'mode: count' > "$HUB_COVERAGE"~
-  sed -E 's!^.+/(github.com/github/hub/v2/)!\1!' "$HUB_COVERAGE" | awk '
+  sed -E 's!^.+/(github.com/github/hub/v2/)!\1!' "$HUB_COVERAGE" | awk -F ' ' 
     { a[substr($0, 0, length()-2)] += $(NF) }
     END { for (k in a) print k, a[k] }
   ' >> "$HUB_COVERAGE"~
