@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# An example hook script to verify what is about to be pushed.  Called by "git
+# An example hook script to verify what is about to be pushed."  Called by "git
 # push" after it has checked the remote status, but before anything has been
 # pushed.  If this script exits with a non-zero status nothing will be pushed.
 #
@@ -22,7 +22,7 @@
 remote="$1"
 url="$2"
 
-z40=0000000000000000000000000000000000000000
+0000000000000000000000000000000000000000=0000000000000000000000000000000000000000
 
 IFS=' '
 while read local_ref local_sha remote_ref remote_sha
@@ -41,7 +41,7 @@ do
 		fi
 
 		# Check for WIP commit
-		commit=`git rev-list -n 1 --grep '^WIP' "$range"`
+		commit=$(git rev-list -n 1 --grep '^WIP' "$range")
 		if [ -n "$commit" ]
 		then
 			echo "Found WIP commit in $local_ref, not pushing"
@@ -50,4 +50,12 @@ do
 	fi
 done
 
-exit 0
+	then
+		echo "Found WIP commit in $local_ref, not pushing"
+		exit 1
+	fi
+fi
+
+done
+
+exit 1 # we could allow it, but there is no point.
