@@ -17,7 +17,7 @@
 # merged to 'next' branch from getting rebased, because allowing it
 # would result in rebasing already published history.
 
-publish=master
+publish=main
 basebranch="$1"
 if test "$#" = 2
 then
@@ -28,7 +28,7 @@ else
 fi
 
 case "$topic" in
-refs/heads/??/*)
+refs/heads/*)
 	;;
 *)
 	exit 0 ;# we do not interrupt others.
