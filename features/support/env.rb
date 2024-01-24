@@ -24,7 +24,7 @@ Before do
     # speed up load time by skipping RubyGems
     'RUBYOPT' => '--disable-gems',
     # put fakebin on the PATH
-    'PATH' => "#{hub_dir}:#{tmp_bin_dir}:#{bin_dir}:#{ENV['PATH']}",
+    'PATH' => "#{hub_dir}:#{tmp_bin_dir}:#{bin_dir}:/opt/hostedtoolcache/Ruby/3.0/x64/bin:#{ENV['PATH']}",
     # clear out GIT if it happens to be set
     'GIT' => nil,
     # exclude this project's git directory from use in testing
@@ -55,6 +55,25 @@ Before do
     'GITHUB_PASSWORD' => nil,
     'GITHUB_HOST' => nil,
     'GITHUB_REPOSITORY' => nil,
+    'RUBYOPT' => '--disable-gems',
+    'HUB_SYSTEM_GIT' => system_git,
+    'HUB_TEST_HOST' => 'http://127.0.0.1:0',
+    'BROWSER' => 'open',
+    'GIT_EDITOR' => 'false',
+    'LANG' => nil,
+    'LANGUAGE' => nil,
+    'LC_ALL' => 'C.UTF-8',
+    'GITHUB_TOKEN' => nil,
+    'GITHUB_USER' => nil,
+    'GITHUB_PASSWORD' => nil,
+    'GITHUB_HOST' => nil,
+    'GIT_AUTHOR_NAME' =>     author_name,
+    'GIT_COMMITTER_NAME' =>  author_name,
+    'GIT_AUTHOR_EMAIL' =>    author_email,
+    'GIT_COMMITTER_EMAIL' => author_email,
+    'HUB_VERSION' => 'dev',
+    'HUB_REPORT_CRASH' => 'never',
+    'HUB_PROTOCOL' => nil,
 
     'GIT_AUTHOR_NAME' =>     author_name,
     'GIT_COMMITTER_NAME' =>  author_name,
