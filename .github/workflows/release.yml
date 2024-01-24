@@ -17,7 +17,7 @@ jobs:
           go-version: "1.18"
 
       - name: Publish release script
-        run: script/publish-release.sh
+        run: script/publish-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
