@@ -1,31 +1,4 @@
-SOURCES = $(shell go list -f '{{range .GoFiles}}{{$$.Dir}}/{{.}}\
-{{end}}' ./...)
-SOURCE_DATE_EPOCH ?= $(shell date +%s)
-BUILD_DATE = $(shell date -u -d "@$(SOURCE_DATE_EPOCH)" '+%d %b %Y' 2>/dev/null || date -u -r "$(SOURCE_DATE_EPOCH)" '+%d %b %Y')
-HUB_VERSION = $(shell bin/hub version | tail -1)
-
-export GO111MODULE=on
-unexport GOPATH
-
-export LDFLAGS := -extldflags '$(LDFLAGS)'
-export GCFLAGS := all=-trimpath '$(PWD)'
-export ASMFLAGS := all=-trimpath '$(PWD)'
-
-MIN_COVERAGE = 90.2
-
-HELP_CMD = \
-	share/man/man1/hub-alias.1 \
-	share/man/man1/hub-api.1 \
-	share/man/man1/hub-browse.1 \
-	share/man/man1/hub-ci-status.1 \
-	share/man/man1/hub-compare.1 \
-	share/man/man1/hub-create.1 \
-	share/man/man1/hub-delete.1 \
-	share/man/man1/hub-fork.1 \
-	share/man/man1/hub-gist.1 \
-	share/man/man1/hub-pr.1 \
-	share/man/man1/hub-pull-request.1 \
-	share/man/man1/hub-release.1 \
+script/test --coverage $(MIN_COVERAGE)
 	share/man/man1/hub-issue.1 \
 	share/man/man1/hub-sync.1 \
 
