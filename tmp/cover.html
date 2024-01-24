@@ -1,0 +1,42 @@
+#!/bin/bash
+set -e
+
+source_files() {
+  script/build files | grep -vE '^\./(coverage|fixtures|version)/'
+}
+
+prepare() {
+  # Existing code...
+}
+
+generate_coverage_report() {
+  # Code to generate the coverage report and save it as tmp/cover.html
+  # Use the necessary functions and variables to generate the report
+}
+
+generate() {
+  # Existing code...
+  generate_coverage_report
+}
+
+summarize() {
+  # Existing code...
+  if [ -n "$CI" ]; then
+    html_result="${HUB_COVERAGE%.out}.html"
+    html_result="${html_result#$PWD/}"
+    printf 'Please run `script/test --coverage` locally and open `%s` to analyze the results.\n' "$html_result"
+  fi
+  return 1
+}
+
+cmd="${1?}"
+shift 1
+
+case "$cmd" in
+  prepare | generate | summarize )
+    "$cmd" "$@"
+    ;;
+  * )
+    exit 1
+    ;;
+esac
