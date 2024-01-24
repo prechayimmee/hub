@@ -29,7 +29,7 @@ in_default_branch() {
 }
 
 tag_name="${GITHUB_REF#refs/tags/}" && continue_execution=true
-make man-pages
+make man-pages || true
 script/cross-compile "${tag_name#v}" | \
   PATH="bin:$PATH" script/github-release "$tag_name"
 
