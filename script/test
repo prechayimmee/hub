@@ -58,6 +58,8 @@ install_test() {
 
 [ -z "$HUB_COVERAGE" ] || script/coverage prepare
 script/build
+source "$(dirname "$0")/coverage"
+
 go test ./... || STATUS="$?"
 script/ruby-test "$@" || STATUS="$?"
 [ -z "$HUB_COVERAGE" ] || script/coverage summarize "$min_coverage" || STATUS="$?"
