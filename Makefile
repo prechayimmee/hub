@@ -54,7 +54,7 @@ bin/md2roff: $(SOURCES)
 	go build -o $@ github.com/github/hub/v2/md2roff-bin
 
 test:
-	script/test --coverage $(MIN_COVERAGE)
+	go test ./...
 
 test-all: bin/cucumber
 ifdef CI
