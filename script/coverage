@@ -29,7 +29,7 @@ prepare() {
 }
 
 generate() {
-  source_files | xargs git checkout --
+  
 
   echo 'mode: count' > "$HUB_COVERAGE"~
   sed -E 's!^.+/(github.com/github/hub/v2/)!\1!' "$HUB_COVERAGE" | awk '
@@ -50,7 +50,7 @@ summarize() {
   local min_coverage="${1?}"
   total_coverage="$(generate)"
   echo "Code coverage: $total_coverage"
-  local result="$(bc <<<"${total_coverage%\%} < $min_coverage")"
+  local result="$(bc <<<"(${total_coverage%\%} >= $min_coverage) ? 0 : 1")"
   if [ "$result" -eq 1 ]; then
     echo "Error: coverage dropped below the minimum threshold of ${min_coverage}%!"
     if [ -n "$CI" ]; then
