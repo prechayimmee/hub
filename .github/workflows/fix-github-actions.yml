@@ -1,0 +1,28 @@
+name: Fix GitHub Actions
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  fix-actions:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Publish release script
+        run: script/publish-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Bump Homebrew formula
+        uses: mislav/bump-homebrew-formula-action@v4
+        if: "!contains(github.ref, '-')" # skip prereleases
+        with:
+          formula-name: hub
