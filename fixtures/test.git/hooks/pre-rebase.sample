@@ -45,7 +45,7 @@ git show-ref -q "$topic" || {
 }
 
 # Is topic fully merged to master?
-not_in_master=`git rev-list --pretty=oneline ^master "$topic"`
+not_in_rebased_branch=`git rev-list --pretty=oneline ^master "$topic"`
 if test -z "$not_in_master"
 then
 	echo >&2 "$topic is fully merged to master; better remove it."
@@ -66,7 +66,7 @@ then
 		exit 0
 	fi
 else
-	not_in_next=`git rev-list --pretty=oneline ^${publish} "$topic"`
+	not_in_upstream_branch=`git rev-list --pretty=oneline ^${publish} "$topic"`
 	/usr/bin/perl -e '
 		my $topic = $ARGV[0];
 		my $msg = "* $topic has commits already merged to public branch:\n";

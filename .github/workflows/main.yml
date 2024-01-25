@@ -1,0 +1,99 @@
+import yaml
+
+def read_file(file_path):
+    with open(file_path, 'r') as file:
+        return file.read()
+
+def parse_yaml(yaml_string):
+    return yaml.safe_load(yaml_string)
+
+def update_repository(data_structure, repository_name):
+    steps = data_structure['jobs']['build']['steps']
+    for step in steps:
+        if step['uses'] == 'actions/checkout':
+            step['with']['repository'] = repository_name
+
+def convert_to_yaml(data_structure):
+    return yaml.dump(data_structure)
+
+def write_file(file_path, content):
+    with open(file_path, 'w') as file:
+        file.write(content)
+
+def update_workflow(file_path, repository_name):
+    yaml_string = read_file(file_path)
+    data_structure = parse_yaml(yaml_string)
+    update_repository(data_structure, repository_name)
+    updated_yaml = convert_to_yaml(data_structure)
+    write_file(file_path, updated_yaml)
+
+# Usage
+file_path = ".github/workflows/main.yml"
+repository_name = "actual/repository"
+update_workflow(file_path, repository_name)
+```
+
+Unit tests:
+```python
+import unittest
+from unittest.mock import patch
+from main import update_workflow
+
+class TestWorkflowUpdate(unittest.TestCase):
+    @patch('main.read_file')
+    @patch('main.parse_yaml')
+    @patch('main.convert_to_yaml')
+    @patch('main.write_file')
+    def test_update_workflow(self, mock_write_file, mock_convert_to_yaml, mock_parse_yaml, mock_read_file):
+        # Mock the file contents and parsed YAML data
+        file_contents = "contents of main.yml"
+        parsed_yaml = {
+            'jobs': {
+                'build': {
+                    'steps': [
+                        {
+                            'uses': 'actions/checkout',
+                            'with': {
+                                'repository': 'user/repo'
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+        mock_read_file.return_value = file_contents
+        mock_parse_yaml.return_value = parsed_yaml
+
+        # Call the function
+        file_path = ".github/workflows/main.yml"
+        repository_name = "actual/repository"
+        update_workflow(file_path, repository_name)
+
+        # Assert that the file was read
+        mock_read_file.assert_called_once_with(file_path)
+
+        # Assert that the YAML was parsed
+        mock_parse_yaml.assert_called_once_with(file_contents)
+
+        # Assert that the repository field was updated
+        expected_data_structure = {
+            'jobs': {
+                'build': {
+                    'steps': [
+                        {
+                            'uses': 'actions/checkout',
+                            'with': {
+                                'repository': 'actual/repository'
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+        mock_convert_to_yaml.assert_called_once_with(expected_data_structure)
+
+        # Assert that the updated YAML was written to the file
+        mock_write_file.assert_called_once_with(file_path, mock_convert_to_yaml.return_value)
+
+if __name__ == '__main__':
+    unittest.main()
