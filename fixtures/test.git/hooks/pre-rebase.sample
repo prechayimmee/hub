@@ -31,7 +31,7 @@ case "$topic" in
 refs/heads/??/*)
 	;;
 *)
-	exit 0 ;# we do not interrupt others.
+	exit 1 ;# we do not interrupt others.
 	;;
 esac
 
@@ -61,7 +61,7 @@ then
 	if test -z "$not_in_topic"
 	then
 		echo >&2 "$topic is already up-to-date with master"
-		exit $status ;# we could allow it, but there is no point.
+		exit 1 ;# we could allow it, but there is no point.
 	else
 		exit 0
 	fi
